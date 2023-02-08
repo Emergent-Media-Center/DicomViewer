@@ -1,0 +1,27 @@
+name: WEB-EMSCRIPTEN
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+env:
+  BUILD_TYPE: MinSizeRel
+
+jobs:
+  linux-emscripten:
+    runs-on: ubuntu-latest
+    container:
+      image: stateoftheartio/qt6:6.4-wasm-aqt
+      options: --user root
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Emscripten Build
+        run: qt-cmake ./ -G Ninja -B ./build; cmake --build ./build
+#        run: cmake -S. -Bbuild "-DCMAKE_GENERATOR:STRING=Ninja" "-DCMAKE_BUILD_TYPE:STRING=Debug" "-DQT_QMAKE_EXECUTABLE:FILEPATH=C:/Qt/6.4.2/wasm_32/bin/qmake.bat" "-DCMAKE_PREFIX_PATH:PATH=C:/Qt/6.4.2/wasm_32" "-DCMAKE_C_COMPILER:FILEPATH=C:/Utils/emsdk/upstream/emscripten/emcc.bat" "-DCMAKE_CXX_COMPILER:FILEPATH=C:/Utils/emsdk/upstream/emscripten/em++.bat" "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=C:/Qt/6.4.2/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake" "-DCMAKE_CXX_FLAGS_INIT:STRING=-DQT_QML_DEBUG"

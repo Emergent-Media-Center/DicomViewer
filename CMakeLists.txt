@@ -3,11 +3,11 @@ project(gallery_controls2 LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
-if(NOT DEFINED INSTALL_EXAMPLESDIR)
-    set(INSTALL_EXAMPLESDIR "examples")
-endif()
+#if(NOT DEFINED INSTALL_EXAMPLESDIR)
+#    set(INSTALL_EXAMPLESDIR "examples")
+#endif()
 
-set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}/quickcontrols2/gallery")
+#set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}/quickcontrols2/gallery")
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick QuickControls2)
 
