@@ -23,10 +23,10 @@ jobs:
           submodules: recursive
 
       - name: Emscripten version set
-        run: emsdk install 3.1.14; emsdk activate 3.1.14
+        run: emsdk install 3.1.14 ; emsdk activate 3.1.14
 
       - name: Emscripten Build
-        run: qt-cmake ./ -G Ninja -B ./build; cmake --build ./build; cp ./build/galleryexample.html ./build/index.html
+        run: qt-cmake ./ -G Ninja -B ./build; cmake --build ./build; cp ./build/morphing.html ./build/index.html
 
       - name: Rsync
         run: apt update; apt install -y rsync
