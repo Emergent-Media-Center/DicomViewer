@@ -23,13 +23,13 @@ jobs:
           submodules: recursive
 
       - name: Emscripten version set
-        run: emsdk install 3.1.25 ; emsdk activate 3.1.25
+        run: /opt/emsdk/emsdk install 3.1.25 ; /opt/emsdk/emsdk activate 3.1.25 --permanent
 
       - name: Emscripten Build
         run: qt-cmake ./ -G Ninja -B ./build; cmake --build ./build; cp ./build/morphing.html ./build/index.html
 
-      - name: Rsync
-        run: apt update; apt install -y rsync
+#      - name: Rsync
+#        run: apt update; apt install -y rsync
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
