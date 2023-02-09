@@ -15,7 +15,7 @@ jobs:
   linux-emscripten:
     runs-on: ubuntu-latest
     container:
-      image: stateoftheartio/qt6:6.4-wasm-aqt
+      image: infinibrains/qt:6.5-wasm-aqt
       options: --user root
     steps:
       - uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
           submodules: recursive
 
       - name: Emscripten version set
-        run: emsdk install 3.1.14 ; emsdk activate 3.1.14
+        run: emsdk install 3.1.25 ; emsdk activate 3.1.25
 
       - name: Emscripten Build
         run: qt-cmake ./ -G Ninja -B ./build; cmake --build ./build; cp ./build/morphing.html ./build/index.html

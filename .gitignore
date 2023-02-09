@@ -2,3 +2,7 @@
 CMakeLists.txt.user
 
 gallery.pro.user
+
+.idea/
+
+cmake-build-debug
