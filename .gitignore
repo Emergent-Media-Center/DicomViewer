@@ -6,3 +6,7 @@ gallery.pro.user
 .idea/
 
 cmake-build-debug
+
+.vs/
+
+out/
