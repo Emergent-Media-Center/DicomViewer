@@ -1,0 +1,8 @@
+#if(NOT DEFINED CMAKE_PREFIX_PATH)
+#    MESSAGE(WARNING "CMAKE_PREFIX_PATH not found")
+#    set(CMAKE_AUTOMOC ON)
+#    set(CMAKE_AUTORCC ON)
+#    set(CMAKE_AUTOUIC ON)
+##    set(CMAKE_PREFIX_PATH "C:/Qt/6.4.2/msvc2019_64/lib/cmake")
+#    include("C:/Qt/6.4.2/msvc2019_64/lib/cmake/Qt6/qt.toolchain.cmake")
+#endif()
