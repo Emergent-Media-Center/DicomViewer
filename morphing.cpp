@@ -25,6 +25,8 @@
 #include <fstream>
 #include <sstream>
 
+#include "QMLDicomImage.h"
+
 std::vector<char> decompressDicomBytes(std::vector<char> data) {
   // Debug is a little too verbose
   gdcm::Trace::SetDebug(false);
@@ -99,6 +101,7 @@ std::vector<char> decompressDicomBytes(std::vector<char> data) {
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+    qmlRegisterType<QMLDicomImage>("com.QMLDicomImage", 1, 0, "QMLDicomImage");
 
     QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat());
 

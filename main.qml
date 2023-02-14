@@ -6,6 +6,8 @@ import QtQuick3D
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import com.QMLDicomImage 1.0
+
 Window {
     id: window
     visible: true
@@ -21,10 +23,19 @@ Window {
         background: Rectangle {
             color : "transparent"
         }
+
+        QMLDicomImage{
+            id: dicomImage;
+        }
+
+        Text{
+            text: dicomImage.getText();
+        }
+
         RowLayout {
             width: parent.width
             spacing: 10
-//! [sliders]
+/*//! [sliders]
             Label { text: "Mouth:" }
             RealSlider {
                 id: mouthSlider
@@ -43,11 +54,11 @@ Window {
                 from: 0.0
                 to: 1.0
             }
-//! [sliders]
+//! [sliders]*/
         }
         z:1
     }
-    View3D {
+    /*View3D {
         id: view
         anchors.fill: parent
 
@@ -108,5 +119,5 @@ Window {
             }
         }
 //! [model]
-    }
+    }*/
 }

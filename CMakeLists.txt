@@ -230,9 +230,9 @@ endif()
 
 foreach(exename ${GDCM_EXECUTABLE_NAME})
   if(${exename} STREQUAL "gdcminfo")
-    qt_add_executable(${exename} ${exename}.cpp puff.c)
+    qt_add_executable(${exename} ${exename}.cpp puff.c QMLDicomImage.cpp)
   else()
-    qt_add_executable(${exename} ${exename}.cpp)
+    qt_add_executable(${exename} ${exename}.cpp QMLDicomImage.cpp)
   endif()
 #  target_link_libraries(${exename} gdcmMSFF)
 
