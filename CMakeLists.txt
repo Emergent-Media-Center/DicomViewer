@@ -20,14 +20,28 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 include(external/FindQtWindows.cmake)
 set(CMAKE_AUTOMOC ON)
 
-# find qt hopefully
+# find qt
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Quick3D)
 
 # gdcm
 include(external/gdcm.cmake)
 
+# glob source files
+file(GLOB DICOMVIEWER_INC
+        CONFIGURE_DEPENDS
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.hxx
+        )
+file(GLOB DICOMVIEWER_SRC
+        CONFIGURE_DEPENDS
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.cxx
+    )
 
-qt_add_executable(dicomviewer main.cpp)
+# add those files to be built
+qt_add_executable(dicomviewer ${DICOMVIEWER_SRC})
 
 # work in progress to make it work in clion on windows
 #if (WIN32)
@@ -59,6 +73,7 @@ qt_add_executable(dicomviewer main.cpp)
 #  endforeach (QT_LIB)
 #endif ()
 
+# link executable
 target_link_libraries(dicomviewer PUBLIC
         Qt::Core
         Qt::Gui
@@ -102,4 +117,3 @@ install(TARGETS dicomviewer
 
 
 MESSAGE(STATUS "binary dir: ${CMAKE_BINARY_DIR}")
-MESSAGE(STATUS "INSTALL DIR: ${INSTALL_EXAMPLEDIR}")
