@@ -5,15 +5,6 @@
 #include <QQmlApplicationEngine>
 #include <QtQuick3D/qquick3d.h>
 
-
-#include "gdcmDataSet.h"
-#include "gdcmFileMetaInformation.h"
-#include "gdcmImageChangeTransferSyntax.h"
-#include "gdcmPixmapReader.h"
-#include "gdcmPixmapWriter.h"
-#include "gdcmReader.h"
-#include "gdcmWriter.h"
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -27,81 +18,12 @@
 
 #include "QMLDicomImage.h"
 
-std::vector<char> decompressDicomBytes(std::vector<char> data) {
-  // Debug is a little too verbose
-  gdcm::Trace::SetDebug(false);
-  gdcm::Trace::SetWarning(false);
-  gdcm::Trace::SetError(false);
-
-  gdcm::FileMetaInformation::SetSourceApplicationEntityTitle("gdcmconv");
-
-  // convert bytes into stream
-  std::stringstream si;
-  si.rdbuf()->pubsetbuf(reinterpret_cast<char*>(&data[0]), data.size());
-
-  // read file
-  gdcm::File inputFile;
-  inputFile.Read(si);
-  auto& header = inputFile.GetHeader();
-  auto& dataset = inputFile.GetDataSet();
-
-  gdcm::PixmapReader reader;
-  reader.SetFile(inputFile);
-
-  // try read
-  if (!reader.Read()) {
-    std::cerr << "Could not read" << std::endl;
-    return {};
-  }
-
-  gdcm::Pixmap &pixmap = reader.GetPixmap();
-
-  gdcm::ImageChangeTransferSyntax change;
-  change.SetForce(true);
-  change.SetCompressIconImage(false);
-
-  const gdcm::TransferSyntax &ts = pixmap.GetTransferSyntax();
-
-  if (ts.IsExplicit()) {
-    change.SetTransferSyntax(gdcm::TransferSyntax::ExplicitVRLittleEndian);
-  } else {
-    change.SetTransferSyntax(gdcm::TransferSyntax::ImplicitVRLittleEndian);
-  }
-
-  change.SetInput(pixmap);
-
-  if (!change.Change()) {
-    std::cerr << "Could not change the Transfer Syntax" << std::endl;
-    return {};
-  }
-
-  gdcm::PixmapWriter writer;
-  writer.SetFile(reader.GetFile());
-
-  gdcm::File &outFile = writer.GetFile();
-
-  const gdcm::Pixmap &pixout = change.PixmapToPixmapFilter::GetOutput();
-  writer.SetPixmap(pixout);
-
-  std::stringstream so;
-  writer.SetStream(so);
-
-  if (!writer.Write()) {
-    std::cerr << "Failed to write" << std::endl;
-    return {};
-  }
-
-  std::cout << "Written" << std::endl;
-  auto str = so.str();
-  std::vector<char> ret(str.begin(), str.end());
-  return ret;
-}
-
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    qmlRegisterType<QMLDicomImage>("com.QMLDicomImage", 1, 0, "QMLDicomImage");
+    qmlRegisterType<QMLDicomImage>("com.DicomImage", 1, 0, "QMLDicomImage");
+    qmlRegisterType<QMLDicomImage>("com.DicomImage", 1, 0, "PixmapImage");
 
     QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat());
 

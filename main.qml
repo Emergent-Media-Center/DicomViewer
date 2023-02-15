@@ -6,7 +6,7 @@ import QtQuick3D
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import com.QMLDicomImage 1.0
+import com.DicomImage 1.0
 
 Window {
     id: window
@@ -28,8 +28,13 @@ Window {
             id: dicomImage;
         }
 
-        Text{
-            text: dicomImage.getText();
+        PixmapImage{
+            id: pixmapImage
+        }
+
+        Button{
+            text: "Get Pixmap";
+            onClicked: pixmapImage.setImage(dicomImage.getPixmap())
         }
 
         RowLayout {
