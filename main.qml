@@ -11,102 +11,243 @@ Window {
     visible: true
     width:  800
     height: 800
-    title: qsTr("Morphing Example")
+    title: qsTr("EMC Dicom Viewer v0")
 
     Frame {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.margins: 10
-        background: Rectangle {
-            color : "transparent"
-        }
-        RowLayout {
-            width: parent.width
-            spacing: 10
-//! [sliders]
-            Label { text: "Mouth:" }
-            RealSlider {
-                id: mouthSlider
-                from: 0.0
-                to: 1.0
-            }
-            Label { text: "Ears and eyebrows:" }
-            RealSlider {
-                id: earSlider
-                from: 0.0
-                to: 1.0
-            }
-            Label { text: "Cubify:" }
-            RealSlider {
-                id: cubeSlider
-                from: 0.0
-                to: 1.0
-            }
-//! [sliders]
-        }
-        z:1
-    }
-    View3D {
-        id: view
+        id: windowFrame
+        visible: true
         anchors.fill: parent
+        focusPolicy: Qt.StrongFocus
+        padding: 0
+        contentWidth: 0
+        wheelEnabled: false
+        layer.enabled: false
+        anchors.rightMargin: 0
+        anchors.leftMargin: 0
+        anchors.bottomMargin: 0
+        anchors.topMargin: 0
+        contentHeight: 0
+        rightPadding: 0
+        bottomPadding: 0
+        leftPadding: 0
+        topPadding: 0
 
-        environment: SceneEnvironment {
-            clearColor: "gray"
-            backgroundMode: SceneEnvironment.Color
-        }
+        ColumnLayout {
+            id: columnLayout
+            anchors.fill: parent
+            layoutDirection: Qt.LeftToRight
+            spacing: 5
 
-        PerspectiveCamera {
-            id: camera
-            position.z: 3.0
-            position.y: 0.75
-            eulerRotation.x: -12
-            clipNear: 1.0
-            clipFar: 60.0
-        }
+            Frame {
+                id: menuBar
+                width: 200
+                height: 200
+                leftPadding: 0
+                topPadding: 0
+                bottomPadding: 0
+                rightPadding: 0
+                Layout.maximumHeight: 30
+                Layout.fillHeight: false
+                Layout.fillWidth: true
 
-        DirectionalLight {
-            eulerRotation.x: -30
-            eulerRotation.y: -70
-            ambientColor: Qt.rgba(0.3, 0.3, 0.3, 1.0)
-        }
+                MenuBar {
+                    id: menuBar1
+                    anchors.fill: parent
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
 
-//! [morphtargets]
-        MorphTarget {
-            id: morphtarget0
-            weight: mouthSlider.value
-            attributes: MorphTarget.Position | MorphTarget.Normal
-        }
-        MorphTarget {
-            id: morphtarget1
-            weight: earSlider.value
-            attributes: MorphTarget.Position | MorphTarget.Normal
-        }
-        MorphTarget {
-            id: morphtarget2
-            weight: cubeSlider.value
-            attributes: MorphTarget.Position | MorphTarget.Normal
-        }
-//! [morphtargets]
-
-//! [model]
-        Model {
-            source: "suzanne.mesh"
-            morphTargets: [
-                morphtarget0,
-                morphtarget1,
-                morphtarget2
-            ]
-            materials: PrincipledMaterial {
-                baseColor: "#41cd52"
-                roughness: 0.1
+                    Menu {
+                        title: "File"
+                        Action { text: "Open..." }
+                        MenuSeparator { }
+                        Action { text: "Quit DicomViewer" }
+                    }
+                }
             }
-            SequentialAnimation on eulerRotation.y {
-                NumberAnimation { from: -45; to: 45; duration: 10000 }
-                NumberAnimation { from: 45; to: -45; duration: 10000 }
-                loops: Animation.Infinite
+
+            Frame {
+                id: userViews
+                width: 200
+                height: 200
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                GridLayout {
+                    id: userViewsLayout
+                    x: -1
+                    y: -26
+                    anchors.fill: parent
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+
+                    ThreeDFrame {
+                        id: threeDFrame2
+                    }
+
+                    ThreeDFrame {
+                        id: threeDFrame
+                    }
+                }
             }
+
+            Frame {
+                id: frame
+                width: 200
+                height: 200
+                leftPadding: 0
+                Layout.maximumHeight: 100
+                Layout.minimumHeight: 100
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                rightPadding: 0
+                bottomPadding: 0
+                topPadding: 0
+
+                Row {
+                    id: row
+                    x: 0
+                    y: 0
+                    anchors.fill: parent
+                    rightPadding: 8
+                    leftPadding: 8
+                    bottomPadding: 8
+                    topPadding: 8
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+
+                    spacing: 6
+
+                    Button {
+                        id: button
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                        width: height;
+                    }
+
+                    Button {
+                        id: button1
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button2
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button3
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button4
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button5
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button6
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button7
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button8
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button9
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button10
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+
+                    Button {
+                        id: button11
+                        width: height
+                        text: qsTr("Button")
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
+                    }
+                }
+            }
+
+
+
         }
-//! [model]
+    }
+
+    Item {
+        id: __materialLibrary__
     }
 }
+
+

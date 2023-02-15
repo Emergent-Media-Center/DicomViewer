@@ -102,8 +102,10 @@ qt_add_qml_module(dicomviewer
     URI Example
     VERSION 1.0
     QML_FILES
-        RealSlider.qml
+        # MAIN
         main.qml
+        # CUSTOM COMPONENTS
+        ThreeDFrame.qml
     RESOURCES
         suzanne.mesh
     NO_RESOURCE_TARGET_PATH
