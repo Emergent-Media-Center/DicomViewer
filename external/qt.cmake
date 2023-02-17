@@ -15,8 +15,14 @@ CPMAddPackage(
 )
 
 if(Qt_ADDED)
+    if(WIN32)
+        SET(CONFIGURECOMMAND "configure.bat")
+    ELSE()
+        SET(CONFIGURECOMMAND "./configure")
+    endif()
+
     execute_process(
-            COMMAND ./configure -opensource -confirm-license -prefix ${Qt_BINARY_DIR} -nomake examples -nomake tests -skip qtwebview,qttranslations,qtwebengine,qtwebchannel,qtwayland,qtspeech,qt5compat,qttools,qtdoc
+            COMMAND "${CONFIGURECOMMAND}" -opensource -confirm-license -prefix ${Qt_BINARY_DIR} -nomake examples -nomake tests -skip qtwebview,qttranslations,qtwebengine,qtwebchannel,qtwayland,qtspeech,qt5compat,qttools,qtdoc
             COMMAND_ECHO STDOUT
             WORKING_DIRECTORY ${Qt_SOURCE_DIR}
     )

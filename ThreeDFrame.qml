@@ -60,6 +60,11 @@ Frame {
             anchors.leftMargin: 20
             anchors.topMargin: 20
             value: 180
+
+            MouseArea {
+                anchors.fill: parent
+                onWheel: { rotationSlider.value += (wheel.angleDelta.y) / 6 }
+            }
         }
     }
 
