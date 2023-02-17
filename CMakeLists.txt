@@ -18,6 +18,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 # Qt folder to work on clion on windows - WiP
 include(external/FindQtWindows.cmake)
+include(external/qt.cmake)
 set(CMAKE_AUTOMOC ON)
 
 # find qt
