@@ -230,9 +230,9 @@ endif()
 
 foreach(exename ${GDCM_EXECUTABLE_NAME})
   if(${exename} STREQUAL "gdcminfo")
-    qt_add_executable(${exename} ${exename}.cpp puff.c QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp)
+    qt_add_executable(${exename} ${exename}.cpp puff.c QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp CustomTreeView.cpp)
   else()
-    qt_add_executable(${exename} ${exename}.cpp QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp)
+    qt_add_executable(${exename} ${exename}.cpp QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp CustomTreeView.cpp)
   endif()
 #  target_link_libraries(${exename} gdcmMSFF)
 

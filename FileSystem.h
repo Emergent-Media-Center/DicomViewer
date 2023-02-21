@@ -13,7 +13,7 @@ public:
     ~FileSystem();
 
 public slots:
-    Q_INVOKABLE void setTree(QVariant treeView);
+    Q_INVOKABLE void setTree(QTreeView* treeView);
 
 private:
     QFileSystemModel* dirModel;     //Current Directory

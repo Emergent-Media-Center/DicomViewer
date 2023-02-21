@@ -7,6 +7,8 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 import com.DicomImage 1.0
+import com.FileSystem 1.0
+import com.CustomTreeView 1.0
 
 Window {
     id: window
@@ -64,20 +66,28 @@ Window {
         z:1
     }
 
-    TreeView{
+    FileSystem
+    {
+        id: fileSystem
+    }
+
+    CustomTreeView{
         id: rootFolderTree
-        x: 0
-        y: 0
-        width: 200
-        height: 800
+        //x: 0
+        //y: 0
+        //width: 200
+        //height: 800
 
-        signal setFileSystemTree(tree: TreeView)
+        Component.onCompleted:
+        {
+            fileSystem.setTree(rootFolderTree)
+        }
     }
 
-    Button{
+    /*Button{
         text: "Start"
-        onClicked: rootFolderTree.setFileSystemTree(rootFolderTree)
-    }
+        onClicked: fileSystem.setTree(rootFolderTree)
+    }*/
 
     ListView{
         x: 200

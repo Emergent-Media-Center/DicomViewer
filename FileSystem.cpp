@@ -1,17 +1,10 @@
 #include "FileSystem.h"
 
-#include <QQuickView>
-
 FileSystem::FileSystem(QObject* parent)
 {
     QString rootPath = "C:/";
     dirModel = new QFileSystemModel(this);
     dirModel->setRootPath(rootPath);
-
-    QQuickView view(QUrl::fromLocalFile("main.qml"));
-
-    QMetaObject::invokeMethod(view.rootObject(), "setFileSystemTree",
-                              Q_ARG(QVariant, QVariant:))
 }
 
 FileSystem::~FileSystem()
@@ -20,7 +13,12 @@ FileSystem::~FileSystem()
 }
 
 //Displays dirModel in passed tree view
-void FileSystem::setTree(QVariant treeView)
+void FileSystem::setTree(QTreeView* treeView)
 {
-    tree.setModel(dirModel);
+    if(!treeView)
+    {
+        return;
+    }
+
+    treeView->setModel(dirModel);
 }
