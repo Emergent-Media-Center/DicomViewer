@@ -13,7 +13,7 @@ QMLDicomImage::QMLDicomImage(QObject *parent)
 {
     std::string filename = "imagem1.dcm";
     std::vector<char> charArray = std::vector<char>(filename.begin(), filename.end());
-    openFile(charArray);
+    //openFile(charArray);
 }
 
 

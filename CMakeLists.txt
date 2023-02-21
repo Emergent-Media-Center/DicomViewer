@@ -53,7 +53,7 @@ set(CMAKE_AUTOMOC ON)
 
 #set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}/quick3d/morphing")
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Quick3D) # QuickControls2)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Quick3D Widgets) # QuickControls2)
 
 #qt_add_executable(morphing
 #    morphing.cpp
@@ -230,9 +230,9 @@ endif()
 
 foreach(exename ${GDCM_EXECUTABLE_NAME})
   if(${exename} STREQUAL "gdcminfo")
-    qt_add_executable(${exename} ${exename}.cpp puff.c QMLDicomImage.cpp PixmapImage.cpp)
+    qt_add_executable(${exename} ${exename}.cpp puff.c QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp)
   else()
-    qt_add_executable(${exename} ${exename}.cpp QMLDicomImage.cpp PixmapImage.cpp)
+    qt_add_executable(${exename} ${exename}.cpp QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp)
   endif()
 #  target_link_libraries(${exename} gdcmMSFF)
 
@@ -242,6 +242,7 @@ foreach(exename ${GDCM_EXECUTABLE_NAME})
       Qt::Quick
   #    Qt::QuickControls2
       Qt::Quick3D
+      Qt6::Widgets
       gdcmMSFF
   )
 

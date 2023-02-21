@@ -5,6 +5,9 @@
 #include <QQmlApplicationEngine>
 #include <QtQuick3D/qquick3d.h>
 
+#include <QTreeView>
+#include <QQmlContext>
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -17,7 +20,7 @@
 #include <sstream>
 
 #include "QMLDicomImage.h"
-
+#include "FileSystem.h"
 
 int main(int argc, char *argv[])
 {
@@ -28,9 +31,20 @@ int main(int argc, char *argv[])
     QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat());
 
     QQmlApplicationEngine engine;
+
+    FileSystem fileSystem = FileSystem();
+    //engine.rootContext()->setContextProperty("fileSystem", fileSystem);
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
+
+
+
+    for(QObject* obj : engine.rootObjects())
+    {
+        QObject::connect(obj, SIGNAL(setFileSystemTree(QVariantMap)), &fileSystem, SLOT(setTree(QVariantMap)));
+    }
 
     return app.exec();
 }

@@ -24,7 +24,7 @@ Window {
             color : "transparent"
         }
 
-        QMLDicomImage{
+        /*QMLDicomImage{
             id: dicomImage;
         }
 
@@ -35,12 +35,12 @@ Window {
         Button{
             text: "Get Pixmap";
             onClicked: pixmapImage.setImage(dicomImage.getPixmap())
-        }
+        }*/
 
         RowLayout {
             width: parent.width
             spacing: 10
-/*//! [sliders]
+            /*//! [sliders]
             Label { text: "Mouth:" }
             RealSlider {
                 id: mouthSlider
@@ -63,6 +63,34 @@ Window {
         }
         z:1
     }
+
+    TreeView{
+        id: rootFolderTree
+        x: 0
+        y: 0
+        width: 200
+        height: 800
+
+        signal setFileSystemTree(tree: TreeView)
+    }
+
+    Button{
+        text: "Start"
+        onClicked: rootFolderTree.setFileSystemTree(rootFolderTree)
+    }
+
+    ListView{
+        x: 200
+        y: 0
+        width: 200
+        height: 800
+
+    }
+
+    Item {
+        id: __materialLibrary__
+    }
+
     /*View3D {
         id: view
         anchors.fill: parent
