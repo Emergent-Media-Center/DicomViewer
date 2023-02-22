@@ -10,6 +10,8 @@ class CustomTreeView : public QTreeView
 public:
     explicit CustomTreeView(QWidget *parent = nullptr);
 
+    bool initializeWidget();
+
 signals:
 
 };

@@ -4,13 +4,17 @@
 #include <QtCore>
 #include <QtGui>
 #include <QTreeView>
+#include <QDialog>
+#include <QWidget>
 
-class FileSystem : public QObject
+class FileSystem : public QDialog
 {
     Q_OBJECT
 public:
-    explicit FileSystem(QObject* parent = 0);
+    explicit FileSystem(QWidget* parent = 0);
     ~FileSystem();
+
+    bool initializeWidget();
 
 public slots:
     Q_INVOKABLE void setTree(QTreeView* treeView);
@@ -18,6 +22,8 @@ public slots:
 private:
     QFileSystemModel* dirModel;     //Current Directory
     QFileSystemModel* fileModel;   //Current Files
+
+
 };
 
 #endif // FILESYSTEM_H

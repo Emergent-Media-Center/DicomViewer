@@ -1,166 +1,73 @@
 // Copyright (C) 2021 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
+import QtCore
 import QtQuick
+import QtQuick.Dialogs
 import QtQuick3D
 import QtQuick.Controls
 import QtQuick.Layouts
+import Qt.labs.folderlistmodel 2.4
 
 import com.DicomImage 1.0
 import com.FileSystem 1.0
 import com.CustomTreeView 1.0
 
-Window {
-    id: window
+ApplicationWindow {
+    title: qsTr("Dicom Viewer")
+    width: 640
+    height: 480
     visible: true
-    width:  800
-    height: 800
-    title: qsTr("Morphing Example")
 
-    Frame {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.margins: 10
-        background: Rectangle {
-            color : "transparent"
-        }
+    /*trees: [
 
-        /*QMLDicomImage{
-            id: dicomImage;
-        }
+    ]*/
 
-        PixmapImage{
-            id: pixmapImage
-        }
-
-        Button{
-            text: "Get Pixmap";
-            onClicked: pixmapImage.setImage(dicomImage.getPixmap())
-        }*/
-
-        RowLayout {
-            width: parent.width
-            spacing: 10
-            /*//! [sliders]
-            Label { text: "Mouth:" }
-            RealSlider {
-                id: mouthSlider
-                from: 0.0
-                to: 1.0
+    header: ToolBar {
+        RowLayout{
+            Button {
+                text: qsTr("Choose Folder...")
+                onClicked: fileDialog.open()
             }
-            Label { text: "Ears and eyebrows:" }
-            RealSlider {
-                id: earSlider
-                from: 0.0
-                to: 1.0
+
+            Button{
+                text: "Back"
+                onClicked: {
+                    var parentFolder = folderTree.getParentFolder();
+                    folderTree.setFolder(parentFolder);
+                    fileTree.setFolder(parentFolder);
+                }
+
             }
-            Label { text: "Cubify:" }
-            RealSlider {
-                id: cubeSlider
-                from: 0.0
-                to: 1.0
-            }
-//! [sliders]*/
-        }
-        z:1
-    }
-
-    FileSystem
-    {
-        id: fileSystem
-    }
-
-    CustomTreeView{
-        id: rootFolderTree
-        //x: 0
-        //y: 0
-        //width: 200
-        //height: 800
-
-        Component.onCompleted:
-        {
-            fileSystem.setTree(rootFolderTree)
         }
     }
 
-    /*Button{
-        text: "Start"
-        onClicked: fileSystem.setTree(rootFolderTree)
-    }*/
-
-    ListView{
-        x: 200
-        y: 0
-        width: 200
-        height: 800
-
-    }
-
-    Item {
-        id: __materialLibrary__
-    }
-
-    /*View3D {
-        id: view
+    Frame{
+        id: folderFrame
         anchors.fill: parent
 
-        environment: SceneEnvironment {
-            clearColor: "gray"
-            backgroundMode: SceneEnvironment.Color
-        }
+        RowLayout{
+            FolderTree{
+                id: folderTree
 
-        PerspectiveCamera {
-            id: camera
-            position.z: 3.0
-            position.y: 0.75
-            eulerRotation.x: -12
-            clipNear: 1.0
-            clipFar: 60.0
-        }
-
-        DirectionalLight {
-            eulerRotation.x: -30
-            eulerRotation.y: -70
-            ambientColor: Qt.rgba(0.3, 0.3, 0.3, 1.0)
-        }
-
-//! [morphtargets]
-        MorphTarget {
-            id: morphtarget0
-            weight: mouthSlider.value
-            attributes: MorphTarget.Position | MorphTarget.Normal
-        }
-        MorphTarget {
-            id: morphtarget1
-            weight: earSlider.value
-            attributes: MorphTarget.Position | MorphTarget.Normal
-        }
-        MorphTarget {
-            id: morphtarget2
-            weight: cubeSlider.value
-            attributes: MorphTarget.Position | MorphTarget.Normal
-        }
-//! [morphtargets]
-
-//! [model]
-        Model {
-            source: "suzanne.mesh"
-            morphTargets: [
-                morphtarget0,
-                morphtarget1,
-                morphtarget2
-            ]
-            materials: PrincipledMaterial {
-                baseColor: "#41cd52"
-                roughness: 0.1
             }
-            SequentialAnimation on eulerRotation.y {
-                NumberAnimation { from: -45; to: 45; duration: 10000 }
-                NumberAnimation { from: 45; to: -45; duration: 10000 }
-                loops: Animation.Infinite
+
+            FileTree{
+                id: fileTree
+
+                Component.onCompleted: {
+                    folderTree.folderChanged.connect(fileTree.setFolder)
+                }
             }
         }
-//! [model]
-    }*/
+    }
+
+    FolderDialog {
+        id: fileDialog
+        currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+        onAccepted: {
+            folderTree.setFolder(selectedFolder);
+            fileTree.setFolder(selectedFolder);
+        }
+    }
 }

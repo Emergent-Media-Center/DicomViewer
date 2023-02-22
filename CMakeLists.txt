@@ -369,6 +369,8 @@ qt_add_qml_module(morphing
     VERSION 1.0
     QML_FILES
         RealSlider.qml
+        FolderTree.qml
+        FileTree.qml
         main.qml
     RESOURCES
         suzanne.mesh

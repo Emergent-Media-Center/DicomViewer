@@ -1,9 +1,9 @@
 #include "FileSystem.h"
 
-FileSystem::FileSystem(QObject* parent)
+FileSystem::FileSystem(QWidget* parent) :
+    QDialog(parent)
 {
-    QString rootPath = "C:/";
-    dirModel = new QFileSystemModel(this);
+    QString rootPath = "C:/";    dirModel = new QFileSystemModel(this);
     dirModel->setRootPath(rootPath);
 }
 

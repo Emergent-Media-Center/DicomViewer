@@ -27,8 +27,8 @@
 
 int main(int argc, char *argv[])
 {
-    //QGuiApplication app(argc, argv);
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
+    //QApplication app(argc, argv);
     qmlRegisterType<QMLDicomImage>("com.DicomImage", 1, 0, "QMLDicomImage");
     qmlRegisterType<PixmapImage>("com.DicomImage", 1, 0, "PixmapImage");
 
