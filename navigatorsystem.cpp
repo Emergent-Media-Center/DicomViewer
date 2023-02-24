@@ -67,8 +67,8 @@ void NavigatorSystem::BuildDB(vector<string> filePaths) {
         // instanceid
         string instanceId = ReadStringValue(reader.get(), 0x0020,0x0013);
 
-        // data for future use
-        navigatorDB[patientId][studyId][seriesId][stoi(instanceId)] = path;
+        // index data for future use
+        navigatorDB[patientId][studyId][seriesId][instanceId] = path;
         fileToTagToValueDB[path][Tag(0x0010,0x0020)] = patientId;
         fileToTagToValueDB[path][Tag(0x0020,0x0010)] = studyId;
         fileToTagToValueDB[path][Tag(0x0020,0x000E)] = seriesId;
@@ -78,6 +78,60 @@ void NavigatorSystem::BuildDB(vector<string> filePaths) {
 
 void NavigatorSystem::BuildDB(string folder) {
     BuildDB(ListAllDicomFromFolderRecursive(folder));
+}
+
+vector<string> NavigatorSystem::ListPatientIds() {
+    vector<string> patients;
+    for(auto p : navigatorDB)
+        patients.push_back(p.first);
+    return patients;
+}
+
+vector<string> NavigatorSystem::ListStudiesFromPatientId(string patientId) {
+    vector<string> studies;
+    if(navigatorDB.find(patientId) == navigatorDB.end())
+        return {};
+
+    for(auto p : navigatorDB[patientId])
+        studies.push_back(p.first);
+
+    return studies;
+}
+
+vector<string> NavigatorSystem::ListSeriesFromPatientIdStudyId(string patientId, string studyId) {
+    vector<string> series;
+    if(navigatorDB.find(patientId) == navigatorDB.end() ||
+        navigatorDB[patientId].find(studyId) == navigatorDB[patientId].end())
+        return {};
+
+    for(auto p : navigatorDB[patientId][studyId])
+        series.push_back(p.first);
+
+    return series;
+}
+
+vector<string> NavigatorSystem::ListInstancesFromPatientIdStudyIdSeriesId(string patientId, string studyId, string seriesId) {
+    vector<string> instances;
+    if(navigatorDB.find(patientId) == navigatorDB.end() ||
+        navigatorDB[patientId].find(studyId) == navigatorDB[patientId].end() ||
+        navigatorDB[patientId][studyId].find(seriesId) == navigatorDB[patientId][studyId].end())
+        return {};
+
+    for(auto p : navigatorDB[patientId][studyId][seriesId])
+        instances.push_back(p.first);
+
+    return instances;
+}
+
+string NavigatorSystem::GetFilePath(string patient, string study, string series, string instance) {
+    if(navigatorDB.find(patient) == navigatorDB.end() ||
+        navigatorDB[patient].find(study) == navigatorDB[patient].end() ||
+        navigatorDB[patient][study].find(series) == navigatorDB[patient][study].end() ||
+        navigatorDB[patient][study][series].find(instance) == navigatorDB[patient][study][series].end()
+        )
+        return {};
+    else
+        return navigatorDB[patient][study][series][instance];
 }
 
 shared_ptr<ImageReader> NavigatorSystem::GetReader(const string &path) {

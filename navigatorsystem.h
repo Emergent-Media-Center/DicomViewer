@@ -36,7 +36,7 @@ private:
     // used to store the tags an values from a file already explored. LazyLoaded.
     map<string, map<Tag,string>> fileToTagToValueDB;
     // build the navigation hierarchy: patientID, studyID, seriesID, instanceID, path
-    map<string, map<string, map<string, map<int, string>>>> navigatorDB;
+    map<string, map<string, map<string, map<string, string>>>> navigatorDB;
 
 public:
     NavigatorSystem();
@@ -49,6 +49,13 @@ public:
     void BuildDB(vector<string> filePaths);
     void BuildDB(string folder);
 
+    // for rendering and building the dicom navigator hierarquically
+    vector<string> ListPatientIds();
+    vector<string> ListStudiesFromPatientId(string patientId);
+    vector<string> ListSeriesFromPatientIdStudyId(string patientId, string studyId);
+    vector<string> ListInstancesFromPatientIdStudyIdSeriesId(string patientId, string studyId, string seriesId);
+    string GetFilePath(string patient, string study, string series, string instance);
+
 private:
     vector<string> ListAllFilesFromFolderRecursive(const string& path);
     shared_ptr<ImageReader> GetReader(const string& path);
@@ -58,7 +65,6 @@ public:
 
     // Patient         https://dicom.innolitics.com/ciods/mr-image/patient
     // General Study   https://dicom.innolitics.com/ciods/mr-image/general-study
-    // Patient Study   https://dicom.innolitics.com/ciods/mr-image/patient-study
     // General Studies https://dicom.innolitics.com/ciods/mr-image/general-series
     // General Image   https://dicom.innolitics.com/ciods/mr-image/general-image
     // Image plane     https://dicom.innolitics.com/ciods/mr-image/image-plane
