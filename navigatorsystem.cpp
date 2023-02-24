@@ -52,14 +52,50 @@ bool NavigatorSystem::PathIsDicomFile(const string &path) {
     return header[0] == 'D' && header[1] == 'I' && header[2] == 'C' && header[3] == 'M';
 }
 
-//Reader NavigatorSystem::GetReader(const string &path) {
-//    if(!PathIsDicomFile(path))
-//        return {}; // todo: create a better way to protect againt bad reads
+void NavigatorSystem::BuildDB(vector<string> filePaths) {
+    for(auto path : filePaths) {
+        auto reader = GetReader(path);
+        // patientid
+        string patientId = ReadStringValue(reader.get(), 0x0010,0x0020);
 
-//    Reader reader;
-//    reader.SetFileName(path.c_str());
-//    return reader;
-//}
+        // studyid
+        string studyId = ReadStringValue(reader.get(), 0x0020,0x0010);
+
+        // seriesid
+        string seriesId = ReadStringValue(reader.get(), 0x0020, 0x000E);
+
+        // instanceid
+        string instanceId = ReadStringValue(reader.get(), 0x0020,0x0013);
+
+        // data for future use
+        navigatorDB[patientId][studyId][seriesId][stoi(instanceId)] = path;
+        fileToTagToValueDB[path][Tag(0x0010,0x0020)] = patientId;
+        fileToTagToValueDB[path][Tag(0x0020,0x0010)] = studyId;
+        fileToTagToValueDB[path][Tag(0x0020,0x000E)] = seriesId;
+        fileToTagToValueDB[path][Tag(0x0020,0x0013)] = instanceId;
+    }
+}
+
+void NavigatorSystem::BuildDB(string folder) {
+    BuildDB(ListAllDicomFromFolderRecursive(folder));
+}
+
+shared_ptr<ImageReader> NavigatorSystem::GetReader(const string &path) {
+    if(!PathIsDicomFile(path))
+        return nullptr;
+
+    auto reader = make_shared<ImageReader>();
+    reader->SetFileName(path.c_str());
+    if(!reader->CanRead() || !reader->Read())
+        return nullptr;
+    return reader;
+}
+
+string NavigatorSystem::ReadStringValue(Reader *reader, uint16_t Group, uint16_t Element) {
+    gdcm::StringFilter sf;
+    sf.SetFile(reader->GetFile());
+    return sf.ToString(Tag(Group,Element));
+}
 
 vector<string> NavigatorSystem::ListAllFilesFromFolderRecursive(const string &path) {
     if(GetPathType(path)!=PathType::DIRECTORY)
