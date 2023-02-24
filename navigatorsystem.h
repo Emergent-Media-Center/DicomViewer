@@ -34,7 +34,7 @@ enum class PathType {
 class NavigatorSystem {
 private:
     // used to store the tags an values from a file already explored. LazyLoaded.
-    map<string, map<Tag,string>> fileToTagToValueDB;
+    map<string, map<Tag,string>> fileAndTagToValueDB;
     // build the navigation hierarchy: patientID, studyID, seriesID, instanceID, path
     map<string, map<string, map<string, map<string, string>>>> navigatorDB;
 
@@ -54,7 +54,11 @@ public:
     vector<string> ListStudiesFromPatientId(string patientId);
     vector<string> ListSeriesFromPatientIdStudyId(string patientId, string studyId);
     vector<string> ListInstancesFromPatientIdStudyIdSeriesId(string patientId, string studyId, string seriesId);
-    string GetFilePath(string patient, string study, string series, string instance);
+
+    // to pretty render names
+    string PrettyPatientName(string patientId);
+
+    string GetFilePath(string patientId, string studyId, string seriesId, string instanceId);
 
 private:
     vector<string> ListAllFilesFromFolderRecursive(const string& path);
@@ -71,7 +75,8 @@ public:
     // Image Pixel     https://dicom.innolitics.com/ciods/mr-image/image-pixel
 
 private:
-    string ReadStringValue(Reader* reader, uint16_t Group, uint16_t Element);
+    string ReadStringValue(Reader* reader, Tag tag);
+    string ReadStringValue(string path, Tag tag);
 public:
     // Utility Functions
     // get original pixmap / image

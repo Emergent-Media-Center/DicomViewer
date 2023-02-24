@@ -2,8 +2,7 @@
 #include <filesystem> // C++17
 namespace fs = std::filesystem;
 
-NavigatorSystem::NavigatorSystem()
-{
+NavigatorSystem::NavigatorSystem()  {
 
 }
 
@@ -56,24 +55,25 @@ void NavigatorSystem::BuildDB(vector<string> filePaths) {
     for(auto path : filePaths) {
         auto reader = GetReader(path);
         // patientid
-        string patientId = ReadStringValue(reader.get(), 0x0010,0x0020);
+        string patientId = ReadStringValue(reader.get(), Tag(0x0010,0x0020));
 
         // studyid
-        string studyId = ReadStringValue(reader.get(), 0x0020,0x0010);
+        string studyId = ReadStringValue(reader.get(), Tag(0x0020,0x0010));
 
         // seriesid
-        string seriesId = ReadStringValue(reader.get(), 0x0020, 0x000E);
+        string seriesId = ReadStringValue(reader.get(), Tag(0x0020, 0x000E));
 
         // instanceid
-        string instanceId = ReadStringValue(reader.get(), 0x0020,0x0013);
+        string instanceId = ReadStringValue(reader.get(), Tag(0x0020,0x0013));
 
         // index data for future use
         navigatorDB[patientId][studyId][seriesId][instanceId] = path;
-        fileToTagToValueDB[path][Tag(0x0010,0x0020)] = patientId;
-        fileToTagToValueDB[path][Tag(0x0020,0x0010)] = studyId;
-        fileToTagToValueDB[path][Tag(0x0020,0x000E)] = seriesId;
-        fileToTagToValueDB[path][Tag(0x0020,0x0013)] = instanceId;
+        fileAndTagToValueDB[path][Tag(0x0010,0x0020)] = patientId;
+        fileAndTagToValueDB[path][Tag(0x0020,0x0010)] = studyId;
+        fileAndTagToValueDB[path][Tag(0x0020,0x000E)] = seriesId;
+        fileAndTagToValueDB[path][Tag(0x0020,0x0013)] = instanceId;
     }
+    cout << PrettyPatientName(navigatorDB.begin()->first) << endl;
 }
 
 void NavigatorSystem::BuildDB(string folder) {
@@ -123,6 +123,21 @@ vector<string> NavigatorSystem::ListInstancesFromPatientIdStudyIdSeriesId(string
     return instances;
 }
 
+string NavigatorSystem::PrettyPatientName(string patientId) {
+    // string patient, string study, string series, string instance
+    if(navigatorDB.find(patientId) == navigatorDB.end() || navigatorDB[patientId].empty())
+        return {};
+    auto study = navigatorDB[patientId].begin()->second;
+    if(study.empty())
+        return {};
+    auto serie = study.begin()->second;
+    if(serie.empty())
+        return {};
+    auto instancePath = serie.begin()->second;
+
+    return ReadStringValue(instancePath, Tag(0x0010,0x0010));
+}
+
 string NavigatorSystem::GetFilePath(string patient, string study, string series, string instance) {
     if(navigatorDB.find(patient) == navigatorDB.end() ||
         navigatorDB[patient].find(study) == navigatorDB[patient].end() ||
@@ -145,10 +160,23 @@ shared_ptr<ImageReader> NavigatorSystem::GetReader(const string &path) {
     return reader;
 }
 
-string NavigatorSystem::ReadStringValue(Reader *reader, uint16_t Group, uint16_t Element) {
+string NavigatorSystem::ReadStringValue(Reader *reader, Tag tag) {
     gdcm::StringFilter sf;
     sf.SetFile(reader->GetFile());
-    return sf.ToString(Tag(Group,Element));
+    return sf.ToString(tag);
+}
+
+string NavigatorSystem::ReadStringValue(string path, Tag tag) {
+    // read from cache
+    if(fileAndTagToValueDB.find(path)!=fileAndTagToValueDB.end() &&
+        fileAndTagToValueDB[path].find(tag) != fileAndTagToValueDB[path].end())
+        return fileAndTagToValueDB[path][tag];
+
+    // store in cache
+    auto reader = GetReader(path);
+    auto value = ReadStringValue(reader.get(),tag);
+    fileAndTagToValueDB[path][tag] = value;
+    return value;
 }
 
 vector<string> NavigatorSystem::ListAllFilesFromFolderRecursive(const string &path) {
