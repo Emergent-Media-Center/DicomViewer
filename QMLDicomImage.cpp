@@ -11,9 +11,9 @@
 QMLDicomImage::QMLDicomImage(QObject *parent)
     : QObject{parent}
 {
-    std::string filename = "imagem1.dcm";
+    std::string filename = "C:/Users/dillo/OneDrive/Documents/EMC_Projects/CaseImages/GERALDO MUCCILLO DAUDT/GERALDO MUCCILLO DAUDT/series1/imagem1.dcm";
     std::vector<char> charArray = std::vector<char>(filename.begin(), filename.end());
-    //openFile(charArray);
+    openFile(charArray);
 }
 
 

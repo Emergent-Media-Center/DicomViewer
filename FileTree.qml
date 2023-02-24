@@ -5,7 +5,7 @@ import Qt.labs.folderlistmodel 2.4
 ScrollView
 {
     width: parent.width
-    contentHeight: 100
+    contentHeight: 300
     clip: true
 
     ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
