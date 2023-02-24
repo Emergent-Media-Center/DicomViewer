@@ -57,6 +57,8 @@ public:
 
     // to pretty render names
     string PrettyPatientName(string patientId);
+    string PrettyStudyDescription(string patientId, string studyId);
+    string PrettySeriesDescription(string patientId, string studyId, string seriesId);
 
     string GetFilePath(string patientId, string studyId, string seriesId, string instanceId);
 

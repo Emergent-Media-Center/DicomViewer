@@ -73,7 +73,6 @@ void NavigatorSystem::BuildDB(vector<string> filePaths) {
         fileAndTagToValueDB[path][Tag(0x0020,0x000E)] = seriesId;
         fileAndTagToValueDB[path][Tag(0x0020,0x0013)] = instanceId;
     }
-    cout << PrettyPatientName(navigatorDB.begin()->first) << endl;
 }
 
 void NavigatorSystem::BuildDB(string folder) {
@@ -136,6 +135,32 @@ string NavigatorSystem::PrettyPatientName(string patientId) {
     auto instancePath = serie.begin()->second;
 
     return ReadStringValue(instancePath, Tag(0x0010,0x0010));
+}
+
+string NavigatorSystem::PrettyStudyDescription(string patientId, string studyId) {
+    // string patient, string study, string series, string instance
+    if(navigatorDB.find(patientId) == navigatorDB.end() ||
+        navigatorDB[patientId].find(studyId) == navigatorDB[patientId].end() ||
+        navigatorDB[patientId][studyId].empty())
+        return {};
+    auto serie = navigatorDB[patientId][studyId].begin()->second;
+    if(serie.empty())
+        return {};
+    auto instancePath = serie.begin()->second;
+
+    return ReadStringValue(instancePath, Tag(0x0008,0x1030));
+}
+
+string NavigatorSystem::PrettySeriesDescription(string patientId, string studyId, string seriesId) {
+    // string patient, string study, string series, string instance
+    if(navigatorDB.find(patientId) == navigatorDB.end() ||
+        navigatorDB[patientId].find(studyId) == navigatorDB[patientId].end() ||
+        navigatorDB[patientId][studyId].find(seriesId) == navigatorDB[patientId][studyId].end() ||
+        navigatorDB[patientId][studyId][seriesId].empty())
+        return {};
+    auto instancePath = navigatorDB[patientId][studyId][seriesId].begin()->second;
+
+    return ReadStringValue(instancePath, Tag(0x0008,0x103E));
 }
 
 string NavigatorSystem::GetFilePath(string patient, string study, string series, string instance) {
