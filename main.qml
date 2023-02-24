@@ -178,33 +178,55 @@ ApplicationWindow {
                     height: parent.height
                     //title: qsTr("EMC Dicom Viewer v0")
 
-                    /*DropArea {
+                    Rectangle
+                    {
+                        anchors.fill: parent
+
+                        Text {
+                            id: dragText
+                            anchors.fill: parent;
+
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+
+                            text: "Drag and drop folders here!"
+                        }
+
+                        DropArea {
                             id: dropArea;
                             anchors.fill: parent
                             onEntered: {
-                                root.color = "gray";
-                                drag.accept (Qt.LinkAction);
+                                parent.color = "lightgray";
+                                //drag.accept (Qt.LinkAction);
                             }
                             onDropped: {
-                                console.log(drop.urls)
-                                root.color = "white"
+                                //Open folder and show files
+                                fileTree.setFolder(drop.urls[0])
+                                fileTree.enabled = true
+
+                                //Hide text
+                                dragText.visible = false
+
+                                parent.color = "white"
                             }
                             onExited: {
-                                root.color = "white";
+                                parent.color = "white";
                             }
-                        }*/
+                        }
 
-                    RowLayout{
-                        /*FolderTree{
-                            id: folderTree
+                        RowLayout{
+                            /*FolderTree{
+                                id: folderTree
 
-                        }*/
+                            }*/
 
-                        FileTree{
-                            id: fileTree
+                            FileTree{
+                                id: fileTree
+                                enabled: false
 
-                            Component.onCompleted: {
-                                //folderTree.folderChanged.connect(fileTree.setFolder)
+                                Component.onCompleted: {
+                                    //folderTree.folderChanged.connect(fileTree.setFolder)
+                                }
                             }
                         }
                     }
