@@ -32,6 +32,16 @@ enum class PathType {
 };
 
 class NavigatorSystem {
+protected:
+    NavigatorSystem() = default;
+
+private:
+    static NavigatorSystem* singleton;
+
+public:
+    NavigatorSystem(NavigatorSystem &other) = delete;
+    void operator=(const NavigatorSystem &) = delete;
+    static NavigatorSystem* Instance();
 private:
     // used to store the tags an values from a file already explored. LazyLoaded.
     map<string, map<Tag,string>> fileAndTagToValueDB;
@@ -39,8 +49,6 @@ private:
     map<string, map<string, map<string, map<string, string>>>> navigatorDB;
 
 public:
-    NavigatorSystem();
-
     // Folder Navigation
     PathType GetPathType(const string& path);
     vector<string> ListAllDicomFromFolderRecursive(const string& path);

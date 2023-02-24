@@ -2,8 +2,12 @@
 #include <filesystem> // C++17
 namespace fs = std::filesystem;
 
-NavigatorSystem::NavigatorSystem()  {
+NavigatorSystem* NavigatorSystem::singleton = nullptr;
 
+NavigatorSystem *NavigatorSystem::Instance() {
+    if(singleton==nullptr)
+        singleton = new NavigatorSystem();
+    return singleton;
 }
 
 PathType NavigatorSystem::GetPathType(const string &path) {
