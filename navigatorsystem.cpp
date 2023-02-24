@@ -1,5 +1,7 @@
 #include "navigatorsystem.h"
 #include <filesystem> // C++17
+#include <limits.h>
+
 namespace fs = std::filesystem;
 
 NavigatorSystem* NavigatorSystem::singleton = nullptr;
@@ -206,6 +208,37 @@ string NavigatorSystem::ReadStringValue(string path, Tag tag) {
     auto value = ReadStringValue(reader.get(),tag);
     fileAndTagToValueDB[path][tag] = value;
     return value;
+}
+
+vector<string> NavigatorSystem::sortSeries(string patientId, string studyId, string seriesId) {
+    if(navigatorDB.find(patientId) == navigatorDB.end() ||
+        navigatorDB[patientId].find(studyId) == navigatorDB[patientId].end() ||
+        navigatorDB[patientId][studyId].find(seriesId) == navigatorDB[patientId][studyId].end() ||
+        navigatorDB[patientId][studyId][seriesId].empty()
+        )
+        return {};
+
+    map<int, string> m;
+    int minId = INT_MAX;
+    int maxId = INT_MIN;
+    int qnt=0;
+    for(auto pair: navigatorDB[patientId][studyId][seriesId]){
+        qnt++;
+        int id = stoi(pair.first); // todo: this can potentially throw error
+        if(id<minId)
+            minId = id;
+        if(id>maxId)
+            maxId = id;
+        m[id] = pair.second;
+    }
+    if(maxId - minId != 1){
+        cout << "Some dicom files are missing in the series selected." << endl;
+        return {};
+    }
+    vector<string> files;
+    for(int i = minId; i<=maxId; i++)
+        files.push_back(m[i]);
+    return files;
 }
 
 vector<string> NavigatorSystem::ListAllFilesFromFolderRecursive(const string &path) {

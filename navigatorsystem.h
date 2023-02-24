@@ -34,14 +34,13 @@ enum class PathType {
 class NavigatorSystem {
 protected:
     NavigatorSystem() = default;
-
 private:
     static NavigatorSystem* singleton;
-
 public:
     NavigatorSystem(NavigatorSystem &other) = delete;
     void operator=(const NavigatorSystem &) = delete;
     static NavigatorSystem* Instance();
+
 private:
     // used to store the tags an values from a file already explored. LazyLoaded.
     map<string, map<Tag,string>> fileAndTagToValueDB;
@@ -77,17 +76,11 @@ private:
 public:
     // common queries we need to ask a dicom file
 
-    // Patient         https://dicom.innolitics.com/ciods/mr-image/patient
-    // General Study   https://dicom.innolitics.com/ciods/mr-image/general-study
-    // General Studies https://dicom.innolitics.com/ciods/mr-image/general-series
-    // General Image   https://dicom.innolitics.com/ciods/mr-image/general-image
-    // Image plane     https://dicom.innolitics.com/ciods/mr-image/image-plane
-    // Image Pixel     https://dicom.innolitics.com/ciods/mr-image/image-pixel
-
 private:
     string ReadStringValue(Reader* reader, Tag tag);
     string ReadStringValue(string path, Tag tag);
 public:
+    vector<string> sortSeries(string patientId, string studyId, string seriesId);
     // Utility Functions
     // get original pixmap / image
     // decompress image
