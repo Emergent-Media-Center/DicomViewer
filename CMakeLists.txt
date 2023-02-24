@@ -2,382 +2,120 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 cmake_minimum_required(VERSION 3.16)
-project(morphing LANGUAGES CXX)
+project(dicomviewer LANGUAGES CXX)
 
 # CPM
 include(external/cpm.cmake)
 
+# General flags
+set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-#IF(EMSCRIPTEN)
-#    message(STATUS "emscripten build")
-#    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s WASM=2")
-#    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s WASM=2")
-#ENDIF()
-
-# needed by gdcm compile with charls codec, it can be optionally be compiled to be dynamic instead of static
-add_definitions(-DCHARLS_STATIC)
-
-# gdcm
-CPMAddPackage(
-        NAME gdcm
-        URL "https://github.com/malaterre/GDCM/archive/refs/tags/v3.0.20.zip"
-        OPTIONS
-        "GDCM_BUILD_DOCBOOK_MANPAGES 0"
-        "BUILD_APPLICATIONS 0"
-        "GDCM_BUILD_APPLICATIONS 0"
-        "GDCM_BUILD_EXAMPLES 0"
-)
-
-if(gdcm_ADDED)
-    message(STATUS "GDCM ADDED")
-    message(STATUS "GDCM_BINARY_DIR: ${GDCM_BINARY_DIR}")
-    message(STATUS "GDCM_SOURCE_DIR: ${GDCM_SOURCE_DIR}")
-else()
-    message(FATAL_ERROR "GDCM NOT ADDED")
-endif()
-find_package(gdcm)
-
-
+# Qt folder to work on clion on windows - WiP
+include(external/FindQtWindows.cmake)
 set(CMAKE_AUTOMOC ON)
 
-#if(NOT DEFINED INSTALL_EXAMPLESDIR)
-#    set(INSTALL_EXAMPLESDIR "examples")
-#endif()
+# find qt
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Quick3D Widgets)
 
-#set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}/quick3d/morphing")
+# gdcm
+include(external/gdcm.cmake)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Quick3D Widgets) # QuickControls2)
+# glob source files
+file(GLOB DICOMVIEWER_INC
+        CONFIGURE_DEPENDS
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.hxx
+        )
+file(GLOB DICOMVIEWER_SRC
+        CONFIGURE_DEPENDS
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/*.cxx
+    )
 
-#qt_add_executable(morphing
-#    morphing.cpp
-#)
+# add those files to be built
+qt_add_executable(dicomviewer ${DICOMVIEWER_SRC} QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp CustomTreeView.cpp)
 
+# work in progress to make it work in clion on windows
+#if (WIN32)
+#  set(DEBUG_SUFFIX)
+#  if (MSVC AND CMAKE_BUILD_TYPE MATCHES "Debug")
+#    set(DEBUG_SUFFIX "d")
+#  endif ()
+#  set(QT_INSTALL_PATH "${CMAKE_PREFIX_PATH}")
+#  if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
+#    set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
+#    if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
+#      set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
+#    endif ()
+#  endif ()
+#  if (EXISTS "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll")
+#    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+#            COMMAND ${CMAKE_COMMAND} -E make_directory
+#            "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
+#    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+#            COMMAND ${CMAKE_COMMAND} -E copy
+#            "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll"
+#            "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
+#  endif ()
+#  foreach (QT_LIB Core Gui Quick Quick3D Quick3DRuntimeRender QmlModels Qml Quick3DUtils Network ShaderTools OpenGL)
+#    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+#            COMMAND ${CMAKE_COMMAND} -E copy
+#            "${QT_INSTALL_PATH}/bin/Qt6${QT_LIB}${DEBUG_SUFFIX}.dll"
+#            "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
+#  endforeach (QT_LIB)
+#endif ()
 
-# FIXME: this region was just copy, pasted and modified from gdcmconv
-####################################################################
+# link executable
+target_link_libraries(dicomviewer PUBLIC
+        Qt::Core
+        Qt::Gui
+        Qt::Quick
+        Qt::Quick3D
+        Qt6::Widgets
+        gdcmMSFF
+        )
 
 if(WIN32 AND NOT CYGWIN AND NOT MINGW)
-  include_directories(
-    "${GDCM_SOURCE_DIR}/Utilities/getopt"
-  )
+  target_link_libraries(dicomviewer PUBLIC
+          Qt::Core
+          Qt::Gui
+          Qt::Quick
+          Qt::Quick3D
+          Qt6::Widgets
+          gdcmgetopt
+          )
 endif()
 
-# Add the include paths
-include_directories(
-  "${GDCM_BINARY_DIR}/Source/Common"
-  "${GDCM_SOURCE_DIR}/Source/Common"
-  "${GDCM_SOURCE_DIR}/Source/DataStructureAndEncodingDefinition"
-  "${GDCM_SOURCE_DIR}/Source/MediaStorageAndFileFormat"
-  "${GDCM_SOURCE_DIR}/Source/InformationObjectDefinition"
-  "${GDCM_SOURCE_DIR}/Source/MessageExchangeDefinition"
-# FIXME:
-  "${GDCM_SOURCE_DIR}/Source/DataDictionary"
-  "${GDCM_SOURCE_DIR}/Utilities"
 
-  )
-
-if(NOT GDCM_USE_SYSTEM_SOCKETXX)
-  include_directories(
-    "${GDCM_SOURCE_DIR}/Utilities/socketxx"
-    "${GDCM_SOURCE_DIR}/Utilities/socketxx/socket++" # local.h
-    "${GDCM_BINARY_DIR}/Utilities/socketxx/socket++" # config.h
-    )
-endif()
-
-if(WIN32)
-  if (BUILD_SHARED_LIBS)
-    add_definitions(-DGETOPT_DLL)
-  endif ()
-endif()
-
-set(GDCM_EXECUTABLE_NAME
-#  gdcmdump
-#  gdcmdiff
-#  gdcmraw
-#  gdcmscanner
-#  gdcmanon
-#  gdcmclean
-#  gdcmgendir
-#  #gdcmoverlay
-#  gdcmimg
-#  #deflate
-#  gdcmconv
-#  #gdcmstream
-#  gdcmtar
-#  gdcminfo
-#  gdcmscu
-#  gdcmxml
-#  gdcmpap3
-#  gdcmconvmod
-  morphing
-  )
-# poppler people have the worse API backward compatibility I know of.
-# there is absolutely no way to check the version of poppler
-# they change the API during a minor change of the version
-if(GDCM_USE_SYSTEM_POPPLER)
-  include(CheckCXXSourceCompiles)
-  set(CMAKE_REQUIRED_INCLUDES ${POPPLER_INCLUDE_DIRS})
-  set(CMAKE_REQUIRED_LIBRARIES ${POPPLER_LIBRARIES})
-  CHECK_CXX_SOURCE_COMPILES(
-    "\#include <poppler/GlobalParams.h>\nint main() { globalParams = new GlobalParams(0); return 0;}"
-    LIBPOPPLER_GLOBALPARAMS_CSTOR_HAS_PARAM)
-  set(libpoppler_flags)
-  if(LIBPOPPLER_GLOBALPARAMS_CSTOR_HAS_PARAM)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_GLOBALPARAMS_CSTOR_HAS_PARAM)
-  endif()
-  CHECK_CXX_SOURCE_COMPILES(
-    "\#include <poppler/GlobalParams.h>\nint main() { globalParams.reset( new GlobalParams()); return 0;}"
-    LIBPOPPLER_GLOBALPARAMS_HAS_RESET)
-  set(libpoppler_flags)
-  if(LIBPOPPLER_GLOBALPARAMS_HAS_RESET)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_GLOBALPARAMS_HAS_RESET)
-  endif()
-  CHECK_CXX_SOURCE_COMPILES(
-    "\#include <poppler/PDFDoc.h>\nint main() { PDFDoc d((GooString*)NULL,(GooString*)NULL,(GooString*)NULL); d.getPDFVersion(); return 0;}"
-    LIBPOPPLER_PDFDOC_HAS_PDFVERSION)
-  if(LIBPOPPLER_PDFDOC_HAS_PDFVERSION)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_PDFDOC_HAS_PDFVERSION)
-  endif()
-  CHECK_CXX_SOURCE_COMPILES(
-    "\#include <poppler/PDFDoc.h>\n#include <poppler/StructTreeRoot.h>\nint main() { Catalog c(NULL); c.getStructTreeRoot()->getDoc(); return 0;}"
-    LIBPOPPLER_CATALOG_HAS_STRUCTTREEROOT)
-  if(LIBPOPPLER_CATALOG_HAS_STRUCTTREEROOT)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_CATALOG_HAS_STRUCTTREEROOT)
-  endif()
-  CHECK_CXX_SOURCE_COMPILES(
-      "\#include <poppler/Object.h>\nint main() { Object o(42); }"
-    LIBPOPPLER_NEW_OBJECT_API)
-  if(LIBPOPPLER_NEW_OBJECT_API)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_NEW_OBJECT_API)
-  endif()
-  CHECK_CXX_SOURCE_COMPILES(
-          "\#include <poppler/goo/GooString.h>\nint main() { const GooString gs; gs.getChar(0); return 0; }"
-    LIBPOPPLER_GOOSTRING_HAS_CONSTGETCHAR)
-  if(LIBPOPPLER_GOOSTRING_HAS_CONSTGETCHAR)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_GOOSTRING_HAS_CONSTGETCHAR)
-  endif()
-  CHECK_CXX_SOURCE_COMPILES(
-          "\#include <poppler/goo/GooString.h>\nint main() { GooString gs; gs.getCString(); return 0; }"
-          LIBPOPPLER_GOOSTRING_HAS_GETCSTRING)
-  if(LIBPOPPLER_GOOSTRING_HAS_GETCSTRING)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_GOOSTRING_HAS_GETCSTRING)
-  endif()
-  CHECK_CXX_SOURCE_COMPILES(
-          "\#include <poppler/UnicodeMap.h>\nint main() {  Unicode u; char buf[8]; const UnicodeMap *uMap; uMap->mapUnicode(u, buf, sizeof(buf)); return 0; }"
-    LIBPOPPLER_UNICODEMAP_HAS_CONSTMAPUNICODE)
-  if(LIBPOPPLER_UNICODEMAP_HAS_CONSTMAPUNICODE)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_UNICODEMAP_HAS_CONSTMAPUNICODE)
-  endif()
-  CHECK_CXX_SOURCE_COMPILES(
-    "\#include <poppler/PDFDoc.h>\nint main() { std::optional<GooString> ownerPW, userPW; PDFDoc d((BaseStream*)nullptr,ownerPW,userPW); return 0;}"
-    LIBPOPPLER_PDFDOC_HAS_OPTIONAL)
-  if(LIBPOPPLER_PDFDOC_HAS_OPTIONAL)
-    list(APPEND libpoppler_flags -DLIBPOPPLER_PDFDOC_HAS_OPTIONAL)
-  endif()
-  if(libpoppler_flags)
-    string(REPLACE ";" " " libpoppler_flags_string "${libpoppler_flags}")
-    set_source_files_properties(
-      ${CMAKE_CURRENT_SOURCE_DIR}/gdcminfo.cxx
-      PROPERTIES COMPILE_FLAGS "${libpoppler_flags_string}")
-    set_source_files_properties(
-      ${CMAKE_CURRENT_SOURCE_DIR}/gdcmpdf.cxx
-      PROPERTIES COMPILE_FLAGS "${libpoppler_flags_string}")
-  endif()
-  include_directories(${POPPLER_INCLUDE_DIRS})
-  set(GDCM_EXECUTABLE_NAME
-    ${GDCM_EXECUTABLE_NAME}
-    gdcmpdf
-  )
-endif()
-
-if(GDCM_USE_SYSTEM_LIBXML2)
-  include_directories(${LIBXML2_INCLUDE_DIR})
-endif()
-
-if(GDCM_USE_SYSTEM_OPENJPEG)
-  include_directories(${OPENJPEG_INCLUDE_DIRS} )
-else()
-  include_directories(
-  "${GDCM_BINARY_DIR}/Utilities/gdcmopenjpeg"
-    )
-endif()
-
-if(NOT BUILD_SHARED_LIBS)
-  set_source_files_properties(gdcmstream.cxx
-                              PROPERTIES
-                              COMPILE_FLAGS -DOPJ_STATIC
-                              )
-endif()
-
-if(GDCM_USE_SYSTEM_PAPYRUS3)
-  include_directories(
-    ${PAPYRUS3_INCLUDE_DIRS}
-    )
-endif()
-
-if(NOT GDCM_USE_SYSTEM_ZLIB)
-  include_directories(
-    "${GDCM_BINARY_DIR}/Utilities/gdcmzlib"
-    )
-endif()
-
-foreach(exename ${GDCM_EXECUTABLE_NAME})
-  if(${exename} STREQUAL "gdcminfo")
-    qt_add_executable(${exename} ${exename}.cpp puff.c QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp CustomTreeView.cpp)
-  else()
-    qt_add_executable(${exename} ${exename}.cpp QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp CustomTreeView.cpp)
-  endif()
-#  target_link_libraries(${exename} gdcmMSFF)
-
-  target_link_libraries(${exename} PUBLIC
-      Qt::Core
-      Qt::Gui
-      Qt::Quick
-  #    Qt::QuickControls2
-      Qt::Quick3D
-      Qt6::Widgets
-      gdcmMSFF
-  )
-
-
-  if(${exename} STREQUAL "gdcmpdf")
-    target_link_libraries(${exename} ${POPPLER_LIBRARIES})
-  elseif(${exename} STREQUAL "gdcmxml")
-    target_link_libraries(${exename} ${LIBXML2_LIBRARIES})
-  elseif(${exename} STREQUAL "gdcmscu")
-    if(NOT GDCM_USE_SYSTEM_SOCKETXX)
-      target_link_libraries(${exename} gdcmMEXD socketxx)
-    else()
-      target_link_libraries(${exename} gdcmMEXD socket++)
-    endif()
-  elseif(${exename} STREQUAL "gdcmstream")
-    target_link_libraries(${exename} ${GDCM_OPENJPEG_LIBRARIES})
-  elseif(${exename} STREQUAL "gdcmdump")
-    target_link_libraries(${exename} ${GDCM_ZLIB_LIBRARIES})
-  elseif(${exename} STREQUAL "gdcminfo")
-    if(GDCM_USE_SYSTEM_POPPLER)
-      target_link_libraries(${exename} ${POPPLER_LIBRARIES})
-    endif()
-  endif()
-  if(GDCM_EXECUTABLE_PROPERTIES)
-    set_target_properties(${exename} PROPERTIES ${GDCM_EXECUTABLE_PROPERTIES})
-  endif()
-  if(WIN32 AND NOT CYGWIN AND NOT MINGW)
-#    target_link_libraries(${exename} gdcmgetopt)
-    target_link_libraries(${exename} PUBLIC
-      Qt::Core
-      Qt::Gui
-      Qt::Quick
-#      Qt::QuickControls2
-      Qt::Quick3D
-      gdcmgetopt
-)
-  endif()
-  if(NOT GDCM_INSTALL_NO_RUNTIME)
-    install(TARGETS ${exename}
-      EXPORT ${GDCM_TARGETS_NAME}
-      RUNTIME DESTINATION ${GDCM_INSTALL_BIN_DIR} COMPONENT Applications
-    )
-  endif()
-endforeach()
-
-if(GDCM_USE_SYSTEM_PAPYRUS3)
-  target_link_libraries(gdcmpap3 ${PAPYRUS3_LIBRARIES})
-endif()
-
-#if(BUILD_TESTING)
-#  if(GDCM_DATA_ROOT)
-#    file(MAKE_DIRECTORY ${GDCM_TEMP_DIRECTORY}/gdcmanon-gdcmdata)
-#    add_test(NAME gdcmanon-gdcmdata COMMAND gdcmanon
-#      --continue  # skip LIBIDO-16-ACR_NEMA-Volume.dcm
-#      --certificate ${GDCM_SOURCE_DIR}/Testing/Source/Data/certificate.pem
-#      ${GDCM_DATA_ROOT}
-#      ${GDCM_TEMP_DIRECTORY}/gdcmanon-gdcmdata
-#      )
-#  endif()
-#endif()
-
-if(BUILD_TESTING)
-  # http://www.na-mic.org/Wiki/index.php/CTSC:ARRA:Mockup
-  # http://www.dicomserver.co.uk/
-  # the NAMIC server is offline, Steve Pieper has volunteered his servers, but they are intermittent
-  # IP Address: common.bwh.harvard.edu (155.52.248.49)
-  # Port: 11112
-  # AE Title: CTK_AE
-  # and
-  # IP Address: joe.bwh.harvard.edu (155.52.248.50)
-  # Port: 5678
-  # AE Title: CONQUESTSRV1
-  #since these servers have no guaranteed uptime, these tests should be changed to some other, known-to-be-up server
-  #add_test(NAME gdcmscu-echo-CONQUEST COMMAND gdcmscu --echo --call CONQUESTSRV1 joe.bwh.harvard.edu 5678)
-  add_test(NAME gdcmscu-echo-dicomserver COMMAND gdcmscu --echo www.dicomserver.co.uk 11112)
-  if(GDCM_DATA_ROOT)
-    # CR-MONO1-10-chest.dcm gets rejected by www.dicomserver.co.uk:
-    # Tag 0x0,0x902 reported as Incorrect VM (1) - Minimum value is 2 : 'Array of N Elements' (error 42752)
-    # CR-MONO1-10-chest.dcm gets rejected by mi2b2.slicer.org
-    # Tag 0x0,0x902 reported as Acceptance of objects without Patient ID is disabled (error 43264)
-    #add_test(NAME gdcmscu-store-CONQUEST COMMAND gdcmscu --store --call CONQUESTSRV1 joe.bwh.harvard.edu 11112 ${GDCM_DATA_ROOT}/SIEMENS_MAGNETOM-12-MONO2-FileSeq1.dcm)
-    add_test(NAME gdcmscu-store-dicomserver COMMAND gdcmscu --store www.dicomserver.co.uk 11112 ${GDCM_DATA_ROOT}/SIEMENS_MAGNETOM-12-MONO2-FileSeq1.dcm)
-  endif()
-  #add_test(NAME gdcmscu-find-CONQUEST COMMAND gdcmscu --find --patient --call CONQUESTSRV1 joe.bwh.harvard.edu 11112 --patientroot -k 10,10=X*)
-  add_test(NAME gdcmscu-find-dicomserver COMMAND gdcmscu --find --patient www.dicomserver.co.uk 11112 --patientroot -k 10,20=*)
-
-  if(GDCM_DICOM_SERVER_AETITLE)
-  if(GDCM_DATA_ROOT)
-    # Let's C-STORE a limited subset of gdcmData for now:
-    set(CSTORE_DATA_FILES
-      CR-MONO1-10-chest.dcm # Implicit VR Little Endian: Default Transfer Syntax for DICOM
-      012345.002.050.dcm    # JPEG Lossless, Non-Hierarchical, First-Order Prediction
-      )
-    foreach(cstorefile ${CSTORE_DATA_FILES})
-    add_test(NAME gdcmscu-echo-${cstorefile} COMMAND gdcmscu --echo  --aetitle ${GDCM_DICOM_CLIENT_AETITLE} --call ${GDCM_DICOM_SERVER_AETITLE} ${GDCM_DICOM_SERVER_PEER} ${GDCM_DICOM_SERVER_PORT})
-    add_test(NAME gdcmscu-store-${cstorefile} COMMAND gdcmscu --store --aetitle ${GDCM_DICOM_CLIENT_AETITLE} --call ${GDCM_DICOM_SERVER_AETITLE} ${GDCM_DICOM_SERVER_PEER} ${GDCM_DICOM_SERVER_PORT} ${GDCM_DATA_ROOT}/${cstorefile})
-    add_test(NAME gdcmscu-find-${cstorefile} COMMAND gdcmscu --find --patient --aetitle ${GDCM_DICOM_CLIENT_AETITLE} --call ${GDCM_DICOM_SERVER_AETITLE} ${GDCM_DICOM_SERVER_PEER} ${GDCM_DICOM_SERVER_PORT} --patientroot -k 10,10=A* -k 10,20)
-    add_test(NAME gdcmscu-move1-${cstorefile} COMMAND gdcmscu --move  --patient --aetitle ${GDCM_DICOM_CLIENT_AETITLE} --call ${GDCM_DICOM_SERVER_AETITLE} ${GDCM_DICOM_SERVER_PEER} ${GDCM_DICOM_SERVER_PORT} -o ${CMAKE_CURRENT_BINARY_DIR} --patientroot -k 10,10=Anonymized --port-scp ${GDCM_DICOM_CLIENT_PORT})
-    add_test(NAME gdcmscu-move2-${cstorefile} COMMAND gdcmscu --move  --patient --aetitle ${GDCM_DICOM_CLIENT_AETITLE} --call ${GDCM_DICOM_SERVER_AETITLE} ${GDCM_DICOM_SERVER_PEER} ${GDCM_DICOM_SERVER_PORT} -o ${CMAKE_CURRENT_BINARY_DIR} --patientroot -k 10,10=X* --port-scp ${GDCM_DICOM_CLIENT_PORT})
-    endforeach()
-  endif()
-  endif()
-
-endif()
-####################################################################
-
-
-set_target_properties(morphing PROPERTIES
+set_target_properties(dicomviewer PROPERTIES
     WIN32_EXECUTABLE TRUE
     MACOSX_BUNDLE TRUE
 )
 
-#target_link_libraries(morphing PUBLIC
-#    Qt::Core
-#    Qt::Gui
-#    Qt::Quick
-##    Qt::QuickControls2
-#    Qt::Quick3D
-#    gdcm
-#)
-
-qt_add_qml_module(morphing
+qt_add_qml_module(dicomviewer
     URI Example
     VERSION 1.0
     QML_FILES
-        RealSlider.qml
-        FolderTree.qml
-        FileTree.qml
+        # MAIN
         main.qml
+        # CUSTOM COMPONENTS
+        ThreeDFrame.qml
+        FileTree.qml
+        FolderTree.qml
     RESOURCES
         suzanne.mesh
     NO_RESOURCE_TARGET_PATH
 )
 
-install(TARGETS morphing
+install(TARGETS dicomviewer
     RUNTIME DESTINATION "${INSTALL_EXAMPLEDIR}"
     BUNDLE DESTINATION "${INSTALL_EXAMPLEDIR}"
     LIBRARY DESTINATION "${INSTALL_EXAMPLEDIR}"
@@ -385,4 +123,3 @@ install(TARGETS morphing
 
 
 MESSAGE(STATUS "binary dir: ${CMAKE_BINARY_DIR}")
-MESSAGE(STATUS "INSTALL DIR: ${INSTALL_EXAMPLEDIR}")

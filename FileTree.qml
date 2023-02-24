@@ -2,32 +2,47 @@ import QtQuick
 import QtQuick.Controls
 import Qt.labs.folderlistmodel 2.4
 
-TreeView{
-    width: 200
-    height: 400
+ScrollView
+{
+    width: parent.width
+    contentHeight: 100
+    clip: true
 
-    FolderListModel{
-        id: fileModel
-        showDirs: false
-        folder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
-    }
-    Component {
-        id: fileDelegate
-        Text {
-            /*function folderClick(path)
-            {
-                folderModel.folder = path;
-            }*/
+    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+    ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
-            text: fileName
+    TreeView{
+        width: parent.width
+        height: parent.height
+
+        FolderListModel{
+            id: fileModel
+            showDirs: false
+            folder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+            nameFilters: ["*.dcm"]
         }
+        Component {
+            id: fileDelegate
+            Text {
+                /*function folderClick(path)
+                {
+                    folderModel.folder = path;
+                }*/
+
+                text: fileName
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: console.log("open: " + fileModel.folder + "/" + parent.text)
+                }
+            }
+        }
+        model: fileModel
+        delegate: fileDelegate
     }
 
     function setFolder(path)
     {
         fileModel.folder = path;
     }
-
-    model: fileModel
-    delegate: fileDelegate
 }
