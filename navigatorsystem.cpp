@@ -192,6 +192,9 @@ shared_ptr<ImageReader> NavigatorSystem::GetReader(const string &path) {
 }
 
 string NavigatorSystem::ReadStringValue(Reader *reader, Tag tag) {
+    // read from cache
+
+    // store in cache and return
     gdcm::StringFilter sf;
     sf.SetFile(reader->GetFile());
     return sf.ToString(tag);

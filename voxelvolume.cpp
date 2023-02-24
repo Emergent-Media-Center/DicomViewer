@@ -17,7 +17,12 @@
 
 #include <gdcmImageReader.h>
 #include <unordered_map>
+#include "navigatorsystem.h"
 
 VoxelVolume::VoxelVolume(string PatientId, string StudyId, string SeriesId) {
+    auto nav = NavigatorSystem::Instance();
+    auto files = nav->sortSeries(PatientId, StudyId, SeriesId);
+
+    // extract data from the first file
 
 }
