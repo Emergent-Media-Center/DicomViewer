@@ -36,6 +36,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<CustomTreeView>("com.CustomTreeView", 1, 0, "CustomTreeView");
 
+    //QMLDicomImage* image = new QMLDicomImage();
+
     QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat());
 
     QQmlApplicationEngine engine;

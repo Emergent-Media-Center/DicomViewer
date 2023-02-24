@@ -123,53 +123,94 @@ ApplicationWindow {
                 }
             }
 
-            Frame{
-                id: fileFrame
-                width:  800
-                height: 100
-                //title: qsTr("EMC Dicom Viewer v0")
+            TabBar {
+                width: parent.width
+                TabButton {
+                    text: "View"
+                    width: implicitWidth
 
-                RowLayout{
-                    /*FolderTree{
-                        id: folderTree
+                    onClicked: stackLayout.currentIndex = 0;
+                }
+                TabButton {
+                    text: "File Select"
+                    width: implicitWidth
 
-                    }*/
+                    onClicked: stackLayout.currentIndex = 1;
+                }
+            }
 
-                    FileTree{
-                        id: fileTree
+            StackLayout{
+                id: stackLayout
 
-                        Component.onCompleted: {
-                            //folderTree.folderChanged.connect(fileTree.setFolder)
+                width: 200
+                height: 200
+                currentIndex: 0
+
+                Frame {
+                    id: userViews
+                    width: parent.width
+                    height: parent.height
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+
+                    GridLayout {
+                        id: userViewsLayout
+                        x: -1
+                        y: -26
+                        anchors.fill: parent
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        ThreeDFrame {
+                            id: threeDFrame2
+                        }
+
+                        ThreeDFrame {
+                            id: threeDFrame
+                        }
+                    }
+                }
+
+                Frame{
+                    id: fileFrame
+                    width:  parent.width
+                    height: parent.height
+                    //title: qsTr("EMC Dicom Viewer v0")
+
+                    /*DropArea {
+                            id: dropArea;
+                            anchors.fill: parent
+                            onEntered: {
+                                root.color = "gray";
+                                drag.accept (Qt.LinkAction);
+                            }
+                            onDropped: {
+                                console.log(drop.urls)
+                                root.color = "white"
+                            }
+                            onExited: {
+                                root.color = "white";
+                            }
+                        }*/
+
+                    RowLayout{
+                        /*FolderTree{
+                            id: folderTree
+
+                        }*/
+
+                        FileTree{
+                            id: fileTree
+
+                            Component.onCompleted: {
+                                //folderTree.folderChanged.connect(fileTree.setFolder)
+                            }
                         }
                     }
                 }
             }
 
-            Frame {
-                id: userViews
-                width: 200
-                height: 200
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-
-                GridLayout {
-                    id: userViewsLayout
-                    x: -1
-                    y: -26
-                    anchors.fill: parent
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-
-                    ThreeDFrame {
-                        id: threeDFrame2
-                    }
-
-                    ThreeDFrame {
-                        id: threeDFrame
-                    }
-                }
-            }
 
             Frame {
                 id: frame
