@@ -41,7 +41,7 @@ file(GLOB DICOMVIEWER_SRC
     )
 
 # add those files to be built
-qt_add_executable(dicomviewer ${DICOMVIEWER_SRC} QMLDicomImage.cpp PixmapImage.cpp FileSystem.cpp CustomTreeView.cpp)
+qt_add_executable(dicomviewer ${DICOMVIEWER_SRC} ${DICOMVIEWER_INC})
 
 # work in progress to make it work in clion on windows
 #if (WIN32)

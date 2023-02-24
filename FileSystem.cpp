@@ -3,7 +3,9 @@
 FileSystem::FileSystem(QWidget* parent) :
     QDialog(parent)
 {
-    QString rootPath = "C:/";    dirModel = new QFileSystemModel(this);
+    // todo: fix: this might be wrong and not work on linux, macs and webassembly
+    QString rootPath = "C:/";
+    dirModel = new QFileSystemModel(this);
     dirModel->setRootPath(rootPath);
 }
 
