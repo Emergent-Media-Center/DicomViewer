@@ -251,8 +251,8 @@ vector<string> NavigatorSystem::ListAllFilesFromFolderRecursive(const string &pa
     const fs::path p(path);
     vector<string> files;
     for (const auto & entry : fs::recursive_directory_iterator(p))
-        if(GetPathType(entry.path()) == PathType::FILE)
-            files.push_back(entry.path());
+        if(GetPathType(entry.path().string()) == PathType::FILE)
+            files.push_back(entry.path().string());
 
     return files;
 }
