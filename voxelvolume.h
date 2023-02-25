@@ -2,7 +2,10 @@
 #define VOXELVOLUME_H
 #include <vector>
 #include <string>
+#include <gdcmImageReader.h>
 using namespace std;
+using namespace gdcm;
+
 class VoxelVolume {
 private:
     int instances;
@@ -14,11 +17,11 @@ private:
     float spacingCol, spacingRow, spacingTickness;
 
     // instance, row, colum
-    vector<vector<vector<int>>> volume;
+    vector<vector<vector<double>>> volume;
 public:
     VoxelVolume(string PatientId, string StudyId, string SeriesId);
 private:
-//    seriesIsComplete();
+
 };
 
 #endif // VOXELVOLUME_H

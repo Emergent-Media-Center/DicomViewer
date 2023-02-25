@@ -26,3 +26,4 @@ VoxelVolume::VoxelVolume(string PatientId, string StudyId, string SeriesId) {
     // extract data from the first file
 
 }
+

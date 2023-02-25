@@ -68,10 +68,10 @@ public:
     string PrettySeriesDescription(string patientId, string studyId, string seriesId);
 
     string GetFilePath(string patientId, string studyId, string seriesId, string instanceId);
+    shared_ptr<ImageReader> GetReader(const string& path);
 
 private:
     vector<string> ListAllFilesFromFolderRecursive(const string& path);
-    shared_ptr<ImageReader> GetReader(const string& path);
 
 public:
     // common queries we need to ask a dicom file
@@ -85,6 +85,11 @@ public:
     // get original pixmap / image
     // decompress image
     // window image to be rendered in RGB
+
+    // probably it would be better if we move this func elsewhere
+    // there are lots of formats to be supported
+    vector<double> DicomToGrayscale(ImageReader* reader);
+    vector<double> DicomToGrayscale(string path);
 };
 
 #endif // NAVIGATORSYSTEM_H

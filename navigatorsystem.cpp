@@ -256,3 +256,61 @@ vector<string> NavigatorSystem::ListAllFilesFromFolderRecursive(const string &pa
 
     return files;
 }
+
+vector<double> NavigatorSystem::DicomToGrayscale(ImageReader *reader) {
+    auto image = reader->GetImage();
+
+    // dimensions
+    auto dimension = image.GetDimensions();
+    auto cols = dimension[0];
+    auto lins = dimension[1];
+
+    vector<double> result;
+    result.resize(cols*lins);
+
+    // get pointer to the raw data
+    char* buffer;
+    image.GetBuffer(buffer);
+
+    // Let's start with the easy case:
+    auto photometricInterpretation = image.GetPhotometricInterpretation();
+    auto pixelFormat = image.GetPixelFormat();
+    // todo: there is lots of types to cover here
+    if(photometricInterpretation == PhotometricInterpretation::RGB) {
+        if( pixelFormat != PixelFormat::UINT8 ) {
+            cerr << "Dicom with PixelFormat unsupported yet. ID: " << pixelFormat << endl;
+            return {};
+        }
+        uint8_t* ubuffer = (uint8_t*)buffer;
+        for(int i=0; i<cols*lins; i+=3)
+            result[i] = (double)ubuffer[i]+(double)ubuffer[i+1]+(double)ubuffer[i+2];
+        return result;
+    }
+    else if(photometricInterpretation == PhotometricInterpretation::MONOCHROME2 ) {
+        if(pixelFormat == PixelFormat::UINT8) {
+            uint8_t *ubuffer = (uint8_t*)buffer;
+            for(int i=0; i<cols*lins; i++)
+                result[i] = ubuffer[i];
+            return result;
+        }
+        else if(image.GetPixelFormat() == PixelFormat::INT16) {
+            int16_t *buffer16 = (int16_t*)buffer;
+            for(int i=0; i<cols*lins; i++)
+                result[i] = buffer16[i];
+            return result;
+        }
+        else {
+          std::cerr << "Pixel Format is: " << pixelFormat << std::endl;
+          return {};
+        }
+    }
+    else {
+        std::cerr << "Unhandled PhotometricInterpretation: " << photometricInterpretation << std::endl;
+        return {};
+    }
+}
+
+vector<double> NavigatorSystem::DicomToGrayscale(string path) {
+    return DicomToGrayscale(NavigatorSystem::Instance()->GetReader(path).get());
+}
+
