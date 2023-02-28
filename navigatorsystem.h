@@ -75,8 +75,6 @@ private:
 
 public:
     // common queries we need to ask a dicom file
-
-private:
     string ReadStringValue(Reader* reader, Tag tag);
     string ReadStringValue(string path, Tag tag);
 public:

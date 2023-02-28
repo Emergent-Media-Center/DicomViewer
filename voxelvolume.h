@@ -8,13 +8,14 @@ using namespace gdcm;
 
 class VoxelVolume {
 private:
-    int instances;
-    int rows;
-    int colmns;
-    double distanceBetweenInstances;
-    int maxIntensity;
-    int minIntensity;
-    float spacingCol, spacingRow, spacingTickness;
+    int Instances;
+    int Rows;
+    int Colmns;
+
+    double SliceThickness;
+    int LargestPixelValueInSeries;
+    int SmallestPixelValueInSeries;
+    float PixelSpacingRow, PixelSpacingCol, spacingTickness;
 
     // instance, row, colum
     vector<vector<vector<double>>> volume;

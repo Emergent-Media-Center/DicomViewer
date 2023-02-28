@@ -234,10 +234,11 @@ vector<string> NavigatorSystem::sortSeries(string patientId, string studyId, str
             maxId = id;
         m[id] = pair.second;
     }
-    if(maxId - minId != 1){
-        cout << "Some dicom files are missing in the series selected." << endl;
-        return {};
-    }
+    // todo: validate if the series is complete
+//    if(maxId - minId > 2){
+//        cout << "Some dicom files are missing in the series selected." << endl;
+//        return {};
+//    }
     vector<string> files;
     for(int i = minId; i<=maxId; i++)
         files.push_back(m[i]);
