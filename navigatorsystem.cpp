@@ -259,7 +259,7 @@ vector<string> NavigatorSystem::ListAllFilesFromFolderRecursive(const string &pa
 }
 
 vector<double> NavigatorSystem::DicomToGrayscale(ImageReader *reader) {
-    auto image = reader->GetImage();
+    auto image = reader->GetPixmap();
 
     // dimensions
     auto dimension = image.GetDimensions();
@@ -270,8 +270,9 @@ vector<double> NavigatorSystem::DicomToGrayscale(ImageReader *reader) {
     result.resize(cols*lins);
 
     // get pointer to the raw data
-    char* buffer;
-    image.GetBuffer(buffer);
+    auto imageBufferLenght = image.GetBufferLength();
+    shared_ptr<char[]> buffer(new char[imageBufferLenght]);
+    image.GetBuffer(buffer.get());
 
     // Let's start with the easy case:
     auto photometricInterpretation = image.GetPhotometricInterpretation();
@@ -282,20 +283,20 @@ vector<double> NavigatorSystem::DicomToGrayscale(ImageReader *reader) {
             cerr << "Dicom with PixelFormat unsupported yet. ID: " << pixelFormat << endl;
             return {};
         }
-        uint8_t* ubuffer = (uint8_t*)buffer;
+        uint8_t* ubuffer = (uint8_t*)buffer.get();
         for(int i=0; i<cols*lins; i+=3)
             result[i] = (double)ubuffer[i]+(double)ubuffer[i+1]+(double)ubuffer[i+2];
         return result;
     }
     else if(photometricInterpretation == PhotometricInterpretation::MONOCHROME2 ) {
         if(pixelFormat == PixelFormat::UINT8) {
-            uint8_t *ubuffer = (uint8_t*)buffer;
+            uint8_t *ubuffer = (uint8_t*)buffer.get();
             for(int i=0; i<cols*lins; i++)
                 result[i] = ubuffer[i];
             return result;
         }
         else if(image.GetPixelFormat() == PixelFormat::INT16) {
-            int16_t *buffer16 = (int16_t*)buffer;
+            int16_t *buffer16 = (int16_t*)buffer.get();
             for(int i=0; i<cols*lins; i++)
                 result[i] = buffer16[i];
             return result;
