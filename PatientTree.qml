@@ -11,7 +11,7 @@ ScrollView
     ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
-    TreeView{
+    ListView{
         width: parent.width
         height: parent.height
 
@@ -29,7 +29,7 @@ ScrollView
                     folderModel.folder = path;
                 }*/
 
-                text: fileName
+                text: patientName
 
                 MouseArea{
                     anchors.fill: parent

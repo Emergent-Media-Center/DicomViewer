@@ -20,4 +20,6 @@ void PatientItemModel::SetModelData()
     {
         setData(index(i, 0), QString::fromStdString(patients[i]));
     }
+
+    s_patientName = QString::fromStdString(patients[0]);
 }
