@@ -24,6 +24,8 @@
 #include "PixmapImage.h"
 #include "FileSystem.h"
 #include "CustomTreeView.h"
+#include "PatientModelObject.h"
+#include "navigatorsystem.h"
 
 int main(int argc, char *argv[])
 {
@@ -34,27 +36,18 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<FileSystem>("com.FileSystem", 1, 0, "FileSystem");
 
-    qmlRegisterType<CustomTreeView>("com.CustomTreeView", 1, 0, "CustomTreeView");
+    qmlRegisterType<PatientItemModel>("com.DicomItemModels", 1, 0, "PatientItemModel");
+    qmlRegisterType<PatientModelObject>("com.DicomItemModels", 1, 0, "PatientModelObject");
 
-    //QMLDicomImage* image = new QMLDicomImage();
+    NavigatorSystem::Instance()->BuildDB("C:/Users/ddrummond/Documents/EMC/Cases/DICOM");
 
     QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat());
 
     QQmlApplicationEngine engine;
 
-    //FileSystem fileSystem = FileSystem();
-    //engine.rootContext()->setContextProperty("fileSystem", &fileSystem);
-
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
-
-
-
-    /*for(QObject* obj : engine.rootObjects())
-    {
-        QObject::connect(obj, SIGNAL(setFileSystemTree(QVariantMap)), &fileSystem, SLOT(setTree(QVariantMap)));
-    }*/
 
     return app.exec();
 }

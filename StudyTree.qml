@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Controls
-import Qt.labs.folderlistmodel 2.4
 
 ScrollView
 {
@@ -15,13 +14,9 @@ ScrollView
         width: parent.width
         height: parent.height
 
-        FolderListModel{
-            id: fileModel
-            showDirs: false
-            showFiles: false;
-            folder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
-            //nameFilters: ["*.dcm"]
-        }
+        //Structure for listing studies here
+        //QAbstractItemModel
+
         Component {
             id: fileDelegate
             Text {

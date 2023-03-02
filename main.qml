@@ -11,7 +11,7 @@ import Qt.labs.folderlistmodel 2.4
 
 import com.DicomImage 1.0
 import com.FileSystem 1.0
-import com.CustomTreeView 1.0
+import com.DicomItemModels 1.0
 
 ApplicationWindow {
     title: qsTr("Dicom Viewer")
@@ -227,6 +227,13 @@ ApplicationWindow {
                                 Component.onCompleted: {
                                     //folderTree.folderChanged.connect(fileTree.setFolder)
                                 }
+                            }
+
+                            PatientTree{
+                                id: patientTree
+                                enabled: false
+
+
                             }
                         }
                     }

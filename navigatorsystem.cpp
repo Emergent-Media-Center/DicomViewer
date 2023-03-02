@@ -18,12 +18,12 @@ PathType NavigatorSystem::GetPathType(const string &path) {
     if (fs::is_directory(p,ec))
         return PathType::DIRECTORY;
     if(ec)
-        return PathType::ERROR;
+        return PathType::ERR;
 
     if (fs::is_regular_file(p, ec))
         return PathType::FILE;
     if(ec)
-        return PathType::ERROR;
+        return PathType::ERR;
 
     return PathType::NONE;
 }

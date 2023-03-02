@@ -110,6 +110,8 @@ qt_add_qml_module(dicomviewer
         ThreeDFrame.qml
         FileTree.qml
         FolderTree.qml
+        StudyTree.qml
+        PatientTree.qml
     RESOURCES
         suzanne.mesh
     NO_RESOURCE_TARGET_PATH

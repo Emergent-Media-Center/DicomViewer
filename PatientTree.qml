@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Controls
-import Qt.labs.folderlistmodel 2.4
+import com.DicomItemModels 1.0
 
 ScrollView
 {
@@ -15,15 +15,14 @@ ScrollView
         width: parent.width
         height: parent.height
 
-        FolderListModel{
-            id: fileModel
-            showDirs: false
-            showFiles: false;
-            folder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
-            //nameFilters: ["*.dcm"]
+        //Structure for listing studies here
+        //QAbstractItemModel
+        PatientModelObject{
+            id: patientModel;
         }
+
         Component {
-            id: fileDelegate
+            id: patientDelegate
             Text {
                 /*function folderClick(path)
                 {
@@ -34,17 +33,17 @@ ScrollView
 
                 MouseArea{
                     anchors.fill: parent
-                    onClicked: console.log("open: " + fileModel.folder + "/" + parent.text)
+                    //onClicked: console.log("open: " + fileModel.folder + "/" + parent.text)
                 }
             }
         }
-        model: fileModel
-        delegate: fileDelegate
+
+        model: patientModel //abstract model here
+        delegate: patientDelegate
     }
 
-    function setFolder(path)
+    function setModel()
     {
-        fileModel.folder = path;
-        fileModel.showFiles = true;
+        patientModel.setModelData();
     }
 }

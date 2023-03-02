@@ -26,7 +26,7 @@ using namespace gdcm;
 
 enum class PathType {
     NONE = 0,
-    ERROR = 1,
+    ERR = 1,
     DIRECTORY = 2,
     FILE = 3
 };
