@@ -58,9 +58,64 @@ Window {
 
                     Menu {
                         title: "File"
-                        Action { text: "Open..." }
+                        Action { text: "Open DICOM Folder" }
                         MenuSeparator { }
-                        Action { text: "Quit DicomViewer" }
+                        Action { text: "Open DICOM" }
+                        MenuSeparator { }
+                        Action { text: "Export Image" }
+                        MenuSeparator { }
+                        Action { text: "Copy to Clipboard" }
+                        MenuSeparator { }
+                        Action { text: "Quit DicomViewer"}
+                    }
+
+                    Menu {
+                        title: "Edit"
+                        Action { text: "Enable Annotations" }
+                        MenuSeparator { }
+                        Action { text: "Enable Drawing" }
+                        MenuSeparator { }
+                        Action { text: "Undo"
+                            shortcut: ""  }
+                        MenuSeparator { }
+                        Action { text: "Redo" }
+                        MenuSeparator { }
+                        Action { text: "Accessibility..." }
+                    }
+
+                    Menu {
+                        title: "View"
+                        Action { text: "Annotations" }
+                        MenuSeparator { }
+                        Action { text: "Show Dicom Tags" }
+                        MenuSeparator { }
+                        Action { text: "Fill Viewport" }
+                        MenuSeparator { }
+                        Action { text: "100%" }
+                        Action { text: "200%" }
+                        Action { text: "400%" }
+                    }
+
+                    Menu {
+                        title: "Window"
+                        Action { text: "Default Window" }
+                        MenuSeparator { }
+                        Action { text: "1 Window View" }
+                        MenuSeparator { }
+                        Action { text: "2 Window View" }
+                        MenuSeparator { }
+                        Action { text: "3 Window View" }
+                        MenuSeparator { }
+                        Action { text: "Fullscreen 'F5'" }
+                        MenuSeparator { }
+                        Action { text: "Close All Windows" }
+                    }
+
+                    Menu {
+                        title: "Help"
+                        Action { text: "About DicomViewer" }
+                        MenuSeparator { }
+                        Action { text: "Change Language" }
                     }
                 }
             }
@@ -104,140 +159,41 @@ Window {
                 bottomPadding: 0
                 topPadding: 0
 
+                MouseArea {
+                    anchors.fill: parent
+                    onWheel: { frame.leftPadding += (wheel.angleDelta.y) }
+                }
+
                 Row {
                     id: row
                     x: 0
                     y: 0
-                    anchors.fill: parent
                     rightPadding: 8
                     leftPadding: 8
                     bottomPadding: 8
                     topPadding: 8
                     Layout.fillHeight: true
-                    Layout.fillWidth: true
+                    anchors.top: parent.top
 
                     spacing: 6
 
-                    Button {
-                        id: button
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                        width: height;
-                    }
+                    Repeater {
+                                id: frames;
+                                model: 100;
+                                delegate: Rectangle {
+                                    width: 80;
+                                    height: width;
+                                    color: "white";
+                                    border { width: 1; color: "black" }
+                                    MouseArea {
+                                        id: mouse
+                                        // onClicked: send image to frame
+                                    }
 
-                    Button {
-                        id: button1
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button2
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button3
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button4
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button5
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button6
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button7
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button8
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button9
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button10
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
-
-                    Button {
-                        id: button11
-                        width: height
-                        text: qsTr("Button")
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        anchors.topMargin: 8
-                        anchors.bottomMargin: 8
-                    }
+                                }
+                            }
                 }
+
             }
 
 
@@ -249,5 +205,4 @@ Window {
         id: __materialLibrary__
     }
 }
-
 
