@@ -14,6 +14,11 @@ Frame {
     Layout.fillHeight: true
     Layout.fillWidth: true
 
+    MouseArea {
+        anchors.fill: parent
+        onWheel: { sceneCamera1.z -= (wheel.angleDelta.y) / 6 }
+    }
+
     View3D {
         id: view3D1
         anchors.fill: parent
@@ -43,6 +48,7 @@ Frame {
                 z: 350
             }
 
+
             Model {
                 id: cubeModel1
                 source: "#Cube"
@@ -50,6 +56,7 @@ Frame {
                 eulerRotation.x: 30
                 eulerRotation.y: rotationSlider.value
             }
+
         }
 
         Slider {
