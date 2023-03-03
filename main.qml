@@ -233,7 +233,9 @@ ApplicationWindow {
                                 id: patientTree
                                 enabled: false
 
-
+                                Component.onCompleted: {
+                                       fileTree.fileChanged.connect(patientTree.setData)
+                                }
                             }
                         }
                     }

@@ -36,14 +36,18 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<FileSystem>("com.FileSystem", 1, 0, "FileSystem");
 
-    qmlRegisterType<PatientItemModel>("com.DicomItemModels", 1, 0, "PatientItemModel");
+    qmlRegisterType<PatientListModel>("com.DicomItemModels", 1, 0, "PatientListModel");
     qmlRegisterType<PatientModelObject>("com.DicomItemModels", 1, 0, "PatientModelObject");
 
-    NavigatorSystem::Instance()->BuildDB("C:/Users/ddrummond/Documents/EMC/Cases/DICOM");
+    NavigatorSystem::Instance()->BuildDB("C:/Users/ddrummond/Documents/EMC/Cases/DICOM/I0");
+
+    PatientListModel* patientModel;
 
     QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat());
 
     QQmlApplicationEngine engine;
+
+    engine.rootContext()->setContextProperty("patientListModel", patientModel);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

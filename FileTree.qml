@@ -11,6 +11,8 @@ ScrollView
     ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
+    signal fileChanged(string path)
+
     TreeView{
         width: parent.width
         height: parent.height
@@ -34,7 +36,11 @@ ScrollView
 
                 MouseArea{
                     anchors.fill: parent
-                    onClicked: console.log("open: " + fileModel.folder + "/" + parent.text)
+                    onClicked:
+                    {
+                        var path = fileModel.folder + "/" + fileName;
+                        fileChanged(path)//console.log("open: " + fileModel.folder + "/" + parent.text)
+                    }
                 }
             }
         }

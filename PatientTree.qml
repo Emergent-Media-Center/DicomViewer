@@ -42,7 +42,7 @@ ScrollView
         delegate: patientDelegate
     }
 
-    function setModel()
+    function setData(path)
     {
         patientModel.setModelData();
     }

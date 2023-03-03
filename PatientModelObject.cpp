@@ -3,7 +3,7 @@
 PatientModelObject::PatientModelObject(QObject* parent) :
     QObject(parent)
 {
-    model = new PatientItemModel();
+    //model = new PatientItemModel();
 }
 
 PatientModelObject::~PatientModelObject()

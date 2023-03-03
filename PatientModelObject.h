@@ -3,21 +3,21 @@
 
 #include <QObject>
 
-#include "PatientItemModel.h"
+#include "PatientListModel.h"
 
 class PatientModelObject : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(PatientItemModel* model READ model)
+    Q_PROPERTY(PatientListModel* model READ model)
 public:
     explicit PatientModelObject(QObject* parent = 0);
     ~PatientModelObject();
 
-    Q_INVOKABLE PatientItemModel* getModel() {return model;}
+    Q_INVOKABLE PatientListModel* getModel() {return model;}
 
     Q_INVOKABLE void setModelData() { model->SetModelData();}
 private:
-    PatientItemModel* model;
+    PatientListModel* model;
 };
 
 #endif // PATIENTMODELOBJECT_H
