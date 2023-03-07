@@ -16,6 +16,8 @@ public:
     Q_INVOKABLE PatientListModel* getModel() {return model;}
 
     Q_INVOKABLE void setModelData() { model->SetModelData();}
+
+    Q_INVOKABLE void openFile(QVariant path);
 private:
     PatientListModel* model;
 };

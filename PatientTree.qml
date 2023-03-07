@@ -15,6 +15,8 @@ ScrollView
         width: parent.width
         height: parent.height
 
+        id: patientList
+
         //Structure for listing studies here
         //QAbstractItemModel
         PatientModelObject{
@@ -44,6 +46,8 @@ ScrollView
 
     function setData(path)
     {
-        patientModel.setModelData();
+        console.log("Set data");
+        patientModel.openFile(path);
+        patientList.model = patientModel;
     }
 }

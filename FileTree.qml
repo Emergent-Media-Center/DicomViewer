@@ -39,7 +39,8 @@ ScrollView
                     onClicked:
                     {
                         var path = fileModel.folder + "/" + fileName;
-                        fileChanged(path)//console.log("open: " + fileModel.folder + "/" + parent.text)
+                        console.log("open: " + fileModel.folder + "/" + parent.text)
+                        fileChanged(path);
                     }
                 }
             }

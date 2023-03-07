@@ -18,7 +18,7 @@ void PatientListModel::SetModelData()
 
     for(int i = 0; i < patients.size(); i++)
     {
-        setData(index(i, 0), QString::fromStdString(patients[i]));
+        setData(index(i, 0), QString::fromStdString(patients[i]), roleNames()[NameRole].toInt());
     }
 }
 
