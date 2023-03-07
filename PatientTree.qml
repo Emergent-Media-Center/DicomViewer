@@ -40,7 +40,7 @@ ScrollView
             }
         }
 
-        model: patientModel //abstract model here
+        model: patientModel.getModel() //abstract model here
         delegate: patientDelegate
     }
 
