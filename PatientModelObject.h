@@ -1,4 +1,4 @@
-#ifndef PATIENTMODELOBJECT_H
+/*#ifndef PATIENTMODELOBJECT_H
 #define PATIENTMODELOBJECT_H
 
 #include <QObject>
@@ -22,4 +22,4 @@ private:
     PatientListModel* model;
 };
 
-#endif // PATIENTMODELOBJECT_H
+#endif // PATIENTMODELOBJECT_H*/

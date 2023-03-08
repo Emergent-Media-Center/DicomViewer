@@ -4,7 +4,7 @@ import com.DicomItemModels 1.0
 
 ScrollView
 {
-    width: parent.width
+    width: 200 //parent.width
     contentHeight: 300
     clip: true
 
@@ -12,42 +12,47 @@ ScrollView
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
     ListView{
-        width: parent.width
-        height: parent.height
+        //width: 200 //parent.width
+        //height: 400 //parent.height
+        anchors.fill: parent
 
         id: patientList
 
         //Structure for listing studies here
         //QAbstractItemModel
-        PatientModelObject{
-            id: patientModel;
-        }
 
         Component {
             id: patientDelegate
             Text {
+                width: parent.width;
+                height: 20;
                 /*function folderClick(path)
                 {
                     folderModel.folder = path;
                 }*/
 
-                text: patientName
+                text: "Patient Name: " + patientName
 
-                MouseArea{
-                    anchors.fill: parent
-                    //onClicked: console.log("open: " + fileModel.folder + "/" + parent.text)
+                Component.onCompleted:
+                {
+                    console.log("Patient Name: " + patientName);
                 }
+
+                //MouseArea{
+                    //anchors.fill: parent
+                    //onClicked: console.log("open: " + fileModel.folder + "/" + parent.text)
+                //}
             }
         }
 
-        model: patientModel.getModel() //abstract model here
+        model: patientModel //abstract model here
         delegate: patientDelegate
     }
 
     function setData(path)
     {
         console.log("Set data");
-        patientModel.openFile(path);
-        patientList.model = patientModel;
+        patientModel.openFolder(path);
+        //console.log(patientList.model.patientName);
     }
 }

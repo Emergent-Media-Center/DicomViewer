@@ -1,4 +1,4 @@
-#include "PatientModelObject.h"
+/*#include "PatientModelObject.h"
 #include "navigatorsystem.h"
 
 PatientModelObject::PatientModelObject(QObject* parent) :
@@ -17,4 +17,4 @@ void PatientModelObject::openFile(QVariant path)
     QString str = path.toString();
     NavigatorSystem::Instance()->BuildDB(str.toStdString());
     model->SetModelData();
-}
+}*/

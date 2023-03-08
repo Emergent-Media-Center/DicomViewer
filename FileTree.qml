@@ -38,9 +38,9 @@ ScrollView
                     anchors.fill: parent
                     onClicked:
                     {
-                        var path = fileModel.folder + "/" + fileName;
-                        console.log("open: " + fileModel.folder + "/" + parent.text)
-                        fileChanged(path);
+                        //var path = fileModel.folder// + "/" + fileName;
+                        //console.log("open: " + fileModel.folder + "/" + parent.text)
+                        //fileChanged(path);
                     }
                 }
             }
@@ -53,5 +53,10 @@ ScrollView
     {
         fileModel.folder = path;
         fileModel.showFiles = true;
+
+        //var path = fileModel.folder// + "/" + fileName;
+        //console.log("open: " + fileModel.folder + "/" + parent.text)
+        console.log(path);
+        fileChanged(path);
     }
 }
