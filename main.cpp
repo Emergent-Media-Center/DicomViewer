@@ -26,6 +26,7 @@
 #include "CustomTreeView.h"
 #include "PatientListModel.h"
 #include "StudyListModel.h"
+#include "SeriesListModel.h"
 #include "navigatorsystem.h"
 
 int main(int argc, char *argv[])
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<PatientListModel>("com.DicomItemModels", 1, 0, "PatientListModel");
     qmlRegisterType<StudyListModel>("com.DicomItemModels", 1, 0, "StudyListModel");
+    qmlRegisterType<SeriesListModel>("com.DicomItemModels", 1, 0, "SeriesListModel");
     //qmlRegisterType<PatientModelObject>("com.DicomItemModels", 1, 0, "PatientModelObject");
 
     //PatientListModel patientModel;

@@ -182,6 +182,37 @@ ApplicationWindow {
                     {
                         anchors.fill: parent
 
+                        /*ToolBar{
+                            id: columnHedaers
+
+                            RowLayout{
+                                Label{
+                                    text: "File"
+                                    Layout.minimumWidth: 50;
+                                    Layout.preferredWidth: 200;
+                                    Layout.fillWidth: true;
+                                }
+                                Label{
+                                    text: "Patient"
+                                    Layout.minimumWidth: 50;
+                                    Layout.preferredWidth: 200;
+                                    Layout.fillWidth: true;
+                                }
+                                Label{
+                                    text: "Study"
+                                    Layout.minimumWidth: 50;
+                                    Layout.preferredWidth: 200;
+                                    Layout.fillWidth: true;
+                                }
+                                Label{
+                                    text: "Series"
+                                    Layout.minimumWidth: 50;
+                                    Layout.preferredWidth: 200;
+                                    Layout.fillWidth: true;
+                                }
+                            }
+                        }*/
+
                         Text {
                             id: dragText
                             anchors.fill: parent;
@@ -205,6 +236,7 @@ ApplicationWindow {
                                 fileTree.enabled = true;
                                 patients.enabled = true;
                                 studies.enabled = true;
+                                series.enabled = true;
 
                                 //Hide text
                                 dragText.visible = false;
@@ -227,7 +259,9 @@ ApplicationWindow {
                             FileTree{
                                 id: fileTree
                                 enabled: false
+                                Layout.minimumWidth: 50;
                                 Layout.preferredWidth: 200;
+                                Layout.fillWidth: true;
 
                                 Component.onCompleted: {
                                     //folderTree.folderChanged.connect(fileTree.setFolder)
@@ -237,7 +271,9 @@ ApplicationWindow {
                             PatientList{
                                 id: patients
                                 enabled: false
+                                Layout.minimumWidth: 50;
                                 Layout.preferredWidth: 200;
+                                Layout.fillWidth: true;
 
                                 Component.onCompleted: {
                                        fileTree.fileChanged.connect(patients.setData)
@@ -247,11 +283,26 @@ ApplicationWindow {
                             StudyList{
                                 id: studies
                                 enabled: false
+                                Layout.minimumWidth: 50;
                                 Layout.preferredWidth: 200;
+                                Layout.fillWidth: true;
 
                                 Component.onCompleted:
                                 {
                                     patients.choosePatient.connect(studies.setData)
+                                }
+                            }
+
+                            SeriesList{
+                                id: series
+                                enabled: false;
+                                Layout.minimumWidth: 50;
+                                Layout.preferredWidth: 200;
+                                Layout.fillWidth: true;
+
+                                Component.onCompleted:
+                                {
+                                    studies.chooseStudy.connect(series.setData)
                                 }
                             }
                         }

@@ -1,24 +1,25 @@
-#ifndef STUDYLISTMODEL_H
-#define STUDYLISTMODEL_H
+#ifndef SERIESLISTMODEL_H
+#define SERIESLISTMODEL_H
 
 #include <QtCore>
 #include <QtGui>
 #include <QAbstractListModel>
 #include <QHash>
 
-class StudyListModel : public QAbstractListModel
+class SeriesListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    enum StudyRoles {
+    enum SeriesRoles {
         PatientRole = Qt::UserRole + 1,
-        StudyRole
+        StudyRole,
+        SeriesRole
     };
 
-    explicit StudyListModel(QObject* parent = 0);
-    ~StudyListModel();
+    explicit SeriesListModel(QObject* parent = 0);
+    ~SeriesListModel();
 
-    Q_INVOKABLE void setModelData(QVariant patientId);
+    Q_INVOKABLE void setModelData(QVariant patientId, QVariant studyId);
 
     QHash<int, QByteArray> roleNames() const override;
 
@@ -32,7 +33,8 @@ public slots:
 
 private:
     std::string m_patient;
-    std::vector<std::string> m_studies;
+    std::string m_study;
+    std::vector<std::string> m_series;
 };
 
-#endif // STUDYLISTMODEL_H
+#endif // SERIESLISTMODEL_H

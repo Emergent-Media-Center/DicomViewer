@@ -1,53 +1,54 @@
-#include "StudyListModel.h"
+#include "SeriesListModel.h"
 #include "navigatorsystem.h"
 
-StudyListModel::StudyListModel(QObject* parent) :
+SeriesListModel::SeriesListModel(QObject* parent) :
     QAbstractListModel(parent)
 {
 
 }
 
-StudyListModel::~StudyListModel()
+SeriesListModel::~SeriesListModel()
 {
 
 }
 
-void StudyListModel::setModelData(QVariant patientId)
+void SeriesListModel::setModelData(QVariant patientId, QVariant studyId)
 {
     m_patient = patientId.toString().toStdString();
-    std::vector<string> studies = NavigatorSystem::Instance()->ListStudiesFromPatientId(m_patient);
+    m_study = studyId.toString().toStdString();
+    std::vector<string> series = NavigatorSystem::Instance()->ListSeriesFromPatientIdStudyId(m_patient, m_study);
 
-    beginInsertRows(QModelIndex(), m_studies.size(), m_studies.size());
-    for(int i = 0; i < studies.size(); i++)
+    beginInsertRows(QModelIndex(), m_series.size(), m_series.size());
+    for(int i = 0; i < series.size(); i++)
     {
-        m_studies.push_back(studies[i]);
+        m_series.push_back(series[i]);
     }
     endInsertRows();
 }
 
-QHash<int, QByteArray> StudyListModel::roleNames() const
+QHash<int, QByteArray> SeriesListModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[PatientRole] = "patientId";
     roles[StudyRole] = "studyId";
+    roles[SeriesRole] = "seriesId";
 
     return roles;
 }
 
-int StudyListModel::rowCount(const QModelIndex &parent) const
+int SeriesListModel::rowCount(const QModelIndex &parent) const
 {
     if(parent.isValid())
         return 0;
 
-    return m_studies.size();
+    return m_series.size();
 }
 
-QVariant StudyListModel::data(const QModelIndex &index, int role) const
+QVariant SeriesListModel::data(const QModelIndex &index, int role) const
 {
     //qDebug() << "PatientListModel.data called";
     if(!index.isValid())
         return QVariant();
-
 
     if(role == PatientRole)
     {
@@ -56,8 +57,13 @@ QVariant StudyListModel::data(const QModelIndex &index, int role) const
     }
     else if(role == StudyRole)
     {
-        const QString &study = QString::fromStdString(m_studies[index.row()]);
+        const QString &study = QString::fromStdString(m_study);
         return study;
+    }
+    else if(role == SeriesRole)
+    {
+        const QString &series = QString::fromStdString(m_series[index.row()]);
+        return series;
     }
     else
         return QVariant();

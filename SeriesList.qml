@@ -11,20 +11,18 @@ ScrollView
     ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
-    signal chooseStudy(string patient, string study)
-
     ListView{
         width: parent.width
         //height: 400 //parent.height
         anchors.fill: parent
 
-        id: studyList
+        id: seriesList
 
         //Structure for listing studies here
         //QAbstractItemModel
 
         Component {
-            id: studyDelegate
+            id: seriesDelegate
             Text {
                 width: parent.width;
                 height: 20;
@@ -33,32 +31,31 @@ ScrollView
                     folderModel.folder = path;
                 }*/
 
-                text: studyId
+                text: seriesId
 
                 Component.onCompleted:
                 {
-                    console.log("Study Id: " + studyId);
+                    console.log("Study Id: " + seriesId);
                 }
 
                 MouseArea{
                     anchors.fill: parent
                     onClicked:
                     {
-                        console.log("Patient: " + patientId + "   Chose Study: " + studyId)
-                        chooseStudy(patientId, studyId)
+                        console.log("Patient: " + patientId + "   Study: " + studyId + "   Chose Study: " + seriesId)
                     }
                 }
             }
         }
 
-        model: StudyListModel {} //abstract model here
-        delegate: studyDelegate
+        model: SeriesListModel {} //abstract model here
+        delegate: seriesDelegate
     }
 
-    function setData(id)
+    function setData(patient, study)
     {
-        console.log("Set Study Data");
-        studyList.model.setModelData(id);
+        console.log("Set Series Data");
+        seriesList.model.setModelData(patient, study);
         //console.log(patientList.model.patientName);
     }
 }

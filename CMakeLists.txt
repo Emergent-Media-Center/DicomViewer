@@ -108,10 +108,11 @@ qt_add_qml_module(dicomviewer
         main.qml
         # CUSTOM COMPONENTS
         ThreeDFrame.qml
-        FileTree.qml
         FolderTree.qml
-        StudyList.qml
+        FileTree.qml
         PatientList.qml
+        StudyList.qml
+        SeriesList.qml
     RESOURCES
         suzanne.mesh
     NO_RESOURCE_TARGET_PATH
