@@ -39,14 +39,14 @@ int main(int argc, char *argv[])
     qmlRegisterType<PatientListModel>("com.DicomItemModels", 1, 0, "PatientListModel");
     //qmlRegisterType<PatientModelObject>("com.DicomItemModels", 1, 0, "PatientModelObject");
 
-    PatientListModel patientModel;
+    //PatientListModel patientModel;
     //patientModel.openFile("C:/Users/ddrummond/Documents/EMC/Cases/DICOM/I0");
 
     QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat());
 
     QQmlApplicationEngine engine;
 
-    engine.rootContext()->setContextProperty("patientModel", &patientModel);
+    //engine.rootContext()->setContextProperty("patientModel", &patientModel);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

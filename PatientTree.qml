@@ -4,7 +4,7 @@ import com.DicomItemModels 1.0
 
 ScrollView
 {
-    width: 200 //parent.width
+    width: parent.width
     contentHeight: 300
     clip: true
 
@@ -12,7 +12,7 @@ ScrollView
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
     ListView{
-        //width: 200 //parent.width
+        width: parent.width
         //height: 400 //parent.height
         anchors.fill: parent
 
@@ -31,7 +31,7 @@ ScrollView
                     folderModel.folder = path;
                 }*/
 
-                text: "Patient Name: " + patientName
+                text: patientName
 
                 Component.onCompleted:
                 {
@@ -45,14 +45,14 @@ ScrollView
             }
         }
 
-        model: patientModel //abstract model here
+        model: PatientListModel {} //abstract model here
         delegate: patientDelegate
     }
 
     function setData(path)
     {
         console.log("Set data");
-        patientModel.openFolder(path);
+        patientList.model.openFolder(path);
         //console.log(patientList.model.patientName);
     }
 }

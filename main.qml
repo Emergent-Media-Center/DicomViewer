@@ -220,9 +220,12 @@ ApplicationWindow {
 
                             }*/
 
+                            anchors.fill: parent
+
                             FileTree{
                                 id: fileTree
                                 enabled: false
+                                Layout.preferredWidth: 200;
 
                                 Component.onCompleted: {
                                     //folderTree.folderChanged.connect(fileTree.setFolder)
@@ -232,6 +235,7 @@ ApplicationWindow {
                             PatientTree{
                                 id: patientTree
                                 enabled: false
+                                Layout.preferredWidth: 200;
 
                                 Component.onCompleted: {
                                        fileTree.fileChanged.connect(patientTree.setData)
