@@ -201,11 +201,13 @@ ApplicationWindow {
                             }
                             onDropped: {
                                 //Open folder and show files
-                                fileTree.setFolder(drop.urls[0])
-                                fileTree.enabled = true
+                                fileTree.setFolder(drop.urls[0]);
+                                fileTree.enabled = true;
+                                patients.enabled = true;
+                                studies.enabled = true;
 
                                 //Hide text
-                                dragText.visible = false
+                                dragText.visible = false;
 
                                 parent.color = "white"
                             }
@@ -232,13 +234,24 @@ ApplicationWindow {
                                 }
                             }
 
-                            PatientTree{
-                                id: patientTree
+                            PatientList{
+                                id: patients
                                 enabled: false
                                 Layout.preferredWidth: 200;
 
                                 Component.onCompleted: {
-                                       fileTree.fileChanged.connect(patientTree.setData)
+                                       fileTree.fileChanged.connect(patients.setData)
+                                }
+                            }
+
+                            StudyList{
+                                id: studies
+                                enabled: false
+                                Layout.preferredWidth: 200;
+
+                                Component.onCompleted:
+                                {
+                                    patients.choosePatient.connect(studies.setData)
                                 }
                             }
                         }

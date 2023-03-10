@@ -19,22 +19,16 @@ void PatientListModel::setModelData()
     beginInsertRows(QModelIndex(), m_patients.size(), m_patients.size());
     for(int i = 0; i < patients.size(); i++)
     {
-        //setData(index(i, 0), QString(patients[i].c_str()), roleNames()[NameRole].toInt());
         m_patients.push_back(patients[i]);
     }
     endInsertRows();
-
-    //qDebug() << m_patients[0].toStdString().c_str();
-    //qDebug() << data(index(0, 0), NameRole).toString().toStdString().c_str();
-
-    //emit QAbstractListModel::dataChanged(createIndex(0, 0), createIndex(m_patients.size(), 0));
 }
 
 QHash<int, QByteArray> PatientListModel::roleNames() const
 {
     QHash<int, QByteArray> roles
     {
-        {NameRole, "patientName"}
+        {NameRole, "patientId"}
     };
 
     return roles;
@@ -61,7 +55,7 @@ QVariant PatientListModel::data(const QModelIndex &index, int role) const
         return QVariant();
 }
 
-bool PatientListModel::setData(const QModelIndex& index, const QVariant &value, int role)
+/*bool PatientListModel::setData(const QModelIndex& index, const QVariant &value, int role)
 {
     if(data(index, role) != value)
     {
@@ -70,7 +64,7 @@ bool PatientListModel::setData(const QModelIndex& index, const QVariant &value, 
     }
 
     return false;
-}
+}*/
 
 void PatientListModel::openFolder(QVariant path)
 {

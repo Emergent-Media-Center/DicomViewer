@@ -1,12 +1,12 @@
-#ifndef PATIENTITEMMODEL_H
-#define PATIENTITEMMODEL_H
+#ifndef STUDYLISTMODEL_H
+#define STUDYLISTMODEL_H
 
 #include <QtCore>
 #include <QtGui>
 #include <QAbstractListModel>
 #include <QHash>
 
-class PatientListModel : public QAbstractListModel
+class StudyListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
@@ -14,10 +14,10 @@ public:
         NameRole = Qt::UserRole + 1
     };
 
-    explicit PatientListModel(QObject* parent = 0);
-    ~PatientListModel();
+    explicit StudyListModel(QObject* parent = 0);
+    ~StudyListModel();
 
-    void setModelData();
+    Q_INVOKABLE void setModelData(QVariant patientId);
 
     QHash<int, QByteArray> roleNames() const override;
 
@@ -25,13 +25,13 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     //bool setData(const QModelIndex& index, const QVariant &value, int role) override;
 
-    Q_INVOKABLE void openFolder(QVariant path);
+    //Q_INVOKABLE void openFolder(QVariant path);
 
 public slots:
 
 private:
 
-    std::vector<std::string> m_patients;
+    std::vector<std::string> m_studies;
 };
 
-#endif // PATIENTITEMMODEL_H
+#endif // STUDYLISTMODEL_H

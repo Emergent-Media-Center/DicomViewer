@@ -25,6 +25,7 @@
 #include "FileSystem.h"
 #include "CustomTreeView.h"
 #include "PatientListModel.h"
+#include "StudyListModel.h"
 #include "navigatorsystem.h"
 
 int main(int argc, char *argv[])
@@ -37,6 +38,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<FileSystem>("com.FileSystem", 1, 0, "FileSystem");
 
     qmlRegisterType<PatientListModel>("com.DicomItemModels", 1, 0, "PatientListModel");
+    qmlRegisterType<StudyListModel>("com.DicomItemModels", 1, 0, "StudyListModel");
     //qmlRegisterType<PatientModelObject>("com.DicomItemModels", 1, 0, "PatientModelObject");
 
     //PatientListModel patientModel;

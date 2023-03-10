@@ -16,13 +16,13 @@ ScrollView
         //height: 400 //parent.height
         anchors.fill: parent
 
-        id: patientList
+        id: studyList
 
         //Structure for listing studies here
         //QAbstractItemModel
 
         Component {
-            id: patientDelegate
+            id: studyDelegate
             Text {
                 width: parent.width;
                 height: 20;
@@ -31,11 +31,11 @@ ScrollView
                     folderModel.folder = path;
                 }*/
 
-                text: patientName
+                text: studyId
 
                 Component.onCompleted:
                 {
-                    console.log("Patient Name: " + patientName);
+                    console.log("Study Id: " + studyId);
                 }
 
                 //MouseArea{
@@ -45,14 +45,14 @@ ScrollView
             }
         }
 
-        model: PatientListModel {} //abstract model here
-        delegate: patientDelegate
+        model: StudyListModel {} //abstract model here
+        delegate: studyDelegate
     }
 
-    function setData(path)
+    function setData(id)
     {
-        console.log("Set data");
-        patientList.model.openFolder(path);
+        console.log("Set Study Data");
+        studyList.model.setModelData(id);
         //console.log(patientList.model.patientName);
     }
 }
