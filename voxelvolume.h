@@ -1,0 +1,28 @@
+#ifndef VOXELVOLUME_H
+#define VOXELVOLUME_H
+#include <vector>
+#include <string>
+#include <gdcmImageReader.h>
+using namespace std;
+using namespace gdcm;
+
+class VoxelVolume {
+private:
+    int Instances;
+    int Rows;
+    int Colmns;
+
+    double SliceThickness;
+    int LargestPixelValueInSeries;
+    int SmallestPixelValueInSeries;
+    float PixelSpacingRow, PixelSpacingCol, spacingTickness;
+
+    // instance, row, colum
+    vector<vector<vector<double>>> volume;
+public:
+    VoxelVolume(string PatientId, string StudyId, string SeriesId);
+private:
+
+};
+
+#endif // VOXELVOLUME_H

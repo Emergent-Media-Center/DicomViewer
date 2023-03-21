@@ -21,7 +21,7 @@ include(external/FindQtWindows.cmake)
 set(CMAKE_AUTOMOC ON)
 
 # find qt
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Quick3D)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Quick3D Widgets)
 
 # gdcm
 include(external/gdcm.cmake)
@@ -41,7 +41,7 @@ file(GLOB DICOMVIEWER_SRC
     )
 
 # add those files to be built
-qt_add_executable(dicomviewer ${DICOMVIEWER_SRC})
+qt_add_executable(dicomviewer ${DICOMVIEWER_SRC} ${DICOMVIEWER_INC})
 
 # work in progress to make it work in clion on windows
 #if (WIN32)
@@ -79,6 +79,7 @@ target_link_libraries(dicomviewer PUBLIC
         Qt::Gui
         Qt::Quick
         Qt::Quick3D
+        Qt6::Widgets
         gdcmMSFF
         )
 
@@ -88,6 +89,7 @@ if(WIN32 AND NOT CYGWIN AND NOT MINGW)
           Qt::Gui
           Qt::Quick
           Qt::Quick3D
+          Qt6::Widgets
           gdcmgetopt
           )
 endif()
@@ -106,6 +108,11 @@ qt_add_qml_module(dicomviewer
         main.qml
         # CUSTOM COMPONENTS
         ThreeDFrame.qml
+        FolderTree.qml
+        FileList.qml
+        PatientList.qml
+        StudyList.qml
+        SeriesList.qml
     RESOURCES
         suzanne.mesh
     NO_RESOURCE_TARGET_PATH

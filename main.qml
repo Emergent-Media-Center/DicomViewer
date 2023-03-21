@@ -1,17 +1,74 @@
 // Copyright (C) 2021 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
+import QtCore
 import QtQuick
+import QtQuick.Dialogs
 import QtQuick3D
 import QtQuick.Controls
 import QtQuick.Layouts
+import Qt.labs.folderlistmodel 2.4
 
-Window {
-    id: window
+import com.DicomImage 1.0
+import com.DicomItemModels 1.0
+
+ApplicationWindow {
+    title: qsTr("Dicom Viewer")
+    width: 640
+    height: 480
     visible: true
-    width:  800
-    height: 800
-    title: qsTr("EMC Dicom Viewer v0")
+
+    /*trees: [
+
+    ]*/
+
+    /*&header: ToolBar {
+        RowLayout{
+            Button {
+                text: qsTr("Choose Folder...")
+                onClicked: fileDialog.open()
+            }
+
+            Button{
+                text: "Back"
+                onClicked: {
+                    var parentFolder = folderTree.getParentFolder();
+                    folderTree.setFolder(parentFolder);
+                    fileTree.setFolder(parentFolder);
+                }
+
+            }
+        }
+    }*/
+    /*Frame{
+        id: folderFrame
+        width:  800
+        height: 800
+        //title: qsTr("EMC Dicom Viewer v0")
+
+        RowLayout{
+            FolderTree{
+                id: folderTree
+
+            }
+
+            FileTree{
+                id: fileTree
+
+                Component.onCompleted: {
+                    //folderTree.folderChanged.connect(fileTree.setFolder)
+                }
+            }
+        }
+    }*/
+    FolderDialog {
+        id: fileDialog
+        currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+        onAccepted: {
+            //folderTree.setFolder(selectedFolder);
+            files.setFolder(selectedFolder);
+        }
+    }
 
     Frame {
         id: windowFrame
@@ -58,7 +115,7 @@ Window {
 
                     Menu {
                         title: "File"
-                        Action { text: "Open DICOM Folder" }
+                        Action { text: "Open DICOM Folder"; onTriggered: fileDialog.open()}
                         MenuSeparator { }
                         Action { text: "Open DICOM" }
                         MenuSeparator { }
@@ -66,7 +123,7 @@ Window {
                         MenuSeparator { }
                         Action { text: "Copy to Clipboard" }
                         MenuSeparator { }
-                        Action { text: "Quit DicomViewer"}
+                        Action { text: "Quit DicomViewer"; onTriggered: close()}
                     }
 
                     Menu {
@@ -120,31 +177,218 @@ Window {
                 }
             }
 
-            Frame {
-                id: userViews
+            TabBar {
+                width: parent.width
+                TabButton {
+                    text: "View"
+                    width: implicitWidth
+
+                    onClicked: stackLayout.currentIndex = 0;
+                }
+                TabButton {
+                    text: "File Select"
+                    width: implicitWidth
+
+                    onClicked: stackLayout.currentIndex = 1;
+                }
+            }
+
+            StackLayout{
+                id: stackLayout
+
                 width: 200
                 height: 200
-                Layout.fillHeight: true
-                Layout.fillWidth: true
+                currentIndex: 0
 
-                GridLayout {
-                    id: userViewsLayout
-                    x: -1
-                    y: -26
-                    anchors.fill: parent
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                Frame {
+                    id: userViews
+                    width: parent.width
+                    height: parent.height
                     Layout.fillHeight: true
                     Layout.fillWidth: true
 
-                    ThreeDFrame {
-                        id: threeDFrame2
-                    }
+                    GridLayout {
+                        id: userViewsLayout
+                        x: -1
+                        y: -26
+                        anchors.fill: parent
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
 
-                    ThreeDFrame {
-                        id: threeDFrame
+                        ThreeDFrame {
+                            id: threeDFrame2
+                        }
+
+                        ThreeDFrame {
+                            id: threeDFrame
+                        }
+                    }
+                }
+
+                Frame{
+                    id: fileFrame
+                    width:  parent.width
+                    height: parent.height
+                    //title: qsTr("EMC Dicom Viewer v0")
+
+                    Rectangle
+                    {
+                        anchors.fill: parent
+
+                        /*ToolBar{
+                            id: columnHedaers
+
+                            y: 0
+
+                            RowLayout{
+                                Label{
+                                    text: "File"
+                                    Layout.minimumWidth: fileFrame.width / 4;
+                                    Layout.preferredWidth: fileFrame.width / 4;
+                                    Layout.fillWidth: true;
+                                }
+                                Label{
+                                    text: "Patient"
+                                    Layout.minimumWidth: fileFrame.width / 4;
+                                    Layout.preferredWidth: fileFrame.width / 4;
+                                    Layout.fillWidth: true;
+                                }
+                                Label{
+                                    text: "Study"
+                                    Layout.minimumWidth: fileFrame.width / 4;
+                                    Layout.preferredWidth: fileFrame.width / 4;
+                                    Layout.fillWidth: true;
+                                }
+                                Label{
+                                    text: "Series"
+                                    Layout.minimumWidth: fileFrame.width / 4;
+                                    Layout.preferredWidth: fileFrame.width / 4;
+                                    Layout.fillWidth: true;
+                                }
+                            }
+                        }*/
+
+                        DropArea {
+                            id: dropArea;
+                            anchors.fill: parent
+                            onEntered: {
+                                parent.color = "lightgray";
+                                //drag.accept (Qt.LinkAction);
+                            }
+                            onDropped: {
+                                //Open folder and show files
+                                patients.clearData();
+                                studies.clearData();
+                                series.clearData();
+
+                                files.setFolder(drop.urls[0]);
+
+                                files.enabled = true;
+                                patients.enabled = true;
+                                studies.enabled = true;
+                                series.enabled = true;
+
+                                //Hide text
+                                dragTextRect.visible = false;
+
+                                parent.color = "white"
+                            }
+                            onExited: {
+                                parent.color = "white";
+                            }
+                        }
+
+                        RowLayout{
+                            /*FolderTree{
+                                id: folderTree
+
+                            }*/
+
+                            anchors.fill: parent
+
+                            FileList{
+                                id: files
+                                enabled: false
+                                Layout.minimumWidth: 50;
+                                Layout.preferredWidth: 200;
+                                Layout.fillWidth: true;
+
+                                Component.onCompleted: {
+                                    //folderTree.folderChanged.connect(files.setFolder)
+                                }
+                            }
+
+                            PatientList{
+                                id: patients
+                                enabled: false
+                                Layout.minimumWidth: 50;
+                                Layout.preferredWidth: 200;
+                                Layout.fillWidth: true;
+
+                                Component.onCompleted: {
+                                       files.fileChanged.connect(patients.setData)
+                                }
+                            }
+
+                            StudyList{
+                                id: studies
+                                enabled: false
+                                Layout.minimumWidth: 50;
+                                Layout.preferredWidth: 200;
+                                Layout.fillWidth: true;
+
+                                Component.onCompleted:
+                                {
+                                    patients.choosePatient.connect(studies.setData)
+                                }
+                            }
+
+                            SeriesList{
+                                id: series
+                                enabled: false;
+                                Layout.minimumWidth: 50;
+                                Layout.preferredWidth: 200;
+                                Layout.fillWidth: true;
+
+                                Component.onCompleted:
+                                {
+                                    studies.chooseStudy.connect(series.setData)
+                                }
+                            }
+                        }
+
+                        Rectangle
+                        {
+                            id: dragTextRect
+                            color: "#C0C0C0"
+
+                            Text {
+                                id: dragText
+                                //anchors.fill: parent
+
+                                anchors.verticalCenter: parent.verticalCenter;
+                                anchors.horizontalCenter: parent.horizontalCenter;
+
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+
+                                text: "Drag and drop folders here!"
+                            }
+
+                            x: parent.width / 2
+                            y: parent.height / 2
+
+                            width: childrenRect.width + 10
+                            height: childrenRect.height + 10
+
+                            anchors.verticalCenter: parent.verticalCenter;
+                            anchors.horizontalCenter: parent.horizontalCenter;
+                        }
                     }
                 }
             }
+
 
             Frame {
                 id: frame
@@ -195,9 +439,6 @@ Window {
                 }
 
             }
-
-
-
         }
     }
 
