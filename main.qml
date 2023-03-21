@@ -213,16 +213,6 @@ ApplicationWindow {
                             }
                         }*/
 
-                        Text {
-                            id: dragText
-                            anchors.fill: parent;
-
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-
-                            text: "Drag and drop folders here!"
-                        }
-
                         DropArea {
                             id: dropArea;
                             anchors.fill: parent
@@ -244,7 +234,7 @@ ApplicationWindow {
                                 series.enabled = true;
 
                                 //Hide text
-                                dragText.visible = false;
+                                dragTextRect.visible = false;
 
                                 parent.color = "white"
                             }
@@ -310,6 +300,34 @@ ApplicationWindow {
                                     studies.chooseStudy.connect(series.setData)
                                 }
                             }
+                        }
+
+                        Rectangle
+                        {
+                            id: dragTextRect
+                            color: "#C0C0C0"
+
+                            Text {
+                                id: dragText
+                                //anchors.fill: parent
+
+                                anchors.verticalCenter: parent.verticalCenter;
+                                anchors.horizontalCenter: parent.horizontalCenter;
+
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+
+                                text: "Drag and drop folders here!"
+                            }
+
+                            x: parent.width / 2
+                            y: parent.height / 2
+
+                            width: childrenRect.width + 10
+                            height: childrenRect.height + 10
+
+                            anchors.verticalCenter: parent.verticalCenter;
+                            anchors.horizontalCenter: parent.horizontalCenter;
                         }
                     }
                 }
