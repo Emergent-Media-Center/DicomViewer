@@ -18,8 +18,14 @@ ScrollView
 
         id: seriesList
 
-        //Structure for listing studies here
-        //QAbstractItemModel
+        headerPositioning: ListView.OverlayHeader
+
+        header: ToolBar{
+            Label{
+                text: "Series"
+            }
+            width: parent.width;
+        }
 
         Component {
             id: seriesDelegate

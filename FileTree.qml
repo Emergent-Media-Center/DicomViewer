@@ -17,6 +17,15 @@ ScrollView
         width: parent.width
         height: parent.height
 
+        /*headerPositioning: TreeView.OverlayHeader
+
+        header: ToolBar{
+            Label{
+                text: "Files"
+            }
+            width: parent.width;
+        }*/
+
         FolderListModel{
             id: fileModel
             showDirs: false

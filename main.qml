@@ -185,29 +185,31 @@ ApplicationWindow {
                         /*ToolBar{
                             id: columnHedaers
 
+                            y: 0
+
                             RowLayout{
                                 Label{
                                     text: "File"
-                                    Layout.minimumWidth: 50;
-                                    Layout.preferredWidth: 200;
+                                    Layout.minimumWidth: fileFrame.width / 4;
+                                    Layout.preferredWidth: fileFrame.width / 4;
                                     Layout.fillWidth: true;
                                 }
                                 Label{
                                     text: "Patient"
-                                    Layout.minimumWidth: 50;
-                                    Layout.preferredWidth: 200;
+                                    Layout.minimumWidth: fileFrame.width / 4;
+                                    Layout.preferredWidth: fileFrame.width / 4;
                                     Layout.fillWidth: true;
                                 }
                                 Label{
                                     text: "Study"
-                                    Layout.minimumWidth: 50;
-                                    Layout.preferredWidth: 200;
+                                    Layout.minimumWidth: fileFrame.width / 4;
+                                    Layout.preferredWidth: fileFrame.width / 4;
                                     Layout.fillWidth: true;
                                 }
                                 Label{
                                     text: "Series"
-                                    Layout.minimumWidth: 50;
-                                    Layout.preferredWidth: 200;
+                                    Layout.minimumWidth: fileFrame.width / 4;
+                                    Layout.preferredWidth: fileFrame.width / 4;
                                     Layout.fillWidth: true;
                                 }
                             }

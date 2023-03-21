@@ -20,8 +20,14 @@ ScrollView
 
         id: patientList
 
-        //Structure for listing studies here
-        //QAbstractItemModel
+        headerPositioning: ListView.OverlayHeader
+
+        header: ToolBar{
+            Label{
+                text: "Patients"
+            }
+            width: parent.width;
+        }
 
         Component {
             id: patientDelegate
