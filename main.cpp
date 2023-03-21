@@ -22,8 +22,6 @@
 
 #include "QMLDicomImage.h"
 #include "PixmapImage.h"
-#include "FileSystem.h"
-#include "CustomTreeView.h"
 #include "PatientListModel.h"
 #include "StudyListModel.h"
 #include "SeriesListModel.h"
@@ -35,8 +33,6 @@ int main(int argc, char *argv[])
     //QApplication app(argc, argv);
     qmlRegisterType<QMLDicomImage>("com.DicomImage", 1, 0, "QMLDicomImage");
     qmlRegisterType<PixmapImage>("com.DicomImage", 1, 0, "PixmapImage");
-
-    qmlRegisterType<FileSystem>("com.FileSystem", 1, 0, "FileSystem");
 
     qmlRegisterType<PatientListModel>("com.DicomItemModels", 1, 0, "PatientListModel");
     qmlRegisterType<StudyListModel>("com.DicomItemModels", 1, 0, "StudyListModel");

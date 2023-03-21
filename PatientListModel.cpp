@@ -14,6 +14,8 @@ PatientListModel::~PatientListModel()
 
 void PatientListModel::setModelData()
 {
+    clearModelData();
+
     std::vector<string> patients = NavigatorSystem::Instance()->ListPatientIds();
 
     beginInsertRows(QModelIndex(), m_patients.size(), m_patients.size());

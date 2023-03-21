@@ -10,7 +10,6 @@ import QtQuick.Layouts
 import Qt.labs.folderlistmodel 2.4
 
 import com.DicomImage 1.0
-import com.FileSystem 1.0
 import com.DicomItemModels 1.0
 
 ApplicationWindow {
@@ -228,9 +227,9 @@ ApplicationWindow {
                                 studies.clearData();
                                 series.clearData();
 
-                                fileTree.setFolder(drop.urls[0]);
+                                files.setFolder(drop.urls[0]);
 
-                                fileTree.enabled = true;
+                                files.enabled = true;
                                 patients.enabled = true;
                                 studies.enabled = true;
                                 series.enabled = true;
@@ -253,8 +252,8 @@ ApplicationWindow {
 
                             anchors.fill: parent
 
-                            FileTree{
-                                id: fileTree
+                            FileList{
+                                id: files
                                 enabled: false
                                 Layout.minimumWidth: 50;
                                 Layout.preferredWidth: 200;
@@ -273,7 +272,7 @@ ApplicationWindow {
                                 Layout.fillWidth: true;
 
                                 Component.onCompleted: {
-                                       fileTree.fileChanged.connect(patients.setData)
+                                       files.fileChanged.connect(patients.setData)
                                 }
                             }
 

@@ -14,6 +14,8 @@ StudyListModel::~StudyListModel()
 
 void StudyListModel::setModelData(QVariant patientId)
 {
+    clearModelData();
+
     m_patient = patientId.toString().toStdString();
     std::vector<string> studies = NavigatorSystem::Instance()->ListStudiesFromPatientId(m_patient);
 

@@ -14,6 +14,8 @@ SeriesListModel::~SeriesListModel()
 
 void SeriesListModel::setModelData(QVariant patientId, QVariant studyId)
 {
+    clearModelData();
+
     m_patient = patientId.toString().toStdString();
     m_study = studyId.toString().toStdString();
     std::vector<string> series = NavigatorSystem::Instance()->ListSeriesFromPatientIdStudyId(m_patient, m_study);

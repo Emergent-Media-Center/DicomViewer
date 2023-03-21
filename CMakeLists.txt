@@ -109,7 +109,7 @@ qt_add_qml_module(dicomviewer
         # CUSTOM COMPONENTS
         ThreeDFrame.qml
         FolderTree.qml
-        FileTree.qml
+        FileList.qml
         PatientList.qml
         StudyList.qml
         SeriesList.qml
