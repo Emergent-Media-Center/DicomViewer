@@ -32,28 +32,45 @@ ScrollView
 
         Component {
             id: studyDelegate
-            Text {
+            Item{
                 width: parent.width;
                 height: 20;
-                /*function folderClick(path)
-                {
-                    folderModel.folder = path;
-                }*/
 
-                text: studyId
+                Text {
+                    id: delegateText
 
-                Component.onCompleted:
-                {
-                    console.log("Study Id: " + studyId);
+                    width: parent.width;
+                    height: parent.height;
+
+                    anchors.fill: parent;
+                    anchors.topMargin: 1
+                    anchors.bottomMargin: 1
+
+                    text: studyId
+
+                    Component.onCompleted:
+                    {
+                        console.log("Study Id: " + studyId);
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:
+                        {
+                            console.log("Patient: " + patientId + "   Chose Study: " + studyId)
+                            chooseStudy(patientId, studyId)
+                        }
+                    }
                 }
 
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked:
-                    {
-                        console.log("Patient: " + patientId + "   Chose Study: " + studyId)
-                        chooseStudy(patientId, studyId)
-                    }
+                Rectangle
+                {
+                    height: 1;
+                    color: "#F0F0F0"
+
+                    anchors.left: delegateText.left
+                    anchors.right: delegateText.right
+                    anchors.bottom: delegateText.bottom
                 }
             }
         }

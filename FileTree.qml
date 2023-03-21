@@ -36,22 +36,42 @@ ScrollView
         }
         Component {
             id: fileDelegate
-            Text {
-                /*function folderClick(path)
-                {
-                    folderModel.folder = path;
-                }*/
 
-                text: fileName
+            Item{
+                width: parent.width;
+                height: 20;
 
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked:
-                    {
-                        //var path = fileModel.folder// + "/" + fileName;
-                        //console.log("open: " + fileModel.folder + "/" + parent.text)
-                        //fileChanged(path);
+                Text {
+                    id: delegateText
+
+                    width: parent.width;
+                    height: parent.height;
+
+                    anchors.fill: parent;
+                    anchors.topMargin: 1
+                    anchors.bottomMargin: 1
+
+                    text: fileName
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:
+                        {
+                            //var path = fileModel.folder// + "/" + fileName;
+                            //console.log("open: " + fileModel.folder + "/" + parent.text)
+                            //fileChanged(path);
+                        }
                     }
+                }
+
+                Rectangle
+                {
+                    height: 1;
+                    color: "#F0F0F0"
+
+                    anchors.left: delegateText.left
+                    anchors.right: delegateText.right
+                    anchors.bottom: delegateText.bottom
                 }
             }
         }
