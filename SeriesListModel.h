@@ -29,6 +29,8 @@ public:
 
     //Q_INVOKABLE void openFolder(QVariant path);
 
+    Q_INVOKABLE void clearModelData();
+
 public slots:
 
 private:

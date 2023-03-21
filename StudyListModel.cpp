@@ -84,3 +84,12 @@ QVariant StudyListModel::data(const QModelIndex &index, int role) const
     NavigatorSystem::Instance()->ListStudiesFromPatientId()
     setModelData();
 }*/
+
+void StudyListModel::clearModelData()
+{
+    m_patient = "";
+
+    beginResetModel();
+    m_studies.clear();
+    endResetModel();
+}

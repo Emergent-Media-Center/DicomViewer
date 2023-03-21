@@ -61,4 +61,9 @@ ScrollView
         studyList.model.setModelData(id);
         //console.log(patientList.model.patientName);
     }
+
+    function clearData()
+    {
+        studyList.model.clearModelData();
+    }
 }

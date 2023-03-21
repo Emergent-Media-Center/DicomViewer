@@ -90,3 +90,14 @@ QVariant SeriesListModel::data(const QModelIndex &index, int role) const
     NavigatorSystem::Instance()->ListStudiesFromPatientId()
     setModelData();
 }*/
+
+
+void SeriesListModel::clearModelData()
+{
+    m_patient = "";
+    m_study = "";
+
+    beginResetModel();
+    m_series.clear();
+    endResetModel();
+}

@@ -61,4 +61,9 @@ ScrollView
         patientList.model.openFolder(path);
         //console.log(patientList.model.patientName);
     }
+
+    function clearData()
+    {
+        patientList.model.clearModelData();
+    }
 }

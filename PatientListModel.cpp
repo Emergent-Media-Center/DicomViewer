@@ -76,3 +76,11 @@ void PatientListModel::openFolder(QVariant path)
     NavigatorSystem::Instance()->BuildDB(str);
     setModelData();
 }
+
+
+void PatientListModel::clearModelData()
+{
+    beginResetModel();
+    m_patients.clear();
+    endResetModel();
+}

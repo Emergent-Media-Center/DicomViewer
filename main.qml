@@ -232,7 +232,12 @@ ApplicationWindow {
                             }
                             onDropped: {
                                 //Open folder and show files
+                                patients.clearData();
+                                studies.clearData();
+                                series.clearData();
+
                                 fileTree.setFolder(drop.urls[0]);
+
                                 fileTree.enabled = true;
                                 patients.enabled = true;
                                 studies.enabled = true;
