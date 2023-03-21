@@ -13,18 +13,19 @@ ScrollView
 
     signal fileChanged(string path)
 
-    TreeView{
+    ListView{
         width: parent.width
         height: parent.height
 
-        /*headerPositioning: TreeView.OverlayHeader
+        headerPositioning: ListView.OverlayHeader
 
         header: ToolBar{
             Label{
                 text: "Files"
             }
             width: parent.width;
-        }*/
+            z: 10
+        }
 
         FolderListModel{
             id: fileModel

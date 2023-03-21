@@ -27,6 +27,7 @@ ScrollView
                 text: "Studies"
             }
             width: parent.width;
+            z: 10
         }
 
         Component {

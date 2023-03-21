@@ -27,6 +27,7 @@ ScrollView
                 text: "Patients"
             }
             width: parent.width;
+            z: 10
         }
 
         Component {
