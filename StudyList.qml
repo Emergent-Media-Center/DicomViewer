@@ -59,6 +59,7 @@ ScrollView
                         {
                             console.log("Patient: " + patientId + "   Chose Study: " + studyId)
                             chooseStudy(patientId, studyId)
+                            studyList.currentIndex = index;
                         }
                     }
                 }
@@ -75,8 +76,29 @@ ScrollView
             }
         }
 
+        Component
+        {
+            id: studyDelegateHighlight
+
+            Rectangle
+            {
+                width: parent.width
+                height: 20
+
+                color: "#F0F0F0"
+            }
+        }
+
+        onCountChanged:
+        {
+            studyList.currentIndex = -1;
+        }
+
         model: StudyListModel {} //abstract model here
         delegate: studyDelegate
+        highlight: studyDelegateHighlight
+        highlightFollowsCurrentItem: false
+        focus: true
     }
 
     function setData(id)

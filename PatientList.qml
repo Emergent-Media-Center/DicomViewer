@@ -60,6 +60,7 @@ ScrollView
                         {
                             console.log("Chose " + patientId);
                             choosePatient(patientId);
+                            patientList.currentIndex = index;
                         }
                     }
                 }
@@ -76,8 +77,29 @@ ScrollView
             }
         }
 
+        Component
+        {
+            id: patientDelegateHighlight
+
+            Rectangle
+            {
+                width: parent.width
+                height: 20
+
+                color: "#F0F0F0"
+            }
+        }
+
+        onCountChanged:
+        {
+            patientList.currentIndex = -1;
+        }
+
         model: PatientListModel {} //abstract model here
         delegate: patientDelegate
+        highlight: patientDelegateHighlight
+        highlightFollowsCurrentItem: false
+        focus: true
     }
 
     function setData(path)

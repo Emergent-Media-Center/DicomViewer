@@ -57,6 +57,7 @@ ScrollView
                         onClicked:
                         {
                             console.log("Patient: " + patientId + "   Study: " + studyId + "   Chose Study: " + seriesId)
+                            seriesList.currentIndex = index;
                         }
                     }
                 }
@@ -73,8 +74,29 @@ ScrollView
             }
         }
 
+        Component
+        {
+            id: seriesDelegateHighlight
+
+            Rectangle
+            {
+                width: parent.width
+                height: 20
+
+                color: "#F0F0F0"
+            }
+        }
+
+        onCountChanged:
+        {
+            seriesList.currentIndex = -1;
+        }
+
         model: SeriesListModel {} //abstract model here
         delegate: seriesDelegate
+        highlight: seriesDelegateHighlight
+        highlightFollowsCurrentItem: false
+        focus: true
     }
 
     function setData(patient, study)
