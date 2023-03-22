@@ -66,9 +66,27 @@ ApplicationWindow {
         currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
         onAccepted: {
             //folderTree.setFolder(selectedFolder);
-            files.setFolder(selectedFolder);
+            //files.setFolder(selectedFolder);
+            openFolder(selectedFolder);
         }
     }
+
+    function openFolder(path){
+        patients.clearData();
+        studies.clearData();
+        series.clearData();
+
+        files.setFolder(path);
+
+        files.enabled = true;
+        patients.enabled = true;
+        studies.enabled = true;
+        series.enabled = true;
+
+        //Hide text
+        dragTextRect.visible = false;
+    }
+
 
     Frame {
         id: windowFrame
@@ -278,7 +296,7 @@ ApplicationWindow {
                             }
                             onDropped: {
                                 //Open folder and show files
-                                patients.clearData();
+                                /*patients.clearData();
                                 studies.clearData();
                                 series.clearData();
 
@@ -290,7 +308,8 @@ ApplicationWindow {
                                 series.enabled = true;
 
                                 //Hide text
-                                dragTextRect.visible = false;
+                                dragTextRect.visible = false;*/
+                                openFolder(drop.urls[0]);
 
                                 parent.color = "white"
                             }
