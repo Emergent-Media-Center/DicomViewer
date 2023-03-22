@@ -296,19 +296,6 @@ ApplicationWindow {
                             }
                             onDropped: {
                                 //Open folder and show files
-                                /*patients.clearData();
-                                studies.clearData();
-                                series.clearData();
-
-                                files.setFolder(drop.urls[0]);
-
-                                files.enabled = true;
-                                patients.enabled = true;
-                                studies.enabled = true;
-                                series.enabled = true;
-
-                                //Hide text
-                                dragTextRect.visible = false;*/
                                 openFolder(drop.urls[0]);
 
                                 parent.color = "white"
