@@ -7,7 +7,7 @@ project(dicomviewer LANGUAGES CXX)
 # CPM
 include(external/cpm.cmake)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-  SET(CMAKE_PREFIX_PATH ";~/Qt/6.4.3/macos")
+  SET(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};~/Qt/6.4.3/macos")
 endif()
 MESSAGE(STATUS "${CMAKE_PREFIX_PATH}")
 
