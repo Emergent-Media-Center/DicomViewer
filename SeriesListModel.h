@@ -31,6 +31,8 @@ public:
 
     Q_INVOKABLE void clearModelData();
 
+    Q_INVOKABLE void createVoxelVolume(QString patient, QString study, QString id);
+
 public slots:
 
 private:

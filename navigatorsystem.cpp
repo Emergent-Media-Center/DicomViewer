@@ -2,7 +2,18 @@
 #include <filesystem> // C++17
 #include <limits.h>
 
+#include "voxelvolume.h"
+
 namespace fs = std::filesystem;
+
+NavigatorSystem::~NavigatorSystem()
+{
+    if(voxelVolume != nullptr)
+    {
+        delete voxelVolume;
+        voxelVolume = nullptr;
+    }
+}
 
 NavigatorSystem* NavigatorSystem::singleton = nullptr;
 

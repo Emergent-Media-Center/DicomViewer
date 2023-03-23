@@ -20,9 +20,10 @@
 #include <gdcmImageReader.h>
 #include <unordered_map>
 
-
 using namespace std;
 using namespace gdcm;
+
+class VoxelVolume;
 
 enum class PathType {
     NONE = 0,
@@ -34,6 +35,7 @@ enum class PathType {
 class NavigatorSystem {
 protected:
     NavigatorSystem() = default;
+    ~NavigatorSystem();
 private:
     static NavigatorSystem* singleton;
 public:
@@ -48,6 +50,8 @@ private:
     map<string, map<string, map<string, map<string, string>>>> navigatorDB;
 
 public:
+    VoxelVolume* voxelVolume = nullptr;
+
     // Folder Navigation
     PathType GetPathType(const string& path);
     vector<string> ListAllDicomFromFolderRecursive(const string& path);
@@ -88,6 +92,8 @@ public:
     // there are lots of formats to be supported
     vector<double> DicomToGrayscale(ImageReader* reader);
     vector<double> DicomToGrayscale(string path);
+
+
 };
 
 #endif // NAVIGATORSYSTEM_H

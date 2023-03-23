@@ -1,5 +1,6 @@
 #include "SeriesListModel.h"
 #include "navigatorsystem.h"
+#include "voxelvolume.h"
 
 SeriesListModel::SeriesListModel(QObject* parent) :
     QAbstractListModel(parent)
@@ -102,4 +103,10 @@ void SeriesListModel::clearModelData()
     beginResetModel();
     m_series.clear();
     endResetModel();
+}
+
+
+void SeriesListModel::createVoxelVolume(QString patient, QString study, QString id)
+{
+    NavigatorSystem::Instance()->voxelVolume = new VoxelVolume(patient.toStdString(), study.toStdString(), id.toStdString());
 }
