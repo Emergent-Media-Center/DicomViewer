@@ -6,6 +6,11 @@ project(dicomviewer LANGUAGES CXX)
 
 # CPM
 include(external/cpm.cmake)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  SET(CMAKE_PREFIX_PATH ";~/Qt/6.4.3/macos")
+endif()
+MESSAGE(STATUS "${CMAKE_PREFIX_PATH}")
+
 
 # General flags
 set(CMAKE_C_STANDARD 11)
@@ -119,9 +124,9 @@ qt_add_qml_module(dicomviewer
 )
 
 install(TARGETS dicomviewer
-    RUNTIME DESTINATION "${INSTALL_EXAMPLEDIR}"
-    BUNDLE DESTINATION "${INSTALL_EXAMPLEDIR}"
-    LIBRARY DESTINATION "${INSTALL_EXAMPLEDIR}"
+    RUNTIME DESTINATION "${CMAKE_BINARY_DIR}"
+    BUNDLE DESTINATION "${CMAKE_BINARY_DIR}"
+    LIBRARY DESTINATION "${CMAKE_BINARY_DIR}"
 )
 
 
