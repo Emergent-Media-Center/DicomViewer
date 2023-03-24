@@ -63,6 +63,7 @@ ApplicationWindow {
     }*/
     FolderDialog {
         id: fileDialog
+        options: FolderDialog.ShowDirsOnly
         currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
         onAccepted: {
             //folderTree.setFolder(selectedFolder);
