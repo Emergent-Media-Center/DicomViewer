@@ -118,8 +118,9 @@ void SeriesListModel::createVoxelVolume(QString patient, QString study, QString 
 
     qDebug() << "Voxel volume created\n";
 
-    float side = 512;
-    img = QImage(side, side, QImage::Format_RGB32);
+    //Write the Image to a PNG file
+    float side = 512;   //Hardcoded for testing just for now
+    img = QImage(side, side, QImage::Format_Grayscale16);
     QRgb value;
 
     for(int i =0; i < side; i++)

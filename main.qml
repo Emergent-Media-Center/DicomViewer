@@ -61,18 +61,50 @@ ApplicationWindow {
             }
         }
     }*/
-    FolderDialog {
+    FileDialog {
         id: fileDialog
+        //options: FolderDialog.ShowDirsOnly
+        currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+        onAccepted: {
+            //folderTree.setFolder(selectedFolder);
+            //files.setFolder(selectedFolder);
+
+            openFolder(selectedFile);
+            //openFolder(selectedFiles()[0]);
+        }
+    }
+
+    FolderDialog {
+        id: folderDialog
         options: FolderDialog.ShowDirsOnly
         currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
         onAccepted: {
             //folderTree.setFolder(selectedFolder);
             //files.setFolder(selectedFolder);
+
             openFolder(selectedFolder);
+            //openFolder(selectedFiles()[0]);
         }
     }
 
     function openFolder(path){
+        patients.clearData();
+        studies.clearData();
+        series.clearData();
+
+        //files.setFolder(path);
+        patients.setData(path);
+
+        //files.enabled = true;
+        patients.enabled = true;
+        studies.enabled = true;
+        series.enabled = true;
+
+        //Hide text
+        dragTextRect.visible = false;
+    }
+
+    function openFile(path){
         patients.clearData();
         studies.clearData();
         series.clearData();
@@ -135,9 +167,9 @@ ApplicationWindow {
 
                     Menu {
                         title: "File"
-                        Action { text: "Open DICOM Folder"; onTriggered: fileDialog.open()}
+                        Action { text: "Open DICOM Folder"; onTriggered: folderDialog.open()}
                         MenuSeparator { }
-                        Action { text: "Open DICOM" }
+                        Action { text: "Open DICOM"; onTriggered: fileDialog.open() }
                         MenuSeparator { }
                         Action { text: "Export Image" }
                         MenuSeparator { }
@@ -299,14 +331,14 @@ ApplicationWindow {
                             onDropped: {
                                 //Open folder and show files
 
-                                //if(drop.hasUrls)
-                                //{
+                                if(drop.hasUrls)
+                                {
                                     openFolder(drop.urls[0]);
-                                //}
-                                //else
-                                //{
-
-                                //}
+                                }
+                                else
+                                {
+                                    openFolder(drop);
+                                }
 
                                 parent.color = "white"
                             }
