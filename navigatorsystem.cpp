@@ -312,8 +312,15 @@ vector<double> NavigatorSystem::DicomToGrayscale(ImageReader *reader) {
                 result[i] = buffer16[i];
             return result;
         }
+        else if(image.GetPixelFormat() == PixelFormat::UINT16)
+        {
+            uint16_t *buffer16 = (uint16_t*)buffer.get();
+            for(int i=0; i<cols*lins; i++)
+                result[i] = buffer16[i];
+            return result;
+        }
         else {
-          std::cerr << "Pixel Format is: " << pixelFormat << std::endl;
+          std::cerr << "Pixel Format is: \n" << pixelFormat << std::endl;
           return {};
         }
     }

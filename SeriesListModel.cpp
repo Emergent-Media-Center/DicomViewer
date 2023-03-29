@@ -2,6 +2,9 @@
 #include "navigatorsystem.h"
 #include "voxelvolume.h"
 
+#include <QImage>
+#include <QImageWriter>
+
 SeriesListModel::SeriesListModel(QObject* parent) :
     QAbstractListModel(parent)
 {
@@ -108,5 +111,35 @@ void SeriesListModel::clearModelData()
 
 void SeriesListModel::createVoxelVolume(QString patient, QString study, QString id)
 {
+    qDebug() << "\nCreating voxel volume...";
+
     NavigatorSystem::Instance()->voxelVolume = new VoxelVolume(patient.toStdString(), study.toStdString(), id.toStdString());
+    vector<vector<vector<double>>>& volume = NavigatorSystem::Instance()->voxelVolume->getVolume();
+
+    qDebug() << "Voxel volume created\n";
+
+    float side = 512;
+    img = QImage(side, side, QImage::Format_RGB32);
+    QRgb value;
+
+    for(int i =0; i < side; i++)
+    {
+        for(int j = 0; j < side; j++)
+        {
+            value = volume[0][i][j];
+            img.setPixel(i, j, value);
+        }
+    }
+
+    QImageWriter writer("C:/Users/ddrummond/Documents/EMC/DebugImages/test.png","PNG");
+    if(writer.canWrite())
+    {
+        qDebug() << "Write called...";
+        writer.write(img);
+        qDebug() << "Image written\n";
+    }
+    else
+    {
+        qDebug() << "Can't write\n";
+    }
 }

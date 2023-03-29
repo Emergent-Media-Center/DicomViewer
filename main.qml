@@ -298,7 +298,15 @@ ApplicationWindow {
                             }
                             onDropped: {
                                 //Open folder and show files
-                                openFolder(drop.urls[0]);
+
+                                //if(drop.hasUrls)
+                                //{
+                                    openFolder(drop.urls[0]);
+                                //}
+                                //else
+                                //{
+
+                                //}
 
                                 parent.color = "white"
                             }

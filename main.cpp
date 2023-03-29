@@ -42,6 +42,8 @@ int main(int argc, char *argv[])
     //PatientListModel patientModel;
     //patientModel.openFile("C:/Users/ddrummond/Documents/EMC/Cases/DICOM/I0");
 
+    NavigatorSystem::Instance()->BuildDB("C:/Users/ddrummond/Documents/EMC/CaseImages/AurusLatestCases/GERALDO MUCCILLO DAUDT/GERALDO MUCCILLO DAUDT/series1");
+
     QSurfaceFormat::setDefaultFormat(QQuick3D::idealSurfaceFormat());
 
     QQmlApplicationEngine engine;

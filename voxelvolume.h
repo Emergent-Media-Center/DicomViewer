@@ -21,6 +21,8 @@ private:
     vector<vector<vector<double>>> volume;
 public:
     VoxelVolume(string PatientId, string StudyId, string SeriesId);
+
+    vector<vector<vector<double>>>& getVolume() {return volume;}
 private:
 
 };

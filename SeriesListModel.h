@@ -5,6 +5,7 @@
 #include <QtGui>
 #include <QAbstractListModel>
 #include <QHash>
+#include <QImage>
 
 class SeriesListModel : public QAbstractListModel
 {
@@ -33,12 +34,16 @@ public:
 
     Q_INVOKABLE void createVoxelVolume(QString patient, QString study, QString id);
 
+    Q_INVOKABLE QImage getImage() {return img;}
+
 public slots:
 
 private:
     std::string m_patient;
     std::string m_study;
     std::vector<std::string> m_series;
+
+    QImage img;
 };
 
 #endif // SERIESLISTMODEL_H
