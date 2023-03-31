@@ -21,6 +21,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
+# itk
+include(external/itk.cmake)
+
 # Qt folder to work on clion on windows - WiP
 include(external/FindQtWindows.cmake)
 set(CMAKE_AUTOMOC ON)
@@ -29,7 +32,7 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Quick3D Widgets)
 
 # gdcm
-include(external/gdcm.cmake)
+#include(external/gdcm.cmake)
 
 # glob source files
 file(GLOB DICOMVIEWER_INC
@@ -96,6 +99,7 @@ if(WIN32 AND NOT CYGWIN AND NOT MINGW)
           Qt::Quick3D
           Qt6::Widgets
           gdcmgetopt
+          ${ITK_LIBRARIES}
           )
 endif()
 
