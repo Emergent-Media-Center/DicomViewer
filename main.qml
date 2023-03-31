@@ -337,7 +337,7 @@ ApplicationWindow {
                                 }
                                 else
                                 {
-                                    openFolder(drop);
+                                    openFile(drop);
                                 }
 
                                 parent.color = "white"
