@@ -102,10 +102,17 @@ ScrollView
         focus: true
     }
 
-    function setData(path)
+    function setFolder(path)
     {
-        console.log("Set data");
+        console.log("Set folder");
         patientList.model.openFolder(path);
+        //console.log(patientList.model.patientName);
+    }
+
+    function setFile(path)
+    {
+        console.log("Set file");
+        patientList.model.openFile(path);
         //console.log(patientList.model.patientName);
     }
 

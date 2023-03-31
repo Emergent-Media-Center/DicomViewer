@@ -80,6 +80,22 @@ void PatientListModel::openFolder(QVariant path)
 }
 
 
+void PatientListModel::openFile(QVariant path)
+{
+    QString qstr = path.toString();
+    std::string str = qstr.toStdString();
+
+    //Remove file name and extraneous extension on front of path
+    str = str.substr(8, str.length());
+
+    std::vector<std::string> files;
+    files.push_back(str);
+
+    NavigatorSystem::Instance()->BuildDB(files);
+    setModelData();
+}
+
+
 void PatientListModel::clearModelData()
 {
     beginResetModel();

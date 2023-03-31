@@ -26,6 +26,7 @@ public:
     //bool setData(const QModelIndex& index, const QVariant &value, int role) override;
 
     Q_INVOKABLE void openFolder(QVariant path);
+    Q_INVOKABLE void openFile(QVariant path);
 
     Q_INVOKABLE void clearModelData();
 

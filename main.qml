@@ -69,7 +69,7 @@ ApplicationWindow {
             //folderTree.setFolder(selectedFolder);
             //files.setFolder(selectedFolder);
 
-            openFolder(selectedFile);
+            openFile(selectedFile);
             //openFolder(selectedFiles()[0]);
         }
     }
@@ -93,7 +93,7 @@ ApplicationWindow {
         series.clearData();
 
         //files.setFolder(path);
-        patients.setData(path);
+        patients.setFolder(path);
 
         //files.enabled = true;
         patients.enabled = true;
@@ -110,7 +110,7 @@ ApplicationWindow {
         series.clearData();
 
         //files.setFolder(path);
-        patients.setData(path);
+        patients.setFile(path);
 
         //files.enabled = true;
         patients.enabled = true;
