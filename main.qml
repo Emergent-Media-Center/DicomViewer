@@ -63,6 +63,7 @@ ApplicationWindow {
     }*/
     FolderDialog {
         id: fileDialog
+        options: FolderDialog.ShowDirsOnly
         currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
         onAccepted: {
             //folderTree.setFolder(selectedFolder);
@@ -76,9 +77,10 @@ ApplicationWindow {
         studies.clearData();
         series.clearData();
 
-        files.setFolder(path);
+        //files.setFolder(path);
+        patients.setData(path);
 
-        files.enabled = true;
+        //files.enabled = true;
         patients.enabled = true;
         studies.enabled = true;
         series.enabled = true;
@@ -313,7 +315,7 @@ ApplicationWindow {
 
                             anchors.fill: parent
 
-                            FileList{
+                            /*FileList{
                                 id: files
                                 enabled: false
                                 Layout.minimumWidth: 50;
@@ -323,7 +325,7 @@ ApplicationWindow {
                                 Component.onCompleted: {
                                     //folderTree.folderChanged.connect(files.setFolder)
                                 }
-                            }
+                            }*/
 
                             PatientList{
                                 id: patients
@@ -331,9 +333,10 @@ ApplicationWindow {
                                 Layout.minimumWidth: 50;
                                 Layout.preferredWidth: 200;
                                 Layout.fillWidth: true;
+                                Layout.fillHeight: true;
 
                                 Component.onCompleted: {
-                                       files.fileChanged.connect(patients.setData)
+                                       //files.fileChanged.connect(patients.setData)
                                 }
                             }
 
@@ -343,6 +346,7 @@ ApplicationWindow {
                                 Layout.minimumWidth: 50;
                                 Layout.preferredWidth: 200;
                                 Layout.fillWidth: true;
+                                Layout.fillHeight: true;
 
                                 Component.onCompleted:
                                 {
@@ -356,6 +360,7 @@ ApplicationWindow {
                                 Layout.minimumWidth: 50;
                                 Layout.preferredWidth: 200;
                                 Layout.fillWidth: true;
+                                Layout.fillHeight: true;
 
                                 Component.onCompleted:
                                 {

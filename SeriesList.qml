@@ -57,6 +57,7 @@ ScrollView
                         onClicked:
                         {
                             console.log("Patient: " + patientId + "   Study: " + studyId + "   Chose Study: " + seriesId)
+                            seriesList.model.createVoxelVolume(patientId, studyId, seriesId);
                             seriesList.currentIndex = index;
                         }
                     }

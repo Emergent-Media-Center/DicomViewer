@@ -20,6 +20,9 @@
 #include <unordered_map>
 #include "navigatorsystem.h"
 #include <algorithm>
+
+#include "voxelvolume.h"
+
 VoxelVolume::VoxelVolume(string PatientId, string StudyId, string SeriesId) {
     auto nav = NavigatorSystem::Instance();
     auto files = nav->sortSeries(PatientId, StudyId, SeriesId);
@@ -66,6 +69,5 @@ VoxelVolume::VoxelVolume(string PatientId, string StudyId, string SeriesId) {
         this->volume.push_back(sliceData);
     }
     // load all slices
-
 }
 
