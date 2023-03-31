@@ -18,7 +18,7 @@ void PatientListModel::setModelData()
 
     std::vector<string> patients = NavigatorSystem::Instance()->ListPatientIds();
 
-    beginInsertRows(QModelIndex(), m_patients.size(), m_patients.size());
+    beginInsertRows(QModelIndex(), 0, patients.size() - 1);
     for(int i = 0; i < patients.size(); i++)
     {
         m_patients.push_back(patients[i]);

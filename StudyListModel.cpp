@@ -19,7 +19,7 @@ void StudyListModel::setModelData(QVariant patientId)
     m_patient = patientId.toString().toStdString();
     std::vector<string> studies = NavigatorSystem::Instance()->ListStudiesFromPatientId(m_patient);
 
-    beginInsertRows(QModelIndex(), m_studies.size(), m_studies.size());
+    beginInsertRows(QModelIndex(), 0, studies.size() - 1);
     for(int i = 0; i < studies.size(); i++)
     {
         m_studies.push_back(studies[i]);

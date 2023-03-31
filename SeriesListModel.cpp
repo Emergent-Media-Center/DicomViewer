@@ -24,7 +24,7 @@ void SeriesListModel::setModelData(QVariant patientId, QVariant studyId)
     m_study = studyId.toString().toStdString();
     std::vector<string> series = NavigatorSystem::Instance()->ListSeriesFromPatientIdStudyId(m_patient, m_study);
 
-    beginInsertRows(QModelIndex(), m_series.size(), m_series.size());
+    beginInsertRows(QModelIndex(), 0, series.size()-1);
     for(int i = 0; i < series.size(); i++)
     {
         m_series.push_back(series[i]);
@@ -120,7 +120,7 @@ void SeriesListModel::createVoxelVolume(QString patient, QString study, QString 
 
     //Write the Image to a PNG file
     float side = 512;   //Hardcoded for testing just for now
-    img = QImage(side, side, QImage::Format_Grayscale16);
+    img = QImage(side, side, QImage::Format_Grayscale8);
     QRgb value;
 
     for(int i =0; i < side; i++)
