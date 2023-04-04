@@ -132,15 +132,24 @@ void SeriesListModel::createVoxelVolume(QString patient, QString study, QString 
         }
     }
 
-    QImageWriter writer("C:/Users/ddrummond/Documents/EMC/DebugImages/test.png","PNG");
+    std::string path = "C:";
+
+    const QStringList locations = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
+
+    if(!locations.isEmpty())
+    {
+        path = QString(locations.first()).toStdString();
+    }
+
+    QImageWriter writer((path + "/test.png").c_str(),"PNG");
     if(writer.canWrite())
     {
         qDebug() << "Write called...";
         writer.write(img);
-        qDebug() << "Image written\n";
+        qDebug() << "Image written to " << (path + "/test.png").c_str() << "\n";
     }
     else
     {
-        qDebug() << "Can't write\n";
+        qDebug() << "Can't write to " << (path + "/test.png").c_str() << "\n";
     }
 }

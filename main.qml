@@ -334,10 +334,8 @@ ApplicationWindow {
                                 if(drop.hasUrls)
                                 {
                                     openFolder(drop.urls[0]);
-                                }
-                                else
-                                {
-                                    openFile(drop);
+
+                                    //openFile(drop.urls[0]);
                                 }
 
                                 parent.color = "white"
