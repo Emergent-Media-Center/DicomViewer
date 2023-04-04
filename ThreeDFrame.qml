@@ -4,6 +4,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Frame {
+    id: mainFrame
     width: 900
     height: 900
     leftPadding: 0
@@ -16,48 +17,14 @@ Frame {
 
     MouseArea {
         anchors.fill: parent
-        onWheel: { sceneCamera1.z -= (wheel.angleDelta.y) / 6 }
+        onWheel: { currentImage.width -= (wheel.angleDelta.y) / 6 }
     }
 
-    View3D {
-        id: view3D1
+    Image {
+        //source: myImage
         anchors.fill: parent
-        importScene: scene1
-        camera: sceneCamera1
-        environment: sceneEnvironment1
-        SceneEnvironment {
-            id: sceneEnvironment1
-            specularAAEnabled: false
-            clearColor: "#424242"
-            backgroundMode: SceneEnvironment.Color
-            antialiasingMode: SceneEnvironment.MSAA
-            antialiasingQuality: SceneEnvironment.High
-        }
-
-        Node {
-            id: scene1
-            DirectionalLight {
-                id: directionalLight1
-                eulerRotation.y: 0
-                brightness: 1
-            }
-
-            PerspectiveCamera {
-                id: sceneCamera1
-//                lookAtNode: cubeModel1
-                z: 350
-            }
-
-
-            Model {
-                id: cubeModel1
-                source: "#Cube"
-                materials: cubeMat1
-                eulerRotation.x: 30
-                eulerRotation.y: rotationSlider.value
-            }
-
-        }
+        id: currentImage
+        width: 450
 
         Slider {
             id: rotationSlider
@@ -75,17 +42,7 @@ Frame {
         }
     }
 
-    Item {
-        id: __materialLibrary__
-
-        SpecularGlossyMaterial {
-            id: cubeMat1
-            thicknessFactor: 0
-            clearcoatAmount: 0
-            objectName: "Cube Model Mat"
-            specularColor: "#000000"
-            albedoColor: "#4aee45"
-
-        }
+    function getImage(i){
+        console.log(i);
     }
 }

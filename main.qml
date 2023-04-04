@@ -441,14 +441,15 @@ ApplicationWindow {
                                     color: "white";
                                     border { width: 1; color: "black" }
                                     MouseArea {
+                                        anchors.fill: parent
                                         id: mouse
-                                        // onClicked: send image to frame
+                                        onClicked: {
+                                            threeDFrame2.getImage(row.topPadding)
+                                        }
                                     }
-
                                 }
                             }
                 }
-
             }
         }
     }
