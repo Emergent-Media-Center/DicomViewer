@@ -153,29 +153,29 @@ ApplicationWindow {
                         MenuSeparator { }
                         Action { text: "Enable Drawing" }
                         MenuSeparator { }
-                        Action { text: "Undo" }
+                        Action { text: "Undo <i>Ctrl+Z</i>" ; shortcut: "Ctrl+Z" }
                         MenuSeparator { }
-                        Action { text: "Redo" }
+                        Action { text: "Redo"; shortcut: "Ctrl+Y" }
                         MenuSeparator { }
                         Action { text: "Accessibility..." }
                     }
 
                     Menu {
                         title: "View"
-                        Action { text: "Annotations" }
+                        Action { text: "Annotations"; shortcut: "F4"; onTriggered: annotations.visible = true }
                         MenuSeparator { }
                         Action { text: "Show Dicom Tags" }
                         MenuSeparator { }
                         Action { text: "Fill Viewport" }
                         MenuSeparator { }
-                        Action { text: "100%"; onTriggered: {dicomApp.width = 640; dicomApp.height = 480}}
-                        Action { text: "200%"; onTriggered: {dicomApp.width = 1280; dicomApp.height = 960}}
-                        Action { text: "400%"; onTriggered: {dicomApp.width = 2560; dicomApp.height = 1920} }
+                        Action { text: "100% <i>F1</i>"; shortcut: "F1"; onTriggered: {dicomApp.width = 640; dicomApp.height = 480}}
+                        Action { text: "200% <i>F2</i>"; shortcut: "F2"; onTriggered: {dicomApp.width = 1280; dicomApp.height = 960}}
+                        Action { text: "400% <i>F3</i>" ; shortcut: "F3"; onTriggered: {dicomApp.width = 2560; dicomApp.height = 1920} }
                     }
 
                     Menu {
                         title: "Window"
-                        Action { text: "Default Window" }
+                        Action { text: "Default Window"; onTriggered: threeDFrame.visible = true, ThreeDFrame3.visible = false; }
                         MenuSeparator { }
                         Action { text: "1 Window View"; onTriggered: threeDFrame.visible = false; }
                         MenuSeparator { }
@@ -183,9 +183,14 @@ ApplicationWindow {
                         MenuSeparator { }
                         Action { text: "3 Window View"; onTriggered: threeDFrame3.visible = true, splitter.visible = true; }
                         MenuSeparator { }
-                        Action { text: "Fullscreen 'F5'" }
+                        Action { text: "Fullscreen 'F5'"; shortcut: "F5"; onTriggered: {
+                                if (dicomApp.visibility === Window.FullScreen)
+                                    dicomApp.visibility = Window.AutomaticVisibility;
+                                else
+                                    dicomApp.visibility = Window.FullScreen;
+                            }}
                         MenuSeparator { }
-                        Action { text: "Close All Windows" }
+                        Action { text: "Close All Windows"; onTriggered: threeDFrame.visible = false, threeDFrame3.visible = false; }
                     }
 
                     Menu {
