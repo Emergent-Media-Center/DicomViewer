@@ -13,6 +13,7 @@ import com.DicomImage 1.0
 import com.DicomItemModels 1.0
 
 ApplicationWindow {
+    id: dicomApp
     title: qsTr("Dicom Viewer")
     width: 640
     height: 480
@@ -152,8 +153,7 @@ ApplicationWindow {
                         MenuSeparator { }
                         Action { text: "Enable Drawing" }
                         MenuSeparator { }
-                        Action { text: "Undo"
-                            shortcut: ""  }
+                        Action { text: "Undo" }
                         MenuSeparator { }
                         Action { text: "Redo" }
                         MenuSeparator { }
@@ -168,20 +168,20 @@ ApplicationWindow {
                         MenuSeparator { }
                         Action { text: "Fill Viewport" }
                         MenuSeparator { }
-                        Action { text: "100%" }
-                        Action { text: "200%" }
-                        Action { text: "400%" }
+                        Action { text: "100%"; onTriggered: {dicomApp.width = 640; dicomApp.height = 480}}
+                        Action { text: "200%"; onTriggered: {dicomApp.width = 1280; dicomApp.height = 960}}
+                        Action { text: "400%"; onTriggered: {dicomApp.width = 2560; dicomApp.height = 1920} }
                     }
 
                     Menu {
                         title: "Window"
                         Action { text: "Default Window" }
                         MenuSeparator { }
-                        Action { text: "1 Window View" }
+                        Action { text: "1 Window View"; onTriggered: threeDFrame.visible = false; }
                         MenuSeparator { }
-                        Action { text: "2 Window View" }
+                        Action { text: "2 Window View"; onTriggered: threeDFrame.visible = true; }
                         MenuSeparator { }
-                        Action { text: "3 Window View" }
+                        Action { text: "3 Window View"; onTriggered: threeDFrame3.visible = true, splitter.visible = true; }
                         MenuSeparator { }
                         Action { text: "Fullscreen 'F5'" }
                         MenuSeparator { }
@@ -238,10 +238,25 @@ ApplicationWindow {
 
                         ThreeDFrame {
                             id: threeDFrame2
+                            visible: true
                         }
 
                         ThreeDFrame {
                             id: threeDFrame
+                            visible: true
+                        }
+
+                        SplitView {
+                            id: splitter
+                            anchors.horizontalCenter: parent.left
+                            orientation: Qt.Horizontal
+                            visible: false
+
+                            ThreeDFrame {
+                                id: threeDFrame3
+                                visible: false
+                                width: userViews.width
+                            }
                         }
                     }
                 }
@@ -444,7 +459,7 @@ ApplicationWindow {
                                         anchors.fill: parent
                                         id: mouse
                                         onClicked: {
-                                            threeDFrame2.getImage(row.topPadding)
+                                            threeDFrame2.getImage(8)
                                         }
                                     }
                                 }
