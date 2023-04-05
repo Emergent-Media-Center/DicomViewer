@@ -68,17 +68,6 @@ QVariant PatientListModel::data(const QModelIndex &index, int role) const
     return false;
 }*/
 
-void PatientListModel::openFolder(QVariant path)
-{
-    QString qstr = path.toString();
-    std::string str = qstr.toStdString();
-
-    //Remove file name and extraneous extension on front of path
-    str = str.substr(8, str.length());
-    NavigatorSystem::Instance()->BuildDB(str);
-    setModelData();
-}
-
 
 void PatientListModel::openFile(QVariant path)
 {
@@ -88,10 +77,22 @@ void PatientListModel::openFile(QVariant path)
     //Remove file name and extraneous extension on front of path
     str = str.substr(8, str.length());
 
-    std::vector<std::string> files;
-    files.push_back(str);
+    QFileInfo fileInfo(str.c_str());
 
-    NavigatorSystem::Instance()->BuildDB(files);
+    if(fileInfo.isFile())
+    {
+        std::vector<std::string> files;
+        files.push_back(str);
+
+        qDebug() << "isFile\n";
+
+        NavigatorSystem::Instance()->BuildDB(files);
+    }
+    else
+    {
+        NavigatorSystem::Instance()->BuildDB(str);
+    }
+
     setModelData();
 }
 

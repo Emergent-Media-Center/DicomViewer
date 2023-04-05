@@ -82,12 +82,12 @@ ApplicationWindow {
             //folderTree.setFolder(selectedFolder);
             //files.setFolder(selectedFolder);
 
-            openFolder(selectedFolder);
+            openFile(selectedFolder);
             //openFolder(selectedFiles()[0]);
         }
     }
 
-    function openFolder(path){
+    /*function openFolder(path){
         patients.clearData();
         studies.clearData();
         series.clearData();
@@ -102,7 +102,7 @@ ApplicationWindow {
 
         //Hide text
         dragTextRect.visible = false;
-    }
+    }*/
 
     function openFile(path){
         patients.clearData();
@@ -331,12 +331,14 @@ ApplicationWindow {
                             onDropped: {
                                 //Open folder and show files
 
-                                if(drop.hasUrls)
+                                /*if(drop.hasUrls)
                                 {
-                                    openFolder(drop.urls[0]);
+                                    openFile(drop.urls[0]);
 
                                     //openFile(drop.urls[0]);
-                                }
+                                }*/
+
+                                openFile(drop.urls[0]);
 
                                 parent.color = "white"
                             }
