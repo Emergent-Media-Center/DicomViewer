@@ -20,6 +20,8 @@ private:
     // instance, row, colum
     vector<vector<vector<double>>> volume;
 public:
+    int GetRows() { return Rows; }
+    int GetColumns() { return Colmns; }
     VoxelVolume(string PatientId, string StudyId, string SeriesId);
 
     vector<vector<vector<double>>>& getVolume() {return volume;}
