@@ -1,6 +1,6 @@
 #include "PixmapImage.h"
 
-PixmapImage::PixmapImage(QQuickItem *parent)
+/*PixmapImage::PixmapImage(QQuickItem *parent)
     : QQuickPaintedItem{parent}
 {
 
@@ -17,5 +17,5 @@ void PixmapImage::paint(QPainter* painter)
     Q_ASSERT(dicom);
     dicomImage.SetPixmap(dicom->getPixmap());
     update();
- }
+ }*/
 

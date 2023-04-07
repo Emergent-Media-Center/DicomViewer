@@ -119,20 +119,24 @@ void SeriesListModel::createVoxelVolume(QString patient, QString study, QString 
     qDebug() << "Voxel volume created\n";
 
     //Write the Image to a PNG file
-    float side = NavigatorSystem::Instance()->voxelVolume->GetRows();   //Hardcoded for testing just for now
-    img = QImage(side, side, QImage::Format_Grayscale8);
+    float side = NavigatorSystem::Instance()->voxelVolume->GetRows();
+
+    QImage* img = dicomImg.getImage();
+    *img = QImage(side, side, QImage::Format_Grayscale8);
     QRgb value;
 
     for(int i =0; i < side; i++)
     {
         for(int j = 0; j < side; j++)
         {
-            value = volume[0][i][j];
-            img.setPixel(i, j, value);
+            value = dicomImg.RemapValue(volume[0][i][j]);
+            img->setPixel(i, j, value);
         }
     }
 
-    std::string path = "C:";
+    dicomImg.PrintImage();
+
+    /*std::string path = "C:";
 
     const QStringList locations = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
 
@@ -151,5 +155,5 @@ void SeriesListModel::createVoxelVolume(QString patient, QString study, QString 
     else
     {
         qDebug() << "Can't write to " << (path + "/test.png").c_str() << "\n";
-    }
+    }*/
 }

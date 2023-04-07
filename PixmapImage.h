@@ -7,7 +7,7 @@
 
 #include "QMLDicomImage.h"
 
-class PixmapImage : public QQuickPaintedItem
+/*class PixmapImage : public QQuickPaintedItem
 {
     Q_OBJECT
 private:
@@ -22,6 +22,6 @@ public:
 
 signals:
 
-};
+};*/
 
 #endif // PIXMAPIMAGE_H
