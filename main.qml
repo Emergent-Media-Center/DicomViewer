@@ -61,6 +61,12 @@ ApplicationWindow {
             }
         }
     }*/
+
+    DicomDisplay
+    {
+        id: display1
+    }
+
     FileDialog {
         id: fileDialog
         //options: FolderDialog.ShowDirsOnly
@@ -268,8 +274,23 @@ ApplicationWindow {
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
-                        ThreeDFrame {
-                            id: threeDFrame2
+                        Image
+                        {
+                            id: dicomImage
+                            //width: 900
+                            //height: 900
+                            Layout.alignment: Qt.AlignRight | Qt.AlignBottom
+                            Layout.fillHeight: true
+
+                            Component.onCompleted:
+                            {
+                                series.chooseSeries.connect(dicomImage.setImage);
+                            }
+
+                            function setImage()
+                            {
+                                dicomImage.source = display1.getImage();
+                            }
                         }
 
                         ThreeDFrame {

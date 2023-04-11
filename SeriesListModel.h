@@ -45,8 +45,6 @@ private:
     std::string m_patient;
     std::string m_study;
     std::vector<std::string> m_series;
-
-    QMLDicomImage dicomImg;
 };
 
 #endif // SERIESLISTMODEL_H

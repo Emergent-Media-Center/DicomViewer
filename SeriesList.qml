@@ -11,6 +11,8 @@ ScrollView
     ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
+    signal chooseSeries()
+
     ListView{
         width: parent.width
         //height: 400 //parent.height
@@ -59,6 +61,7 @@ ScrollView
                             console.log("Patient: " + patientId + "   Study: " + studyId + "   Chose Study: " + seriesId)
                             seriesList.model.createVoxelVolume(patientId, studyId, seriesId);
                             seriesList.currentIndex = index;
+                            chooseSeries();
                         }
                     }
                 }

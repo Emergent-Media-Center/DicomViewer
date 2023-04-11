@@ -21,6 +21,7 @@
 #include <sstream>
 
 #include "QMLDicomImage.h"
+#include "DicomDisplay.h"
 #include "PixmapImage.h"
 #include "PatientListModel.h"
 #include "StudyListModel.h"
@@ -31,7 +32,7 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     //QApplication app(argc, argv);
-    qmlRegisterType<QMLDicomImage>("com.DicomImage", 1, 0, "QMLDicomImage");
+    qmlRegisterType<DicomDisplay>("com.DicomImage", 1, 0, "DicomDisplay");
     //qmlRegisterType<PixmapImage>("com.DicomImage", 1, 0, "PixmapImage");
 
     qmlRegisterType<PatientListModel>("com.DicomItemModels", 1, 0, "PatientListModel");
