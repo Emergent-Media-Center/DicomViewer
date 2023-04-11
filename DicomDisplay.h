@@ -13,6 +13,7 @@ public:
     explicit DicomDisplay(QObject *parent = nullptr);
 
     Q_INVOKABLE QString getImage();
+    Q_INVOKABLE QString getImage(int center, int range);
 private:
     QMLDicomImage dicomImg;
 

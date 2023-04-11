@@ -291,6 +291,46 @@ ApplicationWindow {
                             {
                                 dicomImage.source = display1.getImage();
                             }
+
+                            Slider {
+                                id: centerSlider
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                from: 0
+                                to: 4095
+                                anchors.leftMargin: 20
+                                anchors.topMargin: 20
+                                value: 2048
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onWheel:
+                                    {
+                                        centerSlider.value += (wheel.angleDelta.y) / 6;
+                                        dicomImage.source = display1.getImage(centerSlider.value, rangeSlider.value);
+                                    }
+                                }
+                            }
+
+                            Slider {
+                                id: rangeSlider
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                from: 0
+                                to: 4095
+                                anchors.leftMargin: 20
+                                anchors.topMargin: 40
+                                value: 4095
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onWheel:
+                                    {
+                                        rangeSlider.value += (wheel.angleDelta.y) / 6;
+                                        dicomImage.source = display1.getImage(centerSlider.value, rangeSlider.value);
+                                    }
+                                }
+                            }
                         }
 
                         ThreeDFrame {
