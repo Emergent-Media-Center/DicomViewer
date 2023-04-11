@@ -16,11 +16,11 @@ private:
     QImage img;
 
     int lowerRange = 0;
-    int upperRange = 4096;
+    int upperRange = 4095;
 
 public:
     const int MIN_RANGE = 0;
-    const int MAX_RANGE = 4096;
+    const int MAX_RANGE = 4095;
 
     explicit QMLDicomImage(QObject *parent = Q_NULLPTR);
 
@@ -32,7 +32,10 @@ public:
     void setImage(QImage newImg) { img = newImg; }
     void SetPixel(int x, int y, QRgb rgb) { img.setPixel(x, y, rgb); }
 
+    double GetWindowedValue(int value, int center, int range);
     double RemapValue(int value);
+    double RemapValue(int value, int newMin, int newMax);
+    double RemapValue(int value, int oldMin, int oldMax, int newMin, int newMax);
     void PrintImage();
 
 //signals:

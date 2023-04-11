@@ -129,8 +129,11 @@ void SeriesListModel::createVoxelVolume(QString patient, QString study, QString 
     {
         for(int j = 0; j < side; j++)
         {
-            value = dicomImg.RemapValue(volume[0][i][j]);
+            //value = dicomImg.RemapValue(volume[0][i][j]);
+            //value = dicomImg.RemapValue(volume[0][i][j], 0, 255);
+            value = dicomImg.GetWindowedValue(volume[0][i][j], 2047, 4096);
             img->setPixel(i, j, value);
+            //img->setPixel(i, j, volume[0][i][j]);
         }
     }
 

@@ -41,9 +41,34 @@ void QMLDicomImage::PrintImage()
     }
 }
 
+double QMLDicomImage::GetWindowedValue(int value, int center, int range)
+{
+    int lowValue = center - (range / 2);
+    int highValue = center + (range / 2);
+
+    double newValue = RemapValue(value, lowValue, highValue, 0, 255);
+
+    if(newValue < 0)
+        return 0;
+    else if(newValue > 255)
+        return 255;
+
+    return newValue;
+}
+
 double QMLDicomImage::RemapValue(int value)
 {
-    return lowerRange + (value - MIN_RANGE) * (upperRange - lowerRange) / (MAX_RANGE - MIN_RANGE);
+    return lowerRange + (upperRange - lowerRange) * ((double)(value - MIN_RANGE) / (double)(MAX_RANGE - MIN_RANGE));
+}
+
+double QMLDicomImage::RemapValue(int value, int newMin, int newMax)
+{
+    return newMin + (newMax - newMin) * ((double)(value - MIN_RANGE) / (double)(MAX_RANGE - MIN_RANGE));
+}
+
+double QMLDicomImage::RemapValue(int value, int oldMin, int oldMax, int newMin, int newMax)
+{
+    return newMin + (newMax - newMin) * ((double)(value - oldMin) / (double)(oldMax - oldMin));
 }
 
 
