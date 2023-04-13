@@ -14,8 +14,6 @@ QString DicomDisplay::getImage()
 {
     vector<vector<vector<double>>>& volume = NavigatorSystem::Instance()->voxelVolume->getVolume();
 
-    qDebug() << "Voxel volume created\n";
-
     //Write the Image to a PNG file
     float side = NavigatorSystem::Instance()->voxelVolume->GetRows();
 
@@ -50,8 +48,6 @@ QString DicomDisplay::getImage()
 QString DicomDisplay::getImage(int center, int range)
 {
     vector<vector<vector<double>>>& volume = NavigatorSystem::Instance()->voxelVolume->getVolume();
-
-    qDebug() << "Voxel volume created\n";
 
     //Write the Image to a PNG file
     float side = NavigatorSystem::Instance()->voxelVolume->GetRows();

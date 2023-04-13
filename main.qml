@@ -292,27 +292,77 @@ ApplicationWindow {
                                 dicomImage.source = display1.getImage();
                             }
 
-                            Slider {
-                                id: centerSlider
+                            RangeSlider {
+                                property int lastDiff
+                                property int lastFirstValue
+                                property int lastSecondValue
+
+                                id: windowSlider
                                 anchors.left: parent.left
                                 anchors.top: parent.top
                                 from: 0
                                 to: 4095
                                 anchors.leftMargin: 20
                                 anchors.topMargin: 20
-                                value: 2048
+                                first.value: 2048   //First is center
+                                second.value: 4095  //Second is range
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onWheel:
+                                Rectangle
+                                {
+                                    id: mirroredRange
+                                    x: windowSlider.first.handle.x - (windowSlider.second.handle.x - windowSlider.first.handle.x)
+                                    y: windowSlider.second.handle.y + windowSlider.height / 3
+                                    height: windowSlider.height / 3
+                                    width: windowSlider.second.handle.x - windowSlider.first.handle.x
+
+                                    color: "dodgerblue"
+                                }
+
+                                //Note: This code has only been tested with windowSlider.from at 0
+                                first.onMoved:
+                                {
+                                    if(windowSlider.first.value < windowSlider.lastDiff)
                                     {
-                                        centerSlider.value += (wheel.angleDelta.y) / 6;
-                                        dicomImage.source = display1.getImage(centerSlider.value, rangeSlider.value);
+                                        windowSlider.setValues(windowSlider.lastDiff, windowSlider.lastDiff + windowSlider.lastDiff);
                                     }
+                                    else if(windowSlider.first.value + windowSlider.lastDiff > windowSlider.to)
+                                    {
+                                        windowSlider.setValues(windowSlider.to - windowSlider.lastDiff, windowSlider.to);
+                                    }
+                                    else
+                                    {
+                                        windowSlider.setValues(windowSlider.first.value, windowSlider.first.value + windowSlider.lastDiff);
+
+                                        //console.log("First - " + windowSlider.first.value + "  Second - " + windowSlider.second.value + "  Diff - " + windowSlider.lastDiff);
+                                    }
+
+                                    dicomImage.source = display1.getImage(windowSlider.first.value, windowSlider.second.value);
+                                    windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                                }
+
+                                //Note: This code has only been tested with windowSlider.from at 0
+                                second.onMoved:
+                                {
+                                    var newDiff = windowSlider.second.value - windowSlider.first.value;
+                                    if(windowSlider.first.value - newDiff < windowSlider.from)
+                                    {
+                                        windowSlider.setValues(newDiff, windowSlider.second.value)
+                                    }
+
+                                    dicomImage.source = display1.getImage(windowSlider.first.value, windowSlider.second.value);
+
+                                    windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                                }
+
+                                Component.onCompleted:
+                                {
+                                    windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                                    windowSlider.lastFirstValue = windowSlider.first.value;
+                                    windowSlider.lastSecondValue = windowSlider.second.value;
                                 }
                             }
 
-                            Slider {
+                            /*Slider {
                                 id: rangeSlider
                                 anchors.left: parent.left
                                 anchors.top: parent.top
@@ -330,7 +380,7 @@ ApplicationWindow {
                                         dicomImage.source = display1.getImage(centerSlider.value, rangeSlider.value);
                                     }
                                 }
-                            }
+                            }*/
                         }
 
                         ThreeDFrame {
