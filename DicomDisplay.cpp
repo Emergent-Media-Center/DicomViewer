@@ -18,7 +18,7 @@ QString DicomDisplay::getImage()
     float side = NavigatorSystem::Instance()->voxelVolume->GetRows();
 
     QImage* img = dicomImg.getImage();
-    *img = QImage(side, side, QImage::Format_Grayscale8);
+    *img = QImage(side, side, QImage::Format_Grayscale16);
     QRgb value;
 
     for(int i =0; i < side; i++)
@@ -28,7 +28,7 @@ QString DicomDisplay::getImage()
             //value = dicomImg.RemapValue(volume[0][i][j]);
             //value = dicomImg.RemapValue(volume[0][i][j], 0, 255);
             value = dicomImg.GetWindowedValue(volume[0][i][j], 2047, 4096);
-            img->setPixel(i, j, value);
+            img->setPixelColor(i, j, QColor(value, value, value, 1));
             //img->setPixel(i, j, volume[0][i][j]);
         }
     }
@@ -53,7 +53,7 @@ QString DicomDisplay::getImage(int center, int range)
     float side = NavigatorSystem::Instance()->voxelVolume->GetRows();
 
     QImage* img = dicomImg.getImage();
-    *img = QImage(side, side, QImage::Format_Grayscale8);
+    *img = QImage(side, side, QImage::Format_Grayscale16);
     QRgb value;
 
     for(int i =0; i < side; i++)
@@ -63,7 +63,7 @@ QString DicomDisplay::getImage(int center, int range)
             //value = dicomImg.RemapValue(volume[0][i][j]);
             //value = dicomImg.RemapValue(volume[0][i][j], 0, 255);
             value = dicomImg.GetWindowedValue(volume[0][i][j], center, range);
-            img->setPixel(i, j, value);
+            img->setPixelColor(i, j, QColor(value, value, value, 1));
             //img->setPixel(i, j, volume[0][i][j]);
         }
     }

@@ -282,6 +282,8 @@ ApplicationWindow {
                             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                             Layout.fillHeight: true
 
+                            cache: false
+
                             Component.onCompleted:
                             {
                                 series.chooseSeries.connect(dicomImage.setImage);
