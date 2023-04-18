@@ -269,6 +269,7 @@ ApplicationWindow {
                         id: userViewsLayout
                         x: -1
                         y: -26
+                        z: 1
                         anchors.fill: parent
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         Layout.fillHeight: true
@@ -282,7 +283,8 @@ ApplicationWindow {
                             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                             Layout.fillHeight: true
 
-                            cache: false
+
+                            fillMode: Image.PreserveAspectFit
 
                             Component.onCompleted:
                             {
