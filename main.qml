@@ -452,116 +452,121 @@ ApplicationWindow {
                     }
                 }
 
-                Image
-                {
-                    id: dicomImage
-                    //width: 900
-                    //height: 900
-                    Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-                    Layout.fillHeight: true
+                Rectangle {
+                    anchors.fill: parent;
 
+                    color: "#000000";
 
-                    fillMode: Image.PreserveAspectFit
-
-                    Component.onCompleted:
+                    Image
                     {
-                        series.chooseSeries.connect(dicomImage.setImage);
-                    }
+                        id: dicomImage
+                        //width: 900
+                        //height: 900
+                        anchors.fill: parent;
 
-                    function setImage()
-                    {
-                        dicomImage.source = display1.getImage();
-                    }
 
-                    RangeSlider {
-                        property int lastDiff
-                        property int lastFirstValue
-                        property int lastSecondValue
-
-                        id: windowSlider
-                        anchors.left: parent.left
-                        anchors.top: parent.top
-                        from: 0
-                        to: 4095
-                        anchors.leftMargin: 20
-                        anchors.topMargin: 20
-                        first.value: 2048   //First is center
-                        second.value: 4095  //Second is range
-
-                        Rectangle
-                        {
-                            id: mirroredRange
-                            x: windowSlider.first.handle.x - (windowSlider.second.handle.x - windowSlider.first.handle.x)
-                            y: windowSlider.second.handle.y + windowSlider.height / 3
-                            height: windowSlider.height / 3
-                            width: windowSlider.second.handle.x - windowSlider.first.handle.x
-
-                            color: "dodgerblue"
-                        }
-
-                        //Note: This code has only been tested with windowSlider.from at 0
-                        first.onMoved:
-                        {
-                            if(windowSlider.first.value < windowSlider.lastDiff)
-                            {
-                                windowSlider.setValues(windowSlider.lastDiff, windowSlider.lastDiff + windowSlider.lastDiff);
-                            }
-                            else if(windowSlider.first.value + windowSlider.lastDiff > windowSlider.to)
-                            {
-                                windowSlider.setValues(windowSlider.to - windowSlider.lastDiff, windowSlider.to);
-                            }
-                            else
-                            {
-                                windowSlider.setValues(windowSlider.first.value, windowSlider.first.value + windowSlider.lastDiff);
-
-                                //console.log("First - " + windowSlider.first.value + "  Second - " + windowSlider.second.value + "  Diff - " + windowSlider.lastDiff);
-                            }
-
-                            dicomImage.source = display1.getImage(windowSlider.first.value, windowSlider.second.value);
-                            windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
-                        }
-
-                        //Note: This code has only been tested with windowSlider.from at 0
-                        second.onMoved:
-                        {
-                            var newDiff = windowSlider.second.value - windowSlider.first.value;
-                            if(windowSlider.first.value - newDiff < windowSlider.from)
-                            {
-                                windowSlider.setValues(newDiff, windowSlider.second.value)
-                            }
-
-                            dicomImage.source = display1.getImage(windowSlider.first.value, windowSlider.second.value);
-
-                            windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
-                        }
+                        fillMode: Image.PreserveAspectFit
 
                         Component.onCompleted:
                         {
-                            windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
-                            windowSlider.lastFirstValue = windowSlider.first.value;
-                            windowSlider.lastSecondValue = windowSlider.second.value;
+                            series.chooseSeries.connect(dicomImage.setImage);
                         }
-                    }
 
-                    /*Slider {
-                        id: rangeSlider
-                        anchors.left: parent.left
-                        anchors.top: parent.top
-                        from: 0
-                        to: 4095
-                        anchors.leftMargin: 20
-                        anchors.topMargin: 40
-                        value: 4095
+                        function setImage()
+                        {
+                            dicomImage.source = display1.getImage();
+                        }
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onWheel:
+                        RangeSlider {
+                            property int lastDiff
+                            property int lastFirstValue
+                            property int lastSecondValue
+
+                            id: windowSlider
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            from: 0
+                            to: 4095
+                            anchors.leftMargin: 20
+                            anchors.topMargin: 20
+                            first.value: 2048   //First is center
+                            second.value: 4095  //Second is range
+
+                            Rectangle
                             {
-                                rangeSlider.value += (wheel.angleDelta.y) / 6;
-                                dicomImage.source = display1.getImage(centerSlider.value, rangeSlider.value);
+                                id: mirroredRange
+                                x: windowSlider.first.handle.x - (windowSlider.second.handle.x - windowSlider.first.handle.x)
+                                y: windowSlider.second.handle.y + windowSlider.height / 3
+                                height: windowSlider.height / 3
+                                width: windowSlider.second.handle.x - windowSlider.first.handle.x
+
+                                color: "dodgerblue"
+                            }
+
+                            //Note: This code has only been tested with windowSlider.from at 0
+                            first.onMoved:
+                            {
+                                if(windowSlider.first.value < windowSlider.lastDiff)
+                                {
+                                    windowSlider.setValues(windowSlider.lastDiff, windowSlider.lastDiff + windowSlider.lastDiff);
+                                }
+                                else if(windowSlider.first.value + windowSlider.lastDiff > windowSlider.to)
+                                {
+                                    windowSlider.setValues(windowSlider.to - windowSlider.lastDiff, windowSlider.to);
+                                }
+                                else
+                                {
+                                    windowSlider.setValues(windowSlider.first.value, windowSlider.first.value + windowSlider.lastDiff);
+
+                                    //console.log("First - " + windowSlider.first.value + "  Second - " + windowSlider.second.value + "  Diff - " + windowSlider.lastDiff);
+                                }
+
+                                dicomImage.source = display1.getImage(windowSlider.first.value, windowSlider.second.value);
+                                windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                            }
+
+                            //Note: This code has only been tested with windowSlider.from at 0
+                            second.onMoved:
+                            {
+                                var newDiff = windowSlider.second.value - windowSlider.first.value;
+                                if(windowSlider.first.value - newDiff < windowSlider.from)
+                                {
+                                    windowSlider.setValues(newDiff, windowSlider.second.value)
+                                }
+
+                                dicomImage.source = display1.getImage(windowSlider.first.value, windowSlider.second.value);
+
+                                windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                            }
+
+                            Component.onCompleted:
+                            {
+                                windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                                windowSlider.lastFirstValue = windowSlider.first.value;
+                                windowSlider.lastSecondValue = windowSlider.second.value;
                             }
                         }
-                    }*/
+
+                        /*Slider {
+                            id: rangeSlider
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            from: 0
+                            to: 4095
+                            anchors.leftMargin: 20
+                            anchors.topMargin: 40
+                            value: 4095
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onWheel:
+                                {
+                                    rangeSlider.value += (wheel.angleDelta.y) / 6;
+                                    dicomImage.source = display1.getImage(centerSlider.value, rangeSlider.value);
+                                }
+                            }
+                        }*/
+                    }
                 }
             }
 
