@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="main.qml">/__w/DicomViewer/DicomViewer/main.qml</file>
+    <file alias="ThreeDFrame.qml">/__w/DicomViewer/DicomViewer/ThreeDFrame.qml</file>
+    <file alias="FolderTree.qml">/__w/DicomViewer/DicomViewer/FolderTree.qml</file>
+    <file alias="FileList.qml">/__w/DicomViewer/DicomViewer/FileList.qml</file>
+    <file alias="PatientList.qml">/__w/DicomViewer/DicomViewer/PatientList.qml</file>
+    <file alias="StudyList.qml">/__w/DicomViewer/DicomViewer/StudyList.qml</file>
+    <file alias="SeriesList.qml">/__w/DicomViewer/DicomViewer/SeriesList.qml</file>
+    <file alias="suzanne.mesh">/__w/DicomViewer/DicomViewer/suzanne.mesh</file>
+  </qresource>
+</RCC>
+

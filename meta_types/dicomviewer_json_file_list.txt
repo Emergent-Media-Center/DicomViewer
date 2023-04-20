@@ -1,0 +1,6 @@
+/__w/DicomViewer/DicomViewer/build/dicomviewer_autogen/include/../EWIEGA46WW/moc_DicomDisplay.cpp.json
+/__w/DicomViewer/DicomViewer/build/dicomviewer_autogen/include/../EWIEGA46WW/moc_PatientListModel.cpp.json
+/__w/DicomViewer/DicomViewer/build/dicomviewer_autogen/include/../EWIEGA46WW/moc_PixmapImage.cpp.json
+/__w/DicomViewer/DicomViewer/build/dicomviewer_autogen/include/../EWIEGA46WW/moc_QMLDicomImage.cpp.json
+/__w/DicomViewer/DicomViewer/build/dicomviewer_autogen/include/../EWIEGA46WW/moc_SeriesListModel.cpp.json
+/__w/DicomViewer/DicomViewer/build/dicomviewer_autogen/include/../EWIEGA46WW/moc_StudyListModel.cpp.json

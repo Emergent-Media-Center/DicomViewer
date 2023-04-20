@@ -1,0 +1,16 @@
+socketxx_autogen/timestamp: \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/CMakeLists.txt \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/config.h.in \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/echo.cpp \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/echo.h \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/fork.cpp \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/fork.h \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/protocol.cpp \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/protocol.h \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/sockinet.cpp \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/sockinet.h \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/sockstream.cpp \
+	/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/socketxx/socket++/sockstream.h \
+	/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CheckFunctionExists.c \
+	/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CheckFunctionExists.cmake \
+	/opt/Qt/Tools/CMake/bin/cmake

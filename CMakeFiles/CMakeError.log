@@ -1,0 +1,157 @@
+Determining if the _aligned_malloc exist failed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_4f826 && [1/2] Building C object CMakeFiles/cmTC_4f826.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_4f826.dir/CheckSymbolExists.c.o 
+/opt/emsdk/upstream/emscripten/emcc   -std=gnu11 -MD -MT CMakeFiles/cmTC_4f826.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_4f826.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_4f826.dir/CheckSymbolExists.c.o -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: use of undeclared identifier '_aligned_malloc'
+  return ((int*)(&_aligned_malloc))[argc];
+                  ^
+1 error generated.
+emcc: error: '/opt/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -D__EMSCRIPTEN_major__=3 -D__EMSCRIPTEN_minor__=1 -D__EMSCRIPTEN_tiny__=14 -fignore-exceptions -fvisibility=default -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/opt/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -std=gnu11 -MD -MT CMakeFiles/cmTC_4f826.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_4f826.dir/CheckSymbolExists.c.o.d -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c -o CMakeFiles/cmTC_4f826.dir/CheckSymbolExists.c.o' failed (returned 1)
+ninja: build stopped: subcommand failed.
+
+
+File /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <malloc.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _aligned_malloc
+  return ((int*)(&_aligned_malloc))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h;sys/time.h;sys/file.h;sys/socket.h;sys/sockio.h exist failed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_74ac3 && [1/2] Building C object CMakeFiles/cmTC_74ac3.dir/HAVE_SYS_SOCKIO_H.c.o
+FAILED: CMakeFiles/cmTC_74ac3.dir/HAVE_SYS_SOCKIO_H.c.o 
+/opt/emsdk/upstream/emscripten/emcc   -std=gnu11 -MD -MT CMakeFiles/cmTC_74ac3.dir/HAVE_SYS_SOCKIO_H.c.o -MF CMakeFiles/cmTC_74ac3.dir/HAVE_SYS_SOCKIO_H.c.o.d -o CMakeFiles/cmTC_74ac3.dir/HAVE_SYS_SOCKIO_H.c.o -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_SYS_SOCKIO_H.c
+/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_SYS_SOCKIO_H.c:9:10: fatal error: 'sys/sockio.h' file not found
+#include <sys/sockio.h>
+         ^~~~~~~~~~~~~~
+1 error generated.
+emcc: error: '/opt/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -D__EMSCRIPTEN_major__=3 -D__EMSCRIPTEN_minor__=1 -D__EMSCRIPTEN_tiny__=14 -fignore-exceptions -fvisibility=default -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/opt/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -std=gnu11 -MD -MT CMakeFiles/cmTC_74ac3.dir/HAVE_SYS_SOCKIO_H.c.o -MF CMakeFiles/cmTC_74ac3.dir/HAVE_SYS_SOCKIO_H.c.o.d -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_SYS_SOCKIO_H.c -o CMakeFiles/cmTC_74ac3.dir/HAVE_SYS_SOCKIO_H.c.o' failed (returned 1)
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <stdlib.h>
+#include <unistd.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/time.h>
+#include <sys/file.h>
+#include <sys/socket.h>
+#include <sys/sockio.h>
+
+
+int main(void){return 0;}
+
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h;sys/time.h;sys/file.h;sys/socket.h;net/if.h;netinet/in.h;net/if_dl.h exist failed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_4f373 && [1/2] Building C object CMakeFiles/cmTC_4f373.dir/HAVE_NET_IF_DL_H.c.o
+FAILED: CMakeFiles/cmTC_4f373.dir/HAVE_NET_IF_DL_H.c.o 
+/opt/emsdk/upstream/emscripten/emcc   -std=gnu11 -MD -MT CMakeFiles/cmTC_4f373.dir/HAVE_NET_IF_DL_H.c.o -MF CMakeFiles/cmTC_4f373.dir/HAVE_NET_IF_DL_H.c.o.d -o CMakeFiles/cmTC_4f373.dir/HAVE_NET_IF_DL_H.c.o -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_NET_IF_DL_H.c
+/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_NET_IF_DL_H.c:11:10: fatal error: 'net/if_dl.h' file not found
+#include <net/if_dl.h>
+         ^~~~~~~~~~~~~
+1 error generated.
+emcc: error: '/opt/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -D__EMSCRIPTEN_major__=3 -D__EMSCRIPTEN_minor__=1 -D__EMSCRIPTEN_tiny__=14 -fignore-exceptions -fvisibility=default -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/opt/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -std=gnu11 -MD -MT CMakeFiles/cmTC_4f373.dir/HAVE_NET_IF_DL_H.c.o -MF CMakeFiles/cmTC_4f373.dir/HAVE_NET_IF_DL_H.c.o.d -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_NET_IF_DL_H.c -o CMakeFiles/cmTC_4f373.dir/HAVE_NET_IF_DL_H.c.o' failed (returned 1)
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <stdlib.h>
+#include <unistd.h>
+#include <inttypes.h>
+#include <sys/ioctl.h>
+#include <sys/time.h>
+#include <sys/file.h>
+#include <sys/socket.h>
+#include <net/if.h>
+#include <netinet/in.h>
+#include <net/if_dl.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/time.h;winsock.h exist failed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_db5fd && [1/2] Building C object CMakeFiles/cmTC_db5fd.dir/GDCM_HAVE_WINSOCK_H.c.o
+FAILED: CMakeFiles/cmTC_db5fd.dir/GDCM_HAVE_WINSOCK_H.c.o 
+/opt/emsdk/upstream/emscripten/emcc   -std=gnu11 -MD -MT CMakeFiles/cmTC_db5fd.dir/GDCM_HAVE_WINSOCK_H.c.o -MF CMakeFiles/cmTC_db5fd.dir/GDCM_HAVE_WINSOCK_H.c.o.d -o CMakeFiles/cmTC_db5fd.dir/GDCM_HAVE_WINSOCK_H.c.o -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/GDCM_HAVE_WINSOCK_H.c
+/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/GDCM_HAVE_WINSOCK_H.c:3:10: fatal error: 'winsock.h' file not found
+#include <winsock.h>
+         ^~~~~~~~~~~
+1 error generated.
+emcc: error: '/opt/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -D__EMSCRIPTEN_major__=3 -D__EMSCRIPTEN_minor__=1 -D__EMSCRIPTEN_tiny__=14 -fignore-exceptions -fvisibility=default -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/opt/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -std=gnu11 -MD -MT CMakeFiles/cmTC_db5fd.dir/GDCM_HAVE_WINSOCK_H.c.o -MF CMakeFiles/cmTC_db5fd.dir/GDCM_HAVE_WINSOCK_H.c.o.d -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/GDCM_HAVE_WINSOCK_H.c -o CMakeFiles/cmTC_db5fd.dir/GDCM_HAVE_WINSOCK_H.c.o' failed (returned 1)
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/time.h>
+#include <winsock.h>
+
+
+int main(void){return 0;}
+
+Determining if the include file rpc.h exists failed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_ca7e5 && [1/2] Building C object CMakeFiles/cmTC_ca7e5.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_ca7e5.dir/CheckIncludeFile.c.o 
+/opt/emsdk/upstream/emscripten/emcc   -std=gnu11 -MD -MT CMakeFiles/cmTC_ca7e5.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_ca7e5.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_ca7e5.dir/CheckIncludeFile.c.o -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: 'rpc.h' file not found
+#include <rpc.h>
+         ^~~~~~~
+1 error generated.
+emcc: error: '/opt/emsdk/upstream/bin/clang -target wasm32-unknown-emscripten -DEMSCRIPTEN -D__EMSCRIPTEN_major__=3 -D__EMSCRIPTEN_minor__=1 -D__EMSCRIPTEN_tiny__=14 -fignore-exceptions -fvisibility=default -mllvm -combiner-global-alias-analysis=false -mllvm -enable-emscripten-sjlj -mllvm -disable-lsr -Werror=implicit-function-declaration -Xclang -iwithsysroot/include/SDL --sysroot=/opt/emsdk/upstream/emscripten/cache/sysroot -Xclang -iwithsysroot/include/compat -std=gnu11 -MD -MT CMakeFiles/cmTC_ca7e5.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_ca7e5.dir/CheckIncludeFile.c.o.d -c /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c -o CMakeFiles/cmTC_ca7e5.dir/CheckIncludeFile.c.o' failed (returned 1)
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function _stricmp exists failed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_fa883 && [1/2] Building C object CMakeFiles/cmTC_fa883.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_fa883.js
+FAILED: cmTC_fa883.js 
+: && /opt/emsdk/upstream/emscripten/emcc -DCHECK_FUNCTION_EXISTS=_stricmp  CMakeFiles/cmTC_fa883.dir/CheckFunctionExists.c.o -o cmTC_fa883.js   && :
+error: undefined symbol: _stricmp (referenced by top-level compiled C/C++ code)
+warning: Link with `-sLLD_REPORT_UNDEFINED` to get more information on undefined symbols
+warning: To disable errors for undefined symbols use `-sERROR_ON_UNDEFINED_SYMBOLS=0`
+warning: __stricmp may need to be added to EXPORTED_FUNCTIONS if it arrives from a system library
+Error: Aborting compilation due to previous errors
+emcc: error: '/opt/emsdk/node/14.18.2_64bit/bin/node /opt/emsdk/upstream/emscripten/src/compiler.js /tmp/tmpzk8nzaqg.json' failed (returned 1)
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function _strnicmp exists failed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_72103 && [1/2] Building C object CMakeFiles/cmTC_72103.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_72103.js
+FAILED: cmTC_72103.js 
+: && /opt/emsdk/upstream/emscripten/emcc -DCHECK_FUNCTION_EXISTS=_strnicmp  CMakeFiles/cmTC_72103.dir/CheckFunctionExists.c.o -o cmTC_72103.js   && :
+error: undefined symbol: _strnicmp (referenced by top-level compiled C/C++ code)
+warning: Link with `-sLLD_REPORT_UNDEFINED` to get more information on undefined symbols
+warning: To disable errors for undefined symbols use `-sERROR_ON_UNDEFINED_SYMBOLS=0`
+warning: __strnicmp may need to be added to EXPORTED_FUNCTIONS if it arrives from a system library
+Error: Aborting compilation due to previous errors
+emcc: error: '/opt/emsdk/node/14.18.2_64bit/bin/node /opt/emsdk/upstream/emscripten/src/compiler.js /tmp/tmp68z1gb4q.json' failed (returned 1)
+ninja: build stopped: subcommand failed.
+
+
+

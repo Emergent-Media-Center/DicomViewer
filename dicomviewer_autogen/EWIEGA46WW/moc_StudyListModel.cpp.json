@@ -1,0 +1,35 @@
+{
+    "classes": [
+        {
+            "className": "StudyListModel",
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "patientId",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "name": "setModelData",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "clearModelData",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "StudyListModel",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QAbstractListModel"
+                }
+            ]
+        }
+    ],
+    "inputFile": "StudyListModel.h",
+    "outputRevision": 68
+}

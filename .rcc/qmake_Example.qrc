@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="qmldir">/__w/DicomViewer/DicomViewer/build/Example/qmldir</file>
+  </qresource>
+</RCC>
+

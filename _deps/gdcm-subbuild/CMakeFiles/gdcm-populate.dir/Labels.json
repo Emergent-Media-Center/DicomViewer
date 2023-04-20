@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/CMakeFiles/gdcm-populate"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/CMakeFiles/gdcm-populate.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/CMakeFiles/gdcm-populate-complete.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/gdcm-populate-build.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/gdcm-populate-configure.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/gdcm-populate-download.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/gdcm-populate-install.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/gdcm-populate-mkdir.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/gdcm-populate-patch.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/gdcm-populate-test.rule"
+		},
+		{
+			"file" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/gdcm-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"gdcm-populate"
+		],
+		"name" : "gdcm-populate"
+	}
+}

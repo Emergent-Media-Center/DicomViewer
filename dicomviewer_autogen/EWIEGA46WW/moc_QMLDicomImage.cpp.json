@@ -1,0 +1,24 @@
+{
+    "classes": [
+        {
+            "className": "QMLDicomImage",
+            "methods": [
+                {
+                    "access": "public",
+                    "name": "getImage",
+                    "returnType": "QImage*"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "QMLDicomImage",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "QMLDicomImage.h",
+    "outputRevision": 68
+}

@@ -1,0 +1,10 @@
+module Example
+typeinfo dicomviewer.qmltypes
+prefer :/
+ThreeDFrame 1.0 ThreeDFrame.qml
+FolderTree 1.0 FolderTree.qml
+FileList 1.0 FileList.qml
+PatientList 1.0 PatientList.qml
+StudyList 1.0 StudyList.qml
+SeriesList 1.0 SeriesList.qml
+

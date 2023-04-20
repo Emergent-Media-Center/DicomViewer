@@ -1,0 +1,144 @@
+{
+	"BUILD_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid/gdcmuuid_autogen",
+	"CMAKE_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid",
+	"CMAKE_EXECUTABLE" : "/opt/Qt/Tools/CMake/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/CMakeLists.txt",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_INTTYPES_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_SYS_IOCTL_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_SYS_TIME_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_SYS_FILE_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_SYS_SOCKET_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_SYS_SOCKIO_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_NET_IF_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_NETINET_IN_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_NET_IF_DL_H.c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeConfigurableFile.in",
+		"/__w/DicomViewer/DicomViewer/build/CMakeFiles/CheckIncludeFiles/HAVE_NET_IF_ARP_H.c",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/uuid_mangle.h.in"
+	],
+	"CMAKE_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer",
+	"DEP_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid/gdcmuuid_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "gdcmuuid_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/uuid.h",
+			"Mu",
+			"EWIEGA46WW/moc_uuid.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/uuidP.h",
+			"Mu",
+			"EWIEGA46WW/moc_uuidP.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid/gdcmuuid_autogen/include",
+	"MOC_COMPILATION_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid/gdcmuuid_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "CHARLS_STATIC" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid",
+		"/opt/emsdk/upstream/emscripten/cache/sysroot/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_GADGET_EXPORT",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/opt/emsdk/upstream/emscripten/em++",
+		"-dM",
+		"-E",
+		"-c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid/gdcmuuid_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 2,
+	"PARSE_CACHE_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid/CMakeFiles/gdcmuuid_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/opt/Qt/6.4.2/gcc_64/./libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 4,
+	"SETTINGS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmuuid/CMakeFiles/gdcmuuid_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/compare.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/copy.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/gen_uuid.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/isnull.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/pack.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/parse.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/unpack.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/unparse.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmuuid/uuid_time.c",
+			"Mu",
+			null
+		]
+	],
+	"VERBOSITY" : 0
+}

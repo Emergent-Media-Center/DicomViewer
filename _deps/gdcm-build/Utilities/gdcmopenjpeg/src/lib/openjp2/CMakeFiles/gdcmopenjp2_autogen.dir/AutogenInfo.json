@@ -1,0 +1,335 @@
+{
+	"BUILD_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2/gdcmopenjp2_autogen",
+	"CMAKE_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2",
+	"CMAKE_EXECUTABLE" : "/opt/Qt/Tools/CMake/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/CMakeLists.txt",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/openjpeg_mangle.h.in",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/FindThreads.cmake",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CheckLibraryExists.cmake",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CheckIncludeFile.cmake",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CheckCSourceCompiles.cmake",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/Internal/CheckSourceCompiles.cmake",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/FindPackageMessage.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer",
+	"DEP_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2/gdcmopenjp2_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "gdcmopenjp2_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/bio.h",
+			"Mu",
+			"EWIEGA46WW/moc_bio.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/cio.h",
+			"Mu",
+			"EWIEGA46WW/moc_cio.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/dwt.h",
+			"Mu",
+			"EWIEGA46WW/moc_dwt.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/event.h",
+			"Mu",
+			"EWIEGA46WW/moc_event.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/function_list.h",
+			"Mu",
+			"EWIEGA46WW/moc_function_list.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/image.h",
+			"Mu",
+			"EWIEGA46WW/moc_image.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/invert.h",
+			"Mu",
+			"EWIEGA46WW/moc_invert.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/j2k.h",
+			"Mu",
+			"EWIEGA46WW/moc_j2k.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/jp2.h",
+			"Mu",
+			"EWIEGA46WW/moc_jp2.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/mct.h",
+			"Mu",
+			"EWIEGA46WW/moc_mct.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/mqc.h",
+			"Mu",
+			"EWIEGA46WW/moc_mqc.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/mqc_inl.h",
+			"Mu",
+			"EWIEGA46WW/moc_mqc_inl.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/openjpeg.h",
+			"Mu",
+			"EWIEGA46WW/moc_openjpeg.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_clock.h",
+			"Mu",
+			"EWIEGA46WW/moc_opj_clock.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_codec.h",
+			"Mu",
+			"EWIEGA46WW/moc_opj_codec.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_includes.h",
+			"Mu",
+			"EWIEGA46WW/moc_opj_includes.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_intmath.h",
+			"Mu",
+			"EWIEGA46WW/moc_opj_intmath.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_malloc.h",
+			"Mu",
+			"EWIEGA46WW/moc_opj_malloc.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_stdint.h",
+			"Mu",
+			"EWIEGA46WW/moc_opj_stdint.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/pi.h",
+			"Mu",
+			"EWIEGA46WW/moc_pi.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/sparse_array.h",
+			"Mu",
+			"EWIEGA46WW/moc_sparse_array.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/t1.h",
+			"Mu",
+			"EWIEGA46WW/moc_t1.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/t2.h",
+			"Mu",
+			"EWIEGA46WW/moc_t2.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/tcd.h",
+			"Mu",
+			"EWIEGA46WW/moc_tcd.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/tgt.h",
+			"Mu",
+			"EWIEGA46WW/moc_tgt.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/thread.h",
+			"Mu",
+			"EWIEGA46WW/moc_thread.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2/gdcmopenjp2_autogen/include",
+	"MOC_COMPILATION_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2/gdcmopenjp2_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "CHARLS_STATIC", "MUTEX_pthread", "OPJ_STATIC" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2",
+		"/opt/emsdk/upstream/emscripten/cache/sysroot/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_GADGET_EXPORT",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/opt/emsdk/upstream/emscripten/em++",
+		"-dM",
+		"-E",
+		"-c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2/gdcmopenjp2_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 2,
+	"PARSE_CACHE_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2/CMakeFiles/gdcmopenjp2_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/opt/Qt/6.4.2/gcc_64/./libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 4,
+	"SETTINGS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmopenjpeg/src/lib/openjp2/CMakeFiles/gdcmopenjp2_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/bio.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/cio.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/dwt.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/event.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/function_list.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/image.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/invert.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/j2k.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/jp2.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/mct.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/mqc.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/openjpeg.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_clock.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_malloc.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/pi.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/sparse_array.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/t1.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/t2.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/tcd.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/tgt.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmopenjpeg/src/lib/openjp2/thread.c",
+			"Mu",
+			null
+		]
+	],
+	"VERBOSITY" : 0
+}

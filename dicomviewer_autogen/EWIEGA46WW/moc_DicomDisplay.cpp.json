@@ -1,0 +1,39 @@
+{
+    "classes": [
+        {
+            "className": "DicomDisplay",
+            "methods": [
+                {
+                    "access": "public",
+                    "name": "getImage",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "center",
+                            "type": "int"
+                        },
+                        {
+                            "name": "range",
+                            "type": "int"
+                        }
+                    ],
+                    "name": "getImage",
+                    "returnType": "QString"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "DicomDisplay",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "DicomDisplay.h",
+    "outputRevision": 68
+}

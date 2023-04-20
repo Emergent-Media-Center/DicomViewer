@@ -1,0 +1,259 @@
+{
+	"BUILD_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/InformationObjectDefinition/gdcmIOD_autogen",
+	"CMAKE_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/InformationObjectDefinition",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition",
+	"CMAKE_EXECUTABLE" : "/opt/Qt/Tools/CMake/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/CMakeLists.txt",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmTables.h.in"
+	],
+	"CMAKE_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer",
+	"DEP_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/InformationObjectDefinition/gdcmIOD_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "gdcmIOD_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmDefinedTerms.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmDefinedTerms.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmDefs.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmDefs.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmEnumeratedValues.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmEnumeratedValues.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmIOD.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmIOD.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmIODEntry.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmIODEntry.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmMacro.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmMacro.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmMacros.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmMacros.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmModule.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmModule.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmModules.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmModules.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmNestedModuleEntries.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmNestedModuleEntries.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmPatient.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmPatient.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmSeries.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmSeries.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmStudy.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmStudy.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmTable.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmTable.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmTableReader.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmTableReader.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmType.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmType.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmUsage.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmUsage.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/InformationObjectDefinition/gdcmIOD_autogen/include",
+	"MOC_COMPILATION_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/InformationObjectDefinition/gdcmIOD_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "CHARLS_STATIC" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/Common",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/Common",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataStructureAndEncodingDefinition",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmexpat",
+		"/opt/emsdk/upstream/emscripten/cache/sysroot/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_GADGET_EXPORT",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/opt/emsdk/upstream/emscripten/em++",
+		"-dM",
+		"-E",
+		"-c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/InformationObjectDefinition/gdcmIOD_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 2,
+	"PARSE_CACHE_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/InformationObjectDefinition/CMakeFiles/gdcmIOD_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/opt/Qt/6.4.2/gcc_64/./libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 4,
+	"SETTINGS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/InformationObjectDefinition/CMakeFiles/gdcmIOD_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmDefinedTerms.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmDefs.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmEnumeratedValues.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmIOD.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmIODEntry.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmMacro.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmMacros.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmModule.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmModules.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmNestedModuleEntries.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmPatient.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmSeries.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmStudy.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmTable.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmTableReader.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmType.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition/gdcmUsage.cxx",
+			"Mu",
+			null
+		]
+	],
+	"VERBOSITY" : 0
+}

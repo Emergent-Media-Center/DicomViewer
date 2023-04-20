@@ -1,0 +1,169 @@
+{
+	"BUILD_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib/gdcmzlib_autogen",
+	"CMAKE_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib",
+	"CMAKE_EXECUTABLE" : "/opt/Qt/Tools/CMake/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/CMakeLists.txt",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/zconf.in.h"
+	],
+	"CMAKE_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer",
+	"DEP_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib/gdcmzlib_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "gdcmzlib_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/crc32.h",
+			"Mu",
+			"EWIEGA46WW/moc_crc32.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/deflate.h",
+			"Mu",
+			"EWIEGA46WW/moc_deflate.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/inffast.h",
+			"Mu",
+			"EWIEGA46WW/moc_inffast.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/inflate.h",
+			"Mu",
+			"EWIEGA46WW/moc_inflate.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/inftrees.h",
+			"Mu",
+			"EWIEGA46WW/moc_inftrees.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/trees.h",
+			"Mu",
+			"EWIEGA46WW/moc_trees.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/zutil.h",
+			"Mu",
+			"EWIEGA46WW/moc_zutil.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib/gdcmzlib_autogen/include",
+	"MOC_COMPILATION_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib/gdcmzlib_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "CHARLS_STATIC" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib",
+		"/opt/emsdk/upstream/emscripten/cache/sysroot/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_GADGET_EXPORT",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/opt/emsdk/upstream/emscripten/em++",
+		"-dM",
+		"-E",
+		"-c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib/gdcmzlib_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 2,
+	"PARSE_CACHE_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib/CMakeFiles/gdcmzlib_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/opt/Qt/6.4.2/gcc_64/./libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 4,
+	"SETTINGS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Utilities/gdcmzlib/CMakeFiles/gdcmzlib_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/adler32.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/compress.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/crc32.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/deflate.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/gzio.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/infback.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/inffast.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/inflate.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/inftrees.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/trees.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/uncompr.c",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Utilities/gdcmzlib/zutil.c",
+			"Mu",
+			null
+		]
+	],
+	"VERBOSITY" : 0
+}

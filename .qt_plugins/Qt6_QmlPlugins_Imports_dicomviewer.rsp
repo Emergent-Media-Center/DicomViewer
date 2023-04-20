@@ -1,0 +1,15 @@
+-rootPath
+/__w/DicomViewer/DicomViewer
+-cmake-output
+-output-file
+/__w/DicomViewer/DicomViewer/build/.qt_plugins/Qt6_QmlPlugins_Imports_dicomviewer.cmake
+-importPath
+/__w/DicomViewer/DicomViewer/build/Example
+-importPath
+/__w/DicomViewer/DicomViewer/build
+-importPath
+/opt/Qt/6.4.2/wasm_32/./qml
+-qrcFiles
+/__w/DicomViewer/DicomViewer/build/.rcc/qmake_Example.qrc
+/__w/DicomViewer/DicomViewer/build/.rcc/qmake_Example_copy.qrc
+/__w/DicomViewer/DicomViewer/build/.rcc/dicomviewer_raw_qml_0.qrc

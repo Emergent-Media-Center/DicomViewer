@@ -1,0 +1,535 @@
+The target system is: Emscripten - 1 - x86
+The host system is: Linux - 5.15.0-1035-azure - x86_64
+Performing C++ SOURCE FILE Test HAVE_STDATOMIC succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_b8e29 && [1/2] Building CXX object CMakeFiles/cmTC_b8e29.dir/src.cxx.o
+shared:INFO: (Emscripten: Running sanity checks)
+[2/2] Linking CXX executable cmTC_b8e29.js
+
+
+Source file was:
+#include <atomic>
+#include <cstdint>
+
+int main(int, char **)
+{
+    volatile std::atomic<char>    size_1;
+    volatile std::atomic<short>   size_2;
+    volatile std::atomic<int>     size_4;
+    volatile std::atomic<int64_t> size_8;
+
+    ++size_1;
+    ++size_2;
+    ++size_4;
+    ++size_8;
+
+    (void)size_1.load(std::memory_order_relaxed);
+    (void)size_2.load(std::memory_order_relaxed);
+    (void)size_4.load(std::memory_order_relaxed);
+    (void)size_8.load(std::memory_order_relaxed);
+
+    return 0;
+}
+Performing C++ SOURCE FILE Test HAVE_GETTIME succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_a239f && [1/2] Building CXX object CMakeFiles/cmTC_a239f.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_a239f.js
+
+
+Source file was:
+
+#include <unistd.h>
+#include <time.h>
+
+int main(int, char **) {
+    timespec ts; clock_gettime(CLOCK_REALTIME, &ts);
+}
+Performing C++ SOURCE FILE Test HAVE_EGL succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_39367 && [1/2] Building CXX object CMakeFiles/cmTC_39367.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_39367.js
+
+
+Source file was:
+
+#include <EGL/egl.h>
+
+int main(int, char **) {
+    EGLint x = 0; EGLDisplay dpy = 0; EGLContext ctx = 0;
+    eglDestroyContext(dpy, ctx);
+}
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_933e2 && [1/2] Building C object CMakeFiles/cmTC_933e2.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_933e2.js
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_4aace && [1/2] Building C object CMakeFiles/cmTC_4aace.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_4aace.js
+
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_e5a8c && [1/2] Building C object CMakeFiles/cmTC_e5a8c.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_e5a8c.js
+
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_906f2 && [1/2] Building C object CMakeFiles/cmTC_906f2.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_906f2.js
+
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_8aa80 && [1/2] Building C object CMakeFiles/cmTC_8aa80.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_8aa80.js
+
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_72401 && [1/2] Building C object CMakeFiles/cmTC_72401.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_72401.js
+
+
+
+Determining if the include file stdio.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_0e67b && [1/2] Building C object CMakeFiles/cmTC_0e67b.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_0e67b.js
+
+
+
+Determining if the include file math.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_dba79 && [1/2] Building C object CMakeFiles/cmTC_dba79.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_dba79.js
+
+
+
+Determining if the include file float.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_9bda7 && [1/2] Building C object CMakeFiles/cmTC_9bda7.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_9bda7.js
+
+
+
+Determining if the include file time.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_34e5d && [1/2] Building C object CMakeFiles/cmTC_34e5d.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_34e5d.js
+
+
+
+Determining if the include file stdarg.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_9514a && [1/2] Building C object CMakeFiles/cmTC_9514a.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_9514a.js
+
+
+
+Determining if the include file ctype.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_c8301 && [1/2] Building C object CMakeFiles/cmTC_c8301.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_c8301.js
+
+
+
+Determining if the include file assert.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_e2d52 && [1/2] Building C object CMakeFiles/cmTC_e2d52.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_e2d52.js
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_647bb && [1/2] Building C object CMakeFiles/cmTC_647bb.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_647bb.js
+
+
+
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_71cb8 && [1/2] Building C object CMakeFiles/cmTC_71cb8.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_71cb8.js
+
+
+
+Determining if the include file strings.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_bca09 && [1/2] Building C object CMakeFiles/cmTC_bca09.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_bca09.js
+
+
+
+Determining if the include file sys/stat.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_4fd12 && [1/2] Building C object CMakeFiles/cmTC_4fd12.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_4fd12.js
+
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_b9eab && [1/2] Building C object CMakeFiles/cmTC_b9eab.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_b9eab.js
+
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_05888 && [1/2] Building C object CMakeFiles/cmTC_05888.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_05888.js
+
+
+
+Determining if files malloc.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_c8fb9 && [1/2] Building C object CMakeFiles/cmTC_c8fb9.dir/OPJ_HAVE_MALLOC_H.c.o
+[2/2] Linking C executable cmTC_c8fb9.js
+
+
+
+Determining if the posix_memalign exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_9b4d9 && [1/2] Building C object CMakeFiles/cmTC_9b4d9.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_9b4d9.js
+
+
+File /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef posix_memalign
+  return ((int*)(&posix_memalign))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the memalign exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_c5e95 && [1/2] Building C object CMakeFiles/cmTC_c5e95.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_c5e95.js
+
+
+File /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <malloc.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef memalign
+  return ((int*)(&memalign))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_6471c && [1/2] Building C object CMakeFiles/cmTC_6471c.dir/src.c.o
+[2/2] Linking C executable cmTC_6471c.js
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if files stdlib.h;unistd.h;inttypes.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_cc53f && [1/2] Building C object CMakeFiles/cmTC_cc53f.dir/HAVE_INTTYPES_H.c.o
+[2/2] Linking C executable cmTC_cc53f.js
+
+
+
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_b3c77 && [1/2] Building C object CMakeFiles/cmTC_b3c77.dir/HAVE_SYS_IOCTL_H.c.o
+[2/2] Linking C executable cmTC_b3c77.js
+
+
+
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h;sys/time.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_ba009 && [1/2] Building C object CMakeFiles/cmTC_ba009.dir/HAVE_SYS_TIME_H.c.o
+[2/2] Linking C executable cmTC_ba009.js
+
+
+
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h;sys/time.h;sys/file.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_3be31 && [1/2] Building C object CMakeFiles/cmTC_3be31.dir/HAVE_SYS_FILE_H.c.o
+[2/2] Linking C executable cmTC_3be31.js
+
+
+
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h;sys/time.h;sys/file.h;sys/socket.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_cf984 && [1/2] Building C object CMakeFiles/cmTC_cf984.dir/HAVE_SYS_SOCKET_H.c.o
+[2/2] Linking C executable cmTC_cf984.js
+
+
+
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h;sys/time.h;sys/file.h;sys/socket.h;net/if.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_bbc47 && [1/2] Building C object CMakeFiles/cmTC_bbc47.dir/HAVE_NET_IF_H.c.o
+[2/2] Linking C executable cmTC_bbc47.js
+
+
+
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h;sys/time.h;sys/file.h;sys/socket.h;net/if.h;netinet/in.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_bcb3e && [1/2] Building C object CMakeFiles/cmTC_bcb3e.dir/HAVE_NETINET_IN_H.c.o
+[2/2] Linking C executable cmTC_bcb3e.js
+
+
+
+Determining if files stdlib.h;unistd.h;inttypes.h;sys/ioctl.h;sys/time.h;sys/file.h;sys/socket.h;net/if.h;netinet/in.h;net/if_arp.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_787e0 && [1/2] Building C object CMakeFiles/cmTC_787e0.dir/HAVE_NET_IF_ARP_H.c.o
+[2/2] Linking C executable cmTC_787e0.js
+
+
+
+Determining if the function strsignal exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_402b9 && [1/2] Building C object CMakeFiles/cmTC_402b9.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_402b9.js
+wasm-ld: warning: function signature mismatch: strsignal
+>>> defined as () -> i32 in CMakeFiles/cmTC_402b9.dir/CheckFunctionExists.c.o
+>>> defined as (i32) -> i32 in /opt/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libc-debug.a(strsignal.o)
+
+
+
+Determining if files ;sys/time.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_fbdc1 && [1/2] Building C object CMakeFiles/cmTC_fbdc1.dir/GDCM_HAVE_SYS_TIME_H.c.o
+[2/2] Linking C executable cmTC_fbdc1.js
+
+
+
+Determining if files sys/time.h;byteswap.h exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_ee2c6 && [1/2] Building C object CMakeFiles/cmTC_ee2c6.dir/GDCM_HAVE_BYTESWAP_FILE_H.c.o
+[2/2] Linking C executable cmTC_ee2c6.js
+
+
+
+Performing C++ SOURCE FILE Test GDCM_HAVE_BYTESWAP_H succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_ee169 && [1/2] Building CXX object CMakeFiles/cmTC_ee169.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_ee169.js
+
+
+Source file was:
+#include <byteswap.h>
+int main() { return bswap_32( 42 ); }
+Determining if the include file langinfo.h exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_732a9 && [1/2] Building C object CMakeFiles/cmTC_732a9.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_732a9.js
+
+
+
+Determining if the nl_langinfo exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_a15b7 && [1/2] Building C object CMakeFiles/cmTC_a15b7.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_a15b7.js
+
+
+File /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <langinfo.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef nl_langinfo
+  return ((int*)(&nl_langinfo))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strcasecmp exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_9a99f && [1/2] Building C object CMakeFiles/cmTC_9a99f.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_9a99f.js
+
+
+File /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <strings.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strcasecmp
+  return ((int*)(&strcasecmp))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strncasecmp exist passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_0f7a6 && [1/2] Building C object CMakeFiles/cmTC_0f7a6.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_0f7a6.js
+
+
+File /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <strings.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strncasecmp
+  return ((int*)(&strncasecmp))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function strptime exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_88225 && [1/2] Building C object CMakeFiles/cmTC_88225.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_88225.js
+
+
+
+Determining if the function gettimeofday exists passed with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_33aa2 && [1/2] Building C object CMakeFiles/cmTC_33aa2.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_33aa2.js
+wasm-ld: warning: function signature mismatch: gettimeofday
+>>> defined as () -> i32 in CMakeFiles/cmTC_33aa2.dir/CheckFunctionExists.c.o
+>>> defined as (i32, i32) -> i32 in /opt/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libc-debug.a(emscripten_time.o)
+
+
+
+Performing C++ SOURCE FILE Test GDCM_CXX_HAS_FUNCTION succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_182a1 && [1/2] Building CXX object CMakeFiles/cmTC_182a1.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_182a1.js
+
+
+Source file was:
+int main() { const char *f = __FUNCTION__; return 0;}
+Performing C++ SOURCE FILE Test GDCM_HAVE_WCHAR_IFSTREAM succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_43a3e && [1/2] Building CXX object CMakeFiles/cmTC_43a3e.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_43a3e.js
+
+
+Source file was:
+#include <fstream>
+int main() { const wchar_t fn[10] = {}; std::ifstream is( fn ); return 0;}
+Performing C++ SOURCE FILE Test GDCM_HAVE_CODECVT succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_d3f85 && [1/2] Building CXX object CMakeFiles/cmTC_d3f85.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_d3f85.js
+
+
+Source file was:
+#include <string>
+#include <codecvt>
+#include <locale>
+int main() { std::u16string u16; std::string utf8 = std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t>{}.to_bytes(u16); }
+Performing C SOURCE FILE Test Iconv_IS_BUILT_IN succeeded with the following output:
+Change Dir: /__w/DicomViewer/DicomViewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/Qt/Tools/Ninja/ninja cmTC_1dbbd && [1/2] Building C object CMakeFiles/cmTC_1dbbd.dir/src.c.o
+[2/2] Linking C executable cmTC_1dbbd.js
+
+
+Source file was:
+
+      #include <stddef.h>
+      #include <iconv.h>
+      int main() {
+        char *a, *b;
+        size_t i, j;
+        iconv_t ic;
+        ic = iconv_open("to", "from");
+        iconv(ic, &a, &i, &b, &j);
+        iconv_close(ic);
+      }
+      

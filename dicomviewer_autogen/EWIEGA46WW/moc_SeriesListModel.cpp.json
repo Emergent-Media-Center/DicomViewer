@@ -1,0 +1,58 @@
+{
+    "classes": [
+        {
+            "className": "SeriesListModel",
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "patientId",
+                            "type": "QVariant"
+                        },
+                        {
+                            "name": "studyId",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "name": "setModelData",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "clearModelData",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "patient",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "study",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "id",
+                            "type": "QString"
+                        }
+                    ],
+                    "name": "createVoxelVolume",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "SeriesListModel",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QAbstractListModel"
+                }
+            ]
+        }
+    ],
+    "inputFile": "SeriesListModel.h",
+    "outputRevision": 68
+}

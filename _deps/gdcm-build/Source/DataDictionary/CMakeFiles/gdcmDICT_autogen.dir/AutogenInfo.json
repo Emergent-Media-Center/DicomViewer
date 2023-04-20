@@ -1,0 +1,156 @@
+{
+	"BUILD_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/DataDictionary/gdcmDICT_autogen",
+	"CMAKE_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/DataDictionary",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary",
+	"CMAKE_EXECUTABLE" : "/opt/Qt/Tools/CMake/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/CMakeLists.txt"
+	],
+	"CMAKE_SOURCE_DIR" : "/__w/DicomViewer/DicomViewer",
+	"DEP_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/DataDictionary/gdcmDICT_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "gdcmDICT_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmDictEntry.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmDictEntry.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmDicts.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmDicts.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmGlobal.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmGlobal.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmGroupDict.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmGroupDict.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmSOPClassUIDToIOD.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmSOPClassUIDToIOD.cpp",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmUIDs.h",
+			"Mu",
+			"EWIEGA46WW/moc_gdcmUIDs.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/DataDictionary/gdcmDICT_autogen/include",
+	"MOC_COMPILATION_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/DataDictionary/gdcmDICT_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "CHARLS_STATIC" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/Common",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/Common",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataStructureAndEncodingDefinition",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary",
+		"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/InformationObjectDefinition",
+		"/opt/emsdk/upstream/emscripten/cache/sysroot/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_GADGET_EXPORT",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/opt/emsdk/upstream/emscripten/em++",
+		"-dM",
+		"-E",
+		"-c",
+		"/opt/Qt/Tools/CMake/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/DataDictionary/gdcmDICT_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 2,
+	"PARSE_CACHE_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/DataDictionary/CMakeFiles/gdcmDICT_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/opt/Qt/6.4.2/gcc_64/./libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 4,
+	"SETTINGS_FILE" : "/__w/DicomViewer/DicomViewer/build/_deps/gdcm-build/Source/DataDictionary/CMakeFiles/gdcmDICT_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmCSAHeaderDefaultDicts.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmDefaultDicts.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmDefaultGroupNames.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmDictEntry.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmDicts.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmGlobal.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmGroupDict.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmPrivateDefaultDicts.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmSOPClassUIDToIOD.cxx",
+			"Mu",
+			null
+		],
+		[
+			"/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src/Source/DataDictionary/gdcmUIDs.cxx",
+			"Mu",
+			null
+		]
+	],
+	"VERBOSITY" : 0
+}

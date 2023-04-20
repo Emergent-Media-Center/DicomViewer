@@ -1,0 +1,12 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=url
+command=/opt/Qt/Tools/CMake/bin/cmake;-P;/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/download-gdcm-populate.cmake;COMMAND;/opt/Qt/Tools/CMake/bin/cmake;-P;/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/verify-gdcm-populate.cmake;COMMAND;/opt/Qt/Tools/CMake/bin/cmake;-P;/__w/DicomViewer/DicomViewer/build/_deps/gdcm-subbuild/gdcm-populate-prefix/src/gdcm-populate-stamp/extract-gdcm-populate.cmake
+source_dir=/__w/DicomViewer/DicomViewer/build/_deps/gdcm-src
+work_dir=/__w/DicomViewer/DicomViewer/build/_deps
+url(s)=https://github.com/malaterre/GDCM/archive/refs/tags/v3.0.20.zip
+hash=
+no_extract=
+
