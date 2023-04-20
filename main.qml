@@ -13,6 +13,7 @@ import com.DicomImage 1.0
 import com.DicomItemModels 1.0
 
 ApplicationWindow {
+    id: dicomApp
     title: qsTr("Dicom Viewer")
     width: 640
     height: 480
@@ -184,40 +185,44 @@ ApplicationWindow {
                         MenuSeparator { }
                         Action { text: "Enable Drawing" }
                         MenuSeparator { }
-                        Action { text: "Undo"
-                            shortcut: ""  }
+                        Action { text: "Undo <i>Ctrl+Z</i>" ; shortcut: "Ctrl+Z" }
                         MenuSeparator { }
-                        Action { text: "Redo" }
+                        Action { text: "Redo"; shortcut: "Ctrl+Y" }
                         MenuSeparator { }
                         Action { text: "Accessibility..." }
                     }
 
                     Menu {
                         title: "View"
-                        Action { text: "Annotations" }
+                        Action { text: "Annotations"; shortcut: "F4"; onTriggered: annotations.visible = true }
                         MenuSeparator { }
                         Action { text: "Show Dicom Tags" }
                         MenuSeparator { }
                         Action { text: "Fill Viewport" }
                         MenuSeparator { }
-                        Action { text: "100%" }
-                        Action { text: "200%" }
-                        Action { text: "400%" }
+                        Action { text: "100% <i>F1</i>"; shortcut: "F1"; onTriggered: {dicomApp.width = 640; dicomApp.height = 480}}
+                        Action { text: "200% <i>F2</i>"; shortcut: "F2"; onTriggered: {dicomApp.width = 1280; dicomApp.height = 960}}
+                        Action { text: "400% <i>F3</i>" ; shortcut: "F3"; onTriggered: {dicomApp.width = 2560; dicomApp.height = 1920} }
                     }
 
                     Menu {
                         title: "Window"
-                        Action { text: "Default Window" }
+                        Action { text: "Default Window"; onTriggered: threeDFrame.visible = true, ThreeDFrame3.visible = false; }
                         MenuSeparator { }
-                        Action { text: "1 Window View" }
+                        Action { text: "1 Window View"; onTriggered: threeDFrame.visible = false; }
                         MenuSeparator { }
-                        Action { text: "2 Window View" }
+                        Action { text: "2 Window View"; onTriggered: threeDFrame.visible = true; }
                         MenuSeparator { }
-                        Action { text: "3 Window View" }
+                        Action { text: "3 Window View"; onTriggered: threeDFrame3.visible = true, splitter.visible = true; }
                         MenuSeparator { }
-                        Action { text: "Fullscreen 'F5'" }
+                        Action { text: "Fullscreen 'F5'"; shortcut: "F5"; onTriggered: {
+                                if (dicomApp.visibility === Window.FullScreen)
+                                    dicomApp.visibility = Window.AutomaticVisibility;
+                                else
+                                    dicomApp.visibility = Window.FullScreen;
+                            }}
                         MenuSeparator { }
-                        Action { text: "Close All Windows" }
+                        Action { text: "Close All Windows"; onTriggered: threeDFrame.visible = false, threeDFrame3.visible = false; }
                     }
 
                     Menu {
@@ -270,10 +275,25 @@ ApplicationWindow {
 
                         ThreeDFrame {
                             id: threeDFrame2
+                            visible: true
                         }
 
                         ThreeDFrame {
                             id: threeDFrame
+                            visible: true
+                        }
+
+                        SplitView {
+                            id: splitter
+                            anchors.horizontalCenter: parent.left
+                            orientation: Qt.Horizontal
+                            visible: false
+
+                            ThreeDFrame {
+                                id: threeDFrame3
+                                visible: false
+                                width: userViews.width
+                            }
                         }
                     }
                 }
@@ -481,14 +501,15 @@ ApplicationWindow {
                                     color: "white";
                                     border { width: 1; color: "black" }
                                     MouseArea {
+                                        anchors.fill: parent
                                         id: mouse
-                                        // onClicked: send image to frame
+                                        onClicked: {
+                                            threeDFrame2.getImage(8)
+                                        }
                                     }
-
                                 }
                             }
                 }
-
             }
         }
     }
