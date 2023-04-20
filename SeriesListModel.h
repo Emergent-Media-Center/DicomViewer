@@ -7,6 +7,8 @@
 #include <QHash>
 #include <QImage>
 
+#include "QMLDicomImage.h"
+
 class SeriesListModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -19,6 +21,9 @@ public:
 
     explicit SeriesListModel(QObject* parent = 0);
     ~SeriesListModel();
+
+    //Q_INVOKABLE void SetMinRange(int min) { lowerRange = min;}
+    //Q_INVOKABLE void SetMaxRange(int max) { upperRange = max;}
 
     Q_INVOKABLE void setModelData(QVariant patientId, QVariant studyId);
 
@@ -34,16 +39,12 @@ public:
 
     Q_INVOKABLE void createVoxelVolume(QString patient, QString study, QString id);
 
-    Q_INVOKABLE QImage getImage() {return img;}
-
 public slots:
 
 private:
     std::string m_patient;
     std::string m_study;
     std::vector<std::string> m_series;
-
-    QImage img;
 };
 
 #endif // SERIESLISTMODEL_H

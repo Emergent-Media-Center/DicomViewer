@@ -114,25 +114,8 @@ void SeriesListModel::createVoxelVolume(QString patient, QString study, QString 
     qDebug() << "\nCreating voxel volume...";
 
     NavigatorSystem::Instance()->voxelVolume = new VoxelVolume(patient.toStdString(), study.toStdString(), id.toStdString());
-    vector<vector<vector<double>>>& volume = NavigatorSystem::Instance()->voxelVolume->getVolume();
 
-    qDebug() << "Voxel volume created\n";
-
-    //Write the Image to a PNG file
-    float side = NavigatorSystem::Instance()->voxelVolume->GetRows();   //Hardcoded for testing just for now
-    img = QImage(side, side, QImage::Format_Grayscale8);
-    QRgb value;
-
-    for(int i =0; i < side; i++)
-    {
-        for(int j = 0; j < side; j++)
-        {
-            value = volume[0][i][j];
-            img.setPixel(i, j, value);
-        }
-    }
-
-    std::string path = "C:";
+    /*std::string path = "C:";
 
     const QStringList locations = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
 
@@ -151,5 +134,5 @@ void SeriesListModel::createVoxelVolume(QString patient, QString study, QString 
     else
     {
         qDebug() << "Can't write to " << (path + "/test.png").c_str() << "\n";
-    }
+    }*/
 }

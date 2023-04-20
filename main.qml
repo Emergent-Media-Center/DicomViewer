@@ -62,6 +62,12 @@ ApplicationWindow {
             }
         }
     }*/
+
+    DicomDisplay
+    {
+        id: display1
+    }
+
     FileDialog {
         id: fileDialog
         //options: FolderDialog.ShowDirsOnly
@@ -237,16 +243,28 @@ ApplicationWindow {
             TabBar {
                 width: parent.width
                 TabButton {
-                    text: "View"
+                    text: "File Select"
                     width: implicitWidth
 
                     onClicked: stackLayout.currentIndex = 0;
                 }
                 TabButton {
-                    text: "File Select"
+                    id: dicomView1
+                    text: "View"
                     width: implicitWidth
 
+                    enabled: false
+
                     onClicked: stackLayout.currentIndex = 1;
+
+                    Component.onCompleted: {
+                        series.chooseSeries.connect(dicomView1.enableView);
+                    }
+
+                    function enableView()
+                    {
+                        dicomView1.enabled = true;
+                    }
                 }
             }
 
@@ -257,7 +275,7 @@ ApplicationWindow {
                 height: 200
                 currentIndex: 0
 
-                Frame {
+                /*Frame {
                     id: userViews
                     width: parent.width
                     height: parent.height
@@ -268,6 +286,7 @@ ApplicationWindow {
                         id: userViewsLayout
                         x: -1
                         y: -26
+                        z: 1
                         anchors.fill: parent
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         Layout.fillHeight: true
@@ -296,7 +315,7 @@ ApplicationWindow {
                             }
                         }
                     }
-                }
+                }*/
 
                 Frame{
                     id: fileFrame
@@ -458,10 +477,127 @@ ApplicationWindow {
                         }
                     }
                 }
+
+                Rectangle {
+                    anchors.fill: parent;
+
+                    color: "#000000";
+
+                    Image
+                    {
+                        id: dicomImage
+                        //width: 900
+                        //height: 900
+                        anchors.fill: parent;
+
+
+                        fillMode: Image.PreserveAspectFit
+
+                        Component.onCompleted:
+                        {
+                            series.chooseSeries.connect(dicomImage.setImage);
+                        }
+
+                        function setImage()
+                        {
+                            dicomImage.source = display1.getImage();
+                        }
+
+                        RangeSlider {
+                            property int lastDiff
+                            property int lastFirstValue
+                            property int lastSecondValue
+
+                            id: windowSlider
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            from: 0
+                            to: 4095
+                            anchors.leftMargin: 20
+                            anchors.topMargin: 20
+                            first.value: 2048   //First is center
+                            second.value: 4095  //Second is range
+
+                            Rectangle
+                            {
+                                id: mirroredRange
+                                x: windowSlider.first.handle.x - (windowSlider.second.handle.x - windowSlider.first.handle.x)
+                                y: windowSlider.second.handle.y + windowSlider.height / 3
+                                height: windowSlider.height / 3
+                                width: windowSlider.second.handle.x - windowSlider.first.handle.x
+
+                                color: "dodgerblue"
+                            }
+
+                            //Note: This code has only been tested with windowSlider.from at 0
+                            first.onMoved:
+                            {
+                                if(windowSlider.first.value < windowSlider.lastDiff)
+                                {
+                                    windowSlider.setValues(windowSlider.lastDiff, windowSlider.lastDiff + windowSlider.lastDiff);
+                                }
+                                else if(windowSlider.first.value + windowSlider.lastDiff > windowSlider.to)
+                                {
+                                    windowSlider.setValues(windowSlider.to - windowSlider.lastDiff, windowSlider.to);
+                                }
+                                else
+                                {
+                                    windowSlider.setValues(windowSlider.first.value, windowSlider.first.value + windowSlider.lastDiff);
+
+                                    //console.log("First - " + windowSlider.first.value + "  Second - " + windowSlider.second.value + "  Diff - " + windowSlider.lastDiff);
+                                }
+
+                                dicomImage.source = display1.getImage(windowSlider.first.value, windowSlider.second.value);
+                                windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                            }
+
+                            //Note: This code has only been tested with windowSlider.from at 0
+                            second.onMoved:
+                            {
+                                var newDiff = windowSlider.second.value - windowSlider.first.value;
+                                if(windowSlider.first.value - newDiff < windowSlider.from)
+                                {
+                                    windowSlider.setValues(newDiff, windowSlider.second.value)
+                                }
+
+                                dicomImage.source = display1.getImage(windowSlider.first.value, windowSlider.second.value);
+
+                                windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                            }
+
+                            Component.onCompleted:
+                            {
+                                windowSlider.lastDiff = windowSlider.second.value - windowSlider.first.value;
+                                windowSlider.lastFirstValue = windowSlider.first.value;
+                                windowSlider.lastSecondValue = windowSlider.second.value;
+                            }
+                        }
+
+                        /*Slider {
+                            id: rangeSlider
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            from: 0
+                            to: 4095
+                            anchors.leftMargin: 20
+                            anchors.topMargin: 40
+                            value: 4095
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onWheel:
+                                {
+                                    rangeSlider.value += (wheel.angleDelta.y) / 6;
+                                    dicomImage.source = display1.getImage(centerSlider.value, rangeSlider.value);
+                                }
+                            }
+                        }*/
+                    }
+                }
             }
 
 
-            Frame {
+            /*Frame {
                 id: frame
                 width: 200
                 height: 200
@@ -510,7 +646,8 @@ ApplicationWindow {
                                 }
                             }
                 }
-            }
+
+            }*/
         }
     }
 
